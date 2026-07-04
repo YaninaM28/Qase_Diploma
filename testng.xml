@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Qase Automation Suite"
+       thread-count="2"
+       parallel="tests">
+
+    <listeners>
+        <listener class-name="listeners.TestListener"/>
+        <listener class-name="listeners.RetryListener"/>
+    </listeners>
+
+        <test name="smoke">
+            <groups>
+                <run>
+                    <include name="smoke"/>
+                </run>
+            </groups>
+
+            <classes>
+                <class name="tests.ui.LoginTest"/>
+                <class name="tests.ui.ProjectTest"/>
+                <class name="tests.ui.SuiteTest"/>
+                <class name="tests.ui.LogoutTest"/>
+            </classes>
+        </test>
+
+    </suite>
