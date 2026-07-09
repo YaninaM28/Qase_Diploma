@@ -1,4 +1,4 @@
-package tests.ui;
+package tests.base;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
@@ -7,10 +7,7 @@ import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import pages.DashboardPage;
-import pages.LoginPage;
-import pages.ProjectPage;
-import pages.SuitePage;
+import pages.*;
 
 import java.util.HashMap;
 
@@ -19,12 +16,13 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 @Log4j2
 public class BaseTest {
 
-    LoginPage loginPage;
-    DashboardPage dashboardPage;
-    ProjectPage projectPage;
-    SuitePage suitePage;
+    protected LoginPage loginPage;
+    protected DashboardPage dashboardPage;
+    protected ProjectPage projectPage;
+    protected SuitePage suitePage;
+    protected TestCasePage testCasePage;
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void setUp() {
         SelenideLogger.addListener(
                 "AllureSelenide",
@@ -56,9 +54,10 @@ public class BaseTest {
         dashboardPage = new DashboardPage();
         projectPage = new ProjectPage();
         suitePage = new SuitePage();
+        testCasePage = new TestCasePage();
     }
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void tearDown() {
         closeWebDriver();
     }

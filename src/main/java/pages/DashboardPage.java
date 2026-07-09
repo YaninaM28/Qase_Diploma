@@ -17,8 +17,9 @@ public class DashboardPage {
     private static final String EDIT_BUTTON = "[data-testid='settings']";
 
     @Step("Открыть Dashboard с проектами")
-    public void openPage() {
+    public DashboardPage openPage() {
         open("/projects");
+        return this;
     }
 
     @Step("Создать новый проект")
@@ -39,9 +40,9 @@ public class DashboardPage {
     }
 
     @Step("Открыть проект")
-    public ProjectPage clickProject(String projectName) {
+    public SuitePage clickProject(String projectName) {
         $(byText(projectName)).shouldBe(visible).click();
-        return new ProjectPage();
+        return new SuitePage();
     }
 
     @Step("Редактировать проект")

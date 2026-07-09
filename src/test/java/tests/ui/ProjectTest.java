@@ -5,6 +5,7 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import io.qameta.allure.TmsLink;
 import org.testng.annotations.Test;
+import tests.base.BaseTest;
 
 import static utils.PropertyReader.getProperty;
 
@@ -27,7 +28,9 @@ public class ProjectTest extends BaseTest {
                 .setProjectName(projectName)
                 .setProjectCode(projectCode)
                 .clickCreateProject()
-                .shouldHaveProject(projectName);
+                .shouldHaveProject(projectName)
+                .deleteProject(projectName)
+                .shouldNotHaveProject(projectName);
     }
 
     @Test(groups = "regression", priority = 2)
@@ -50,7 +53,9 @@ public class ProjectTest extends BaseTest {
                 .setProjectName(projectName)
                 .setProjectCode(projectCode)
                 .clickUpdateProject();
-        dashboardPage.shouldHaveProject(projectName);
+        dashboardPage.shouldHaveProject(projectName)
+                .deleteProject(projectName)
+                .shouldNotHaveProject(projectName);
     }
 
     @Test(groups = "regression", priority = 3, dependsOnMethods = "checkCreateProject")
@@ -63,6 +68,11 @@ public class ProjectTest extends BaseTest {
                 .login(
                         getProperty("user"),
                         getProperty("password"))
+                .clickCreateProject()
+                .setProjectName(projectName)
+                .setProjectCode(projectCode)
+                .clickCreateProject()
+                .shouldHaveProject(projectName)
                 .deleteProject(projectName)
                 .shouldNotHaveProject(projectName);
     }

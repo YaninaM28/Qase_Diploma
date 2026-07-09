@@ -33,23 +33,23 @@
 | TC-003 | Open Project | ✅     |
 | TC-004 | Create Suite | ✅     |
 | TC-005 | Create Nested Suite | ✅     |
-| TC-006 | Create Test Case | ⏳     |
-| TC-007 | Create Test Case with Steps | ⏳ |
+| TC-006 | Create Test Case | ✅     |
+| TC-007 | Create Test Case with Steps | ✅ |
 
 ---
 
 ## 🔄 Regression Suite
 
-| ID     | Test Case | Status |
-|--------|-----------|------|
-| TC-008 | Edit Project | ✅ |
-| TC-009 | Edit Suite | ✅ |
-| TC-010 | Search Project | ⏳ |
+| ID     | Test Case        | Status |
+|--------|------------------|-----|
+| TC-008 | Edit Project     | ✅ |
+| TC-009 | Edit Suite       | ✅ |
+| TC-010 | Search Project   | ⏳ |
 | TC-011 | Search Test Case | ⏳ |
-| TC-012 | Clone Test Case | ⏳ |
-| TC-013 | Delete Test Case | ⏳ |
-| TC-014 | Delete Suite | ✅ |
-| TC-015 | Delete Project | ✅ |
+| TC-012 | Cancel Test Case | ✅ |
+| TC-013 | Delete Test Case | ✅ |
+| TC-014 | Delete Suite     | ✅ |
+| TC-015 | Delete Project   | ✅ |
 
 ---
 
@@ -90,7 +90,7 @@ Logout
 | Login Page           | ✅ |
 | Dashboard Page       | ✅ |
 | Project Page         | ✅ |
-| Smoke Tests          | ⏳ |
+| Smoke Tests          | ✅ |
 | Regression Tests     | ⏳ |
 | Retry Analyzer       | ✅ |
 | Test Listener        | ✅ |

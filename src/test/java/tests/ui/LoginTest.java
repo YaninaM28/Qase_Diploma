@@ -5,6 +5,7 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import io.qameta.allure.TmsLink;
 import org.testng.annotations.Test;
+import tests.base.BaseTest;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;

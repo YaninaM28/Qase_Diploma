@@ -9,19 +9,21 @@ import tests.base.BaseTest;
 
 import static tests.ui.ProjectTest.projectCode;
 import static tests.ui.ProjectTest.projectName;
+import static tests.ui.SuiteTest.suiteDescription;
+import static tests.ui.SuiteTest.suiteName;
 import static utils.PropertyReader.getProperty;
 
-public class SuiteTest extends BaseTest {
+public class TestCaseTest extends BaseTest {
 
-    public static final String suiteName = "Suite_1";
-    public static final String suiteDescription = "Test_Suite";
+    public static final String testCaseName = "Test case_1";
+    public static final String testCaseDescription = "Test case_desc";
 
     @Test(groups = "smoke", priority = 1)
-    @TmsLink("TC-004")
-    @Feature("Suits")
-    @Story("Create Suite")
-    @Description("Проверка создания нового suite")
-    public void checkCreateSuite() {
+    @TmsLink("TC-006")
+    @Feature("Test case")
+    @Story("Create test case")
+    @Description("Проверка создания нового test case")
+    public void checkCreateTestCase() {
         loginPage.openPage()
                 .login(
                         getProperty("user"),
@@ -31,19 +33,22 @@ public class SuiteTest extends BaseTest {
                 .setProjectCode(projectCode)
                 .clickCreateProject()
                 .shouldHaveProject(projectName)
-                .clickProject(projectName);
-        suitePage.createSuite(suiteName, suiteDescription);
+                .clickProject(projectName)
+                .createSuite(suiteName, suiteDescription)
+                .shouldHaveSuite(suiteName);
+        testCasePage.createTestCase(testCaseName, testCaseDescription)
+                .shouldHaveTestCase(testCaseName);
         dashboardPage.openPage()
                 .deleteProject(projectName)
                 .shouldNotHaveProject(projectName);
     }
 
     @Test(groups = "smoke", priority = 2)
-    @TmsLink("TC-009")
-    @Feature("Suits")
-    @Story("Edit Suite")
-    @Description("Редактирование suite")
-    public void checkEditeSuite() {
+    @TmsLink("TC-007")
+    @Feature("Test case")
+    @Story("Add test case with steps")
+    @Description("Редактирование test case")
+    public void checkAddTestCaseWithSteps() {
         loginPage.openPage()
                 .login(
                         getProperty("user"),
@@ -52,30 +57,26 @@ public class SuiteTest extends BaseTest {
                 .setProjectName(projectName)
                 .setProjectCode(projectCode)
                 .clickCreateProject()
+                .shouldHaveProject(projectName)
                 .clickProject(projectName)
                 .createSuite(suiteName, suiteDescription)
-                .shouldHaveSuite(suiteName)
-                .editSuite()
-                .setSuiteName("Suite_edited")
-                .setSuiteDescription("New")
-                .saveEditedSuite()
-                .shouldHaveSuite("Suite_edited")
-                .editSuite()
-                .setSuiteName(suiteName)
-                .setSuiteDescription(suiteDescription)
-                .saveEditedSuite()
                 .shouldHaveSuite(suiteName);
+        testCasePage.openCreateTestCaseForm()
+                .setTestCaseName("TestCase_with_steps")
+                .setTestCaseStep()
+                .saveTestCase();
+        testCasePage.shouldHaveTestCase("TestCase_with_steps");
         dashboardPage.openPage()
                 .deleteProject(projectName)
                 .shouldNotHaveProject(projectName);
     }
 
-    @Test(groups = "smoke", priority = 3)
-    @TmsLink("TC-005")
-    @Feature("Suits")
-    @Story("Create Nested Suite")
-    @Description("Проверка создания нового вложенного suite")
-    public void checkCreateNestedSuite() {
+    @Test(groups = "regression", priority = 3)
+    @TmsLink("TC-00")
+    @Feature("Test case")
+    @Story("Cancel test case")
+    @Description("Проверка нажатия отмена при создании нового test case")
+    public void checkCancelTestCase() {
         loginPage.openPage()
                 .login(
                         getProperty("user"),
@@ -84,24 +85,25 @@ public class SuiteTest extends BaseTest {
                 .setProjectName(projectName)
                 .setProjectCode(projectCode)
                 .clickCreateProject()
+                .shouldHaveProject(projectName)
                 .clickProject(projectName)
                 .createSuite(suiteName, suiteDescription)
-                .shouldHaveSuite(suiteName)
-                .selectSuite()
-                .setSuiteName("nested suite_01")
-                .setSuiteDescription("Nested")
-                .submitSuite();
+                .shouldHaveSuite(suiteName);
+        testCasePage.openCreateTestCaseForm()
+                .setTestCaseName(testCaseName)
+                .cancelTestCase()
+                .shouldNotHaveTestCase(testCaseName);
         dashboardPage.openPage()
                 .deleteProject(projectName)
                 .shouldNotHaveProject(projectName);
     }
-
-    @Test(groups = "regression", priority = 4, dependsOnMethods = "checkCreateSuite")
-    @TmsLink("TC-014")
-    @Feature("Suits")
-    @Story("Delete Suite")
-    @Description("Проверка удаления suite")
-    public void checkDeleteSuite() {
+    
+    @Test(groups = "regression", priority = 4)
+    @TmsLink("TC-013")
+    @Feature("Test case")
+    @Story("Delete test case")
+    @Description("Проверка удаления test case")
+    public void checkDeleteTestCase() {
         loginPage.openPage()
                 .login(
                         getProperty("user"),
@@ -110,14 +112,17 @@ public class SuiteTest extends BaseTest {
                 .setProjectName(projectName)
                 .setProjectCode(projectCode)
                 .clickCreateProject()
+                .shouldHaveProject(projectName)
                 .clickProject(projectName)
                 .createSuite(suiteName, suiteDescription)
-                .shouldHaveSuite(suiteName)
-                .selectSuite()
-                .deleteSuite(suiteName)
-                .shouldNotHaveSuite(suiteName);
+                .shouldHaveSuite(suiteName);
+        testCasePage.createTestCase(testCaseName, testCaseDescription)
+                .shouldHaveTestCase(testCaseName)
+                .deleteTestCase(testCaseName);
+        testCasePage.shouldNotHaveTestCase(testCaseName);
         dashboardPage.openPage()
                 .deleteProject(projectName)
                 .shouldNotHaveProject(projectName);
     }
+
 }

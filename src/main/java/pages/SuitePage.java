@@ -60,14 +60,14 @@ public class SuitePage {
         return this;
     }
     @Step("Suite отображается в проекте")
-    public ProjectPage shouldHaveSuite(String suiteName) {
+    public SuitePage shouldHaveSuite(String suiteName) {
         $(byText(suiteName)).shouldBe(visible);
-        return new ProjectPage();
+        return this;
     }
     @Step("Suite не отображается в проекте")
-    public ProjectPage shouldNotHaveSuite(String suiteName) {
+    public SuitePage shouldNotHaveSuite(String suiteName) {
         $(byText(suiteName)).shouldNot(exist);
-        return new ProjectPage();
+        return this;
     }
 
     @Step("Выбрать созданный suite")
@@ -98,5 +98,4 @@ public class SuitePage {
         $x(DELETE_SUITE).click();
         return this;
     }
-
 }
