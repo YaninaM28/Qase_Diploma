@@ -28,28 +28,28 @@
 
 | ID | Test Case | Status |
 |----|-----------|-------|
-| TC-001 | Successful Login | ⏳     |
-| TC-002 | Create Project | ⏳     |
-| TC-003 | Open Project | ⏳     |
-| TC-004 | Create Suite | ⏳     |
-| TC-005 | Create Nested Suite | ⏳     |
-| TC-006 | Create Test Case | ⏳     |
-| TC-007 | Create Test Case with Steps | ⏳ |
+| TC-001 | Successful Login | ✅     |
+| TC-002 | Create Project | ✅     |
+| TC-003 | Open Project | ✅     |
+| TC-004 | Create Suite | ✅     |
+| TC-005 | Create Nested Suite | ✅     |
+| TC-006 | Create Test Case | ✅     |
+| TC-007 | Create Test Case with Steps | ✅ |
 
 ---
 
 ## 🔄 Regression Suite
 
-| ID     | Test Case | Status |
-|--------|-----------|--------|
-| TC-008 | Edit Project | ⏳ |
-| TC-009 | Edit Suite | ⏳ |
-| TC-010 | Search Project | ⏳ |
+| ID     | Test Case        | Status |
+|--------|------------------|-----|
+| TC-008 | Edit Project     | ✅ |
+| TC-009 | Edit Suite       | ✅ |
+| TC-010 | Search Project   | ⏳ |
 | TC-011 | Search Test Case | ⏳ |
-| TC-012 | Clone Test Case | ⏳ |
-| TC-013 | Delete Test Case | ⏳ |
-| TC-014 | Delete Suite | ⏳ |
-| TC-015 | Delete Project | ⏳ |
+| TC-012 | Cancel Test Case | ✅ |
+| TC-013 | Delete Test Case | ✅ |
+| TC-014 | Delete Suite     | ✅ |
+| TC-015 | Delete Project   | ✅ |
 
 ---
 
@@ -80,21 +80,23 @@ Logout
 ---
 # 📈 Project Progress
 
-| Task | Status |
-|------|--------|
-| Maven Project | ✅ |
-| Dependencies | ✅ |
-| Project Structure | ⏳ |
-| Base Test | ⏳ |
-| Driver Configuration | ⏳ |
-| Login Page | ⏳ |
-| Smoke Tests | ⏳ |
-| Regression Tests | ⏳ |
-| Retry Analyzer | ⏳ |
-| Test Listener | ⏳ |
-| Logging | ⏳ |
-| Allure Report | ⏳ |
-| Parallel Execution | ⏳ |
-| Jenkins Integration | ⏳ |
+| Task                 | Status |
+|----------------------|---|
+| Maven Project        | ✅ |
+| Dependencies         | ✅ |
+| Project Structure    | ✅ |
+| Base Test            | ✅ |
+| Driver Configuration | ✅ |
+| Login Page           | ✅ |
+| Dashboard Page       | ✅ |
+| Project Page         | ✅ |
+| Smoke Tests          | ✅ |
+| Regression Tests     | ⏳ |
+| Retry Analyzer       | ✅ |
+| Test Listener        | ✅ |
+| Logging              | ✅ |
+| Allure Report        | ⏳ |
+| Parallel Execution   | ⏳ |
+| Jenkins Integration  | ⏳ |
 
 ---
