@@ -36,6 +36,8 @@ public class LoginPage {
 //        $(shadowCss("#accept", "#usercentrics-cmp-ui")).click();
         $(LOGIN).setValue(user);
         $(PASSWORD).setValue(password);
+        log.info("User = {}", user);
+        log.info("Password empty = {}", password == null || password.isEmpty());
         $(byText(SIGN_IN)).click();
         log.info("User logged in");
         return new DashboardPage();
