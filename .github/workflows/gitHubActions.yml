@@ -22,8 +22,8 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      USER: ${{secrets.USER}}
-      PASS: ${{secrets.PASSWORD}}
+      USER: ${{secrets.QASE_USER}}
+      PASSWORD: ${{secrets.QASE_PASSWORD}}
 
     steps:
       - uses: actions/checkout@v4
