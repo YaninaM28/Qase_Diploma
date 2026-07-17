@@ -105,7 +105,9 @@
 
                 <configuration>
                     <suiteXmlFiles>
-                        <suiteXmlFile>testng.xml</suiteXmlFile>
+                        <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
+<!--                        <suiteXmlFile>src/test/resources/crossBrowse.xml</suiteXmlFile>-->
+
                     </suiteXmlFiles>
                 </configuration>
 
