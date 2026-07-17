@@ -53,6 +53,7 @@ public class BaseTest {
             options.addArguments("--disable-notifications");
             options.addArguments("--disable-popup-blocking");
             options.addArguments("--disable-infobars");
+            options.addArguments("--headless=new");
             options.addArguments("--no-sandbox");
             options.addArguments("--disable-dev-shm-usage");
             options.addArguments("--disable-gpu");
@@ -63,6 +64,7 @@ public class BaseTest {
             FirefoxOptions options = new FirefoxOptions();
             options.addArguments("-private");
             options.addPreference("dom.webnotifications.enabled", false);
+            options.addArguments("--headless=new");
             options.addArguments("--no-sandbox");
             options.addArguments("--disable-dev-shm-usage");
             options.addArguments("--disable-gpu");
