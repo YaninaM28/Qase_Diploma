@@ -21,8 +21,8 @@ public class LoginTest extends BaseTest {
     public void checkLoginWithPositiveCred() {
         loginPage.openPage();
         loginPage.login(
-                getProperty("user"),
-                getProperty("password")
+                user,
+                password
         );
         webdriver().shouldHave(urlContaining("/projects"));
         $(byText(CREATE_NEW_PROJECT)).shouldBe(visible);
