@@ -4,8 +4,6 @@ import io.qameta.allure.*;
 import org.testng.annotations.Test;
 import tests.base.BaseTest;
 
-import static utils.PropertyReader.getProperty;
-
 public class ProjectTest extends BaseTest {
     public static final String projectName = "TMS01";
     public static final String projectCode = "TMS001";
@@ -20,8 +18,8 @@ public class ProjectTest extends BaseTest {
 
         loginPage.openPage()
                 .login(
-                        getProperty("user"),
-                        getProperty("password"))
+                        user,
+                        password)
                 .clickCreateProject()
                 .setProjectName(projectName)
                 .setProjectCode(projectCode)
@@ -40,8 +38,8 @@ public class ProjectTest extends BaseTest {
     public void checkEditProject() {
         loginPage.openPage()
                 .login(
-                        getProperty("user"),
-                        getProperty("password"));
+                        user,
+                        password);
         dashboardPage.editProject(projectName)
                 .setProjectName("TMS01(edited)")
                 .setProjectCode("TMS001new")
@@ -66,8 +64,8 @@ public class ProjectTest extends BaseTest {
     public void checkDeleteProject() {
         loginPage.openPage()
                 .login(
-                        getProperty("user"),
-                        getProperty("password"))
+                        user,
+                        password)
                 .clickCreateProject()
                 .setProjectName(projectName)
                 .setProjectCode(projectCode)
