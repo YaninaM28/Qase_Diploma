@@ -26,8 +26,8 @@ public class BaseTest {
     protected SuitePage suitePage;
     protected TestCasePage testCasePage;
 
-    protected String user = System.getProperty("user", PropertyReader.getProperty("user"));
-    protected String password = System.getProperty("password", PropertyReader.getProperty("password"));
+    protected String user;
+    protected String password;
 
     @Parameters({"browser"})
     @BeforeMethod(alwaysRun = true)
@@ -39,6 +39,18 @@ public class BaseTest {
                         .savePageSource(true)
                         .includeSelenideSteps(true)
         );
+        user = System.getProperty("user");
+        password = System.getProperty("password");
+        if (user == null) {
+            user = PropertyReader.getProperty("user");
+        }
+
+        if (password == null) {
+            password = PropertyReader.getProperty("password");
+        }
+        log.info("TEST USER = {}", user);
+        log.info("PASSWORD EXISTS = {}", password != null);
+
         Configuration.browser = browser;
         Configuration.headless = false;
         Configuration.baseUrl = "https://app.qase.io";
