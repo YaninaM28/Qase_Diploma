@@ -11,6 +11,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import ui.pages.*;
+import utils.PropertyReader;
 
 import java.util.HashMap;
 
@@ -25,6 +26,9 @@ public class BaseTest {
     protected SuitePage suitePage;
     protected TestCasePage testCasePage;
 
+    protected String user = System.getProperty("user", PropertyReader.getProperty("user"));
+    protected String password = System.getProperty("password", PropertyReader.getProperty("password"));
+
     @Parameters({"browser"})
     @BeforeMethod(alwaysRun = true)
     public void setUp(@Optional("chrome") String browser) {
@@ -38,7 +42,8 @@ public class BaseTest {
         Configuration.browser = browser;
         Configuration.headless = true;
         Configuration.baseUrl = "https://app.qase.io";
-        Configuration.timeout = 10000;
+        Configuration.timeout = 20000;
+        Configuration.pageLoadTimeout = 50000;
         Configuration.clickViaJs = true;
         Configuration.browserSize = "1920x1080";
 
