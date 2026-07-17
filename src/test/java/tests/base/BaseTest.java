@@ -42,8 +42,8 @@ public class BaseTest {
         Configuration.browser = browser;
         Configuration.headless = false;
         Configuration.baseUrl = "https://app.qase.io";
-        Configuration.timeout = 20000;
-        Configuration.pageLoadTimeout = 50000;
+        Configuration.timeout = 10000;
+        Configuration.pageLoadTimeout = 30000;
         Configuration.clickViaJs = true;
         Configuration.browserSize = "1920x1080";
 
@@ -54,16 +54,16 @@ public class BaseTest {
             chromePrefs.put("credentials_enable_service", false);
             chromePrefs.put("profile.password_manager_enabled", false);
             options.setExperimentalOption("prefs", chromePrefs);
-            options.addArguments("--incognito");
+//            options.addArguments("--incognito");
             options.addArguments("--disable-notifications");
             options.addArguments("--disable-popup-blocking");
             options.addArguments("--disable-infobars");
-//            options.addArguments("--headless");
+            options.addArguments("--headless=new");
             options.addArguments("--no-sandbox");
             options.addArguments("--disable-dev-shm-usage");
             options.addArguments("--disable-gpu");
-            options.addArguments("--disable-http2");
-            options.addArguments("--disable-quic");
+//            options.addArguments("--disable-http2");
+//            options.addArguments("--disable-quic");
 
             Configuration.browserCapabilities = options;
         } else if (browser.equalsIgnoreCase("firefox")) {
