@@ -1,5 +1,6 @@
 package ui.pages;
 
+import com.codeborne.selenide.WebDriverRunner;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 
@@ -23,6 +24,8 @@ public class LoginPage {
     @Step("Открыть страницу логина")
     public LoginPage openPage() {
         open("/login");
+        log.info("Current URL: {}", WebDriverRunner.url());
+        log.info("Page title: {}", WebDriverRunner.getWebDriver().getTitle());
         return this;
     }
 
