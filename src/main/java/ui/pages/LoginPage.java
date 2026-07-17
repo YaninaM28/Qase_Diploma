@@ -3,6 +3,7 @@ package ui.pages;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.shadowCss;
 import static com.codeborne.selenide.Selenide.$;
@@ -28,12 +29,29 @@ public class LoginPage {
     @Step("Авторизоваться своим юзером")
     public DashboardPage login(String user, String password) {
         log.info("Opening Login page");
-        $(shadowCss("#accept", "#usercentrics-cmp-ui")).click();
+        acceptCookiesIfPresent();
+//        $(shadowCss("#accept", "#usercentrics-cmp-ui")).click();
         $(LOGIN).setValue(user);
         $(PASSWORD).setValue(password);
         $(byText(SIGN_IN)).click();
         log.info("User logged in");
         return new DashboardPage();
+    }
+
+    private void acceptCookiesIfPresent() {
+        try {
+            var acceptButton = $(shadowCss("#accept", "#usercentrics-cmp-ui"));
+
+            if (acceptButton.exists()) {
+                log.info("Usercentrics cookie banner found. Accepting cookies...");
+                acceptButton.shouldBe(visible).click();
+            } else {
+                log.info("Usercentrics cookie banner not found. Continue without accepting cookies.");
+            }
+
+        } catch (Exception e) {
+            log.warn("Unable to accept cookies. Continue without it.", e);
+        }
     }
 
     @Step("Выход из системы")
