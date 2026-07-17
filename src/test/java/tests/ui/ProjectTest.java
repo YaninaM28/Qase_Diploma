@@ -1,9 +1,6 @@
 package tests.ui;
 
-import io.qameta.allure.Description;
-import io.qameta.allure.Feature;
-import io.qameta.allure.Story;
-import io.qameta.allure.TmsLink;
+import io.qameta.allure.*;
 import org.testng.annotations.Test;
 import tests.base.BaseTest;
 
@@ -14,6 +11,7 @@ public class ProjectTest extends BaseTest {
     public static final String projectCode = "TMS001";
 
     @Test(groups = "smoke", priority = 1)
+    @Owner("Yanina Savich")
     @TmsLink("TC-002")
     @Feature("Projects")
     @Story("Create Project")
@@ -34,6 +32,7 @@ public class ProjectTest extends BaseTest {
     }
 
     @Test(groups = "regression", priority = 2)
+    @Owner("Yanina Savich")
     @TmsLink("TC-008")
     @Feature("Projects")
     @Story("Edit Project")
@@ -58,7 +57,8 @@ public class ProjectTest extends BaseTest {
                 .shouldNotHaveProject(projectName);
     }
 
-    @Test(groups = "regression", priority = 3, dependsOnMethods = "checkCreateProject")
+    @Test(groups = "regression", priority = 3)
+    @Owner("Yanina Savich")
     @TmsLink("TC-015")
     @Feature("Projects")
     @Story("Delete Project")

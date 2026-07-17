@@ -1,12 +1,14 @@
-package pages;
+package ui.pages;
 
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
+import lombok.extern.log4j.Log4j2;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
+@Log4j2
 public class TestCasePage {
 
     private final String CREATE_NEW_TEST_CASE = "Create test case";
@@ -23,6 +25,7 @@ public class TestCasePage {
 
     @Step("Открыть форму создания test case")
     public TestCasePage openCreateTestCaseForm() {
+        log.info("Opening test case creation form");
         $("svg[data-icon='ellipsis-vertical']").click();
         $(byText(CREATE_NEW_TEST_CASE)).click();
         return this;
@@ -38,13 +41,14 @@ public class TestCasePage {
 
     @Step("Ввести название test case: {testCaseName}")
     public TestCasePage setTestCaseName(String testCaseName) {
-//        clearAndType($x(TEST_CASE_TITLE), testCaseName);
+        log.info("Setting test case name '{}'", testCaseName);
         $x(TEST_CASE_TITLE).shouldBe(visible).setValue(testCaseName);
         return this;
     }
 
     @Step("Ввести описание для test case: {description}")
     public TestCasePage setTestCaseDescription(String description) {
+        log.info("Setting test case description");
         $(DESCRIPTION).click();
         $(DESCRIPTION).sendKeys(description);
         return this;
@@ -52,6 +56,7 @@ public class TestCasePage {
 
     @Step("Добавить шаг для test case")
     public TestCasePage setTestCaseStep() {
+        log.info("Adding test step");
         SelenideElement editor = $("div[contenteditable='true']");
         executeJavaScript("arguments[0].scrollIntoView(true);", editor);
         $x(ADD_TEST_CASE_STEP).shouldBe(visible).click();
@@ -66,12 +71,14 @@ public class TestCasePage {
 
     @Step("Подтвердить создание test case")
     public SuitePage saveTestCase() {
+        log.info("Saving test case");
         $(byText(SAVE_TEST_CASE_BUTTON)).click();
         return new SuitePage();
     }
 
     @Step("Отменить создание test case")
     public TestCasePage cancelTestCase() {
+        log.info("Cancelling test case creation");
         $(byText(CANCEL_TEST_CASE_BUTTON)).click();
         return this;
     }
@@ -87,12 +94,14 @@ public class TestCasePage {
 
     @Step("Test case отображается выбранном suite")
     public TestCasePage shouldHaveTestCase(String testCaseName) {
+        log.info("Verifying test case '{}' is displayed", testCaseName);
         $(byText(testCaseName)).shouldBe(visible);
         return this;
     }
 
     @Step("Test case не отображается в suite")
     public TestCasePage shouldNotHaveTestCase(String testCaseName) {
+        log.info("Verifying test case '{}' is not displayed", testCaseName);
         $(byText(testCaseName)).shouldNot(exist);
         return this;
     }
@@ -107,18 +116,21 @@ public class TestCasePage {
 
     @Step("Нажать Edit test case")
     public TestCasePage editTestCase() {
+        log.info("Opening test case edit form");
         $("svg[data-icon='pen']").click();
         return this;
     }
 
     @Step("Применить изменения для test case")
     public TestCasePage saveEditedTestCase() {
+        log.info("Saving test case changes");
         $(byText(SAVE_TEST_CASE_BUTTON)).click();
         return this;
     }
 
     @Step("Удалить test case")
     public SuitePage deleteTestCase(String testCaseName) {
+        log.info("Deleting test case '{}'", testCaseName);
         $("svg[data-icon='trash']").click();
         $x(DELETE_TEST_CASE).click();
         return new SuitePage();

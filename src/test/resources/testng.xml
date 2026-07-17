@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite thread-count="1"
        name="Qase Automation Suite"
-       parallel="tests">
+       parallel="false">
 
     <listeners>
         <listener class-name="listeners.TestListener"/>

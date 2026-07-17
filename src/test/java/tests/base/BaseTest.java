@@ -5,9 +5,12 @@ import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import pages.*;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
+import ui.pages.*;
 
 import java.util.HashMap;
 
@@ -22,8 +25,9 @@ public class BaseTest {
     protected SuitePage suitePage;
     protected TestCasePage testCasePage;
 
+    @Parameters({"browser"})
     @BeforeMethod(alwaysRun = true)
-    public void setUp() {
+    public void setUp(@Optional("chrome") String browser) {
         SelenideLogger.addListener(
                 "AllureSelenide",
                 new AllureSelenide()
@@ -31,24 +35,44 @@ public class BaseTest {
                         .savePageSource(true)
                         .includeSelenideSteps(true)
         );
-//  для Дженкинса
-//        Configuration.headless = true;
-        Configuration.browser = "chrome";
+        Configuration.browser = browser;
+        Configuration.headless = true;
         Configuration.baseUrl = "https://app.qase.io";
         Configuration.timeout = 10000;
         Configuration.clickViaJs = true;
         Configuration.browserSize = "1920x1080";
 
-        ChromeOptions options = new ChromeOptions();
-        HashMap<String, Object> chromePrefs = new HashMap<>();
-        chromePrefs.put("credentials_enable_service", false);
-        chromePrefs.put("profile.password_manager_enabled", false);
-        options.setExperimentalOption("prefs", chromePrefs);
-        options.addArguments("--incognito");
-        options.addArguments("--disable-notifications");
-        options.addArguments("--disable-popup-blocking");
-        options.addArguments("--disable-infobars");
-        Configuration.browserCapabilities = options;
+        if (browser.equalsIgnoreCase("chrome")) {
+
+            ChromeOptions options = new ChromeOptions();
+            HashMap<String, Object> chromePrefs = new HashMap<>();
+            chromePrefs.put("credentials_enable_service", false);
+            chromePrefs.put("profile.password_manager_enabled", false);
+            options.setExperimentalOption("prefs", chromePrefs);
+            options.addArguments("--incognito");
+            options.addArguments("--disable-notifications");
+            options.addArguments("--disable-popup-blocking");
+            options.addArguments("--disable-infobars");
+            options.addArguments("--headless=new");
+            options.addArguments("--no-sandbox");
+            options.addArguments("--disable-dev-shm-usage");
+            options.addArguments("--disable-gpu");
+
+            Configuration.browserCapabilities = options;
+        } else if (browser.equalsIgnoreCase("firefox")) {
+
+            FirefoxOptions options = new FirefoxOptions();
+            options.addArguments("-private");
+            options.addPreference("dom.webnotifications.enabled", false);
+            options.addArguments("--headless=new");
+            options.addArguments("--no-sandbox");
+            options.addArguments("--disable-dev-shm-usage");
+            options.addArguments("--disable-gpu");
+
+            Configuration.browserCapabilities = options;
+        } else {
+            throw new IllegalArgumentException("Unsupported browser: " + browser);
+        }
 
         loginPage = new LoginPage();
         dashboardPage = new DashboardPage();

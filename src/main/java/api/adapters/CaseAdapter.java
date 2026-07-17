@@ -1,13 +1,15 @@
-package adapters;
+package api.adapters;
 
-import models.cases.CaseRq;
-import models.cases.CaseRs;
+import io.qameta.allure.Step;
+import api.models.cases.CaseRq;
+import api.models.cases.CaseRs;
 
-import static adapters.BaseAdapter.*;
+import static api.adapters.BaseAdapter.*;
 import static io.restassured.RestAssured.given;
 
 public class CaseAdapter {
 
+    @Step("")
     public static CaseRs createCase(String projectCode, CaseRq rq) {
         return given()
                 .spec(spec)
@@ -21,6 +23,7 @@ public class CaseAdapter {
                 .as(CaseRs.class);
     }
 
+    @Step("")
     public static CaseRs updateCase(String projectCode, int caseId, CaseRq rq) {
         return given()
                 .spec(spec)
@@ -35,6 +38,7 @@ public class CaseAdapter {
                 .as(CaseRs.class);
     }
 
+    @Step("")
     public static void deleteCase(String projectCode, int caseId) {
         given()
                 .spec(spec)
@@ -46,6 +50,7 @@ public class CaseAdapter {
                 .spec(ok200);
     }
 
+    @Step("")
     public static CaseRs getCase(String projectCode, int caseId) {
         return given()
                 .spec(spec)

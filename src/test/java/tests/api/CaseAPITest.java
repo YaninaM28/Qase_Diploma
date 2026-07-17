@@ -1,9 +1,9 @@
 package tests.api;
 
-import adapters.CaseAdapter;
-import models.cases.CaseRq;
-import models.cases.CaseRs;
-import models.cases.Step;
+import api.adapters.CaseAdapter;
+import api.models.cases.CaseRq;
+import api.models.cases.CaseRs;
+import api.models.cases.Step;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

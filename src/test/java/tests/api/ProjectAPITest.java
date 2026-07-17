@@ -1,13 +1,13 @@
 package tests.api;
 
-import adapters.ProjectAdapter;
-import models.project.ProjectRq;
-import models.project.ProjectRs;
+import api.adapters.ProjectAdapter;
+import api.models.project.ProjectRq;
+import api.models.project.ProjectRs;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
-import static adapters.ProjectAdapter.createProject;
+import static api.adapters.ProjectAdapter.createProject;
 
 public class ProjectAPITest {
 

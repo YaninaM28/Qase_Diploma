@@ -1,4 +1,4 @@
-package models.cases;
+package api.models.cases;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.gson.annotations.Expose;

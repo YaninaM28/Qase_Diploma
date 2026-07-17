@@ -1,9 +1,6 @@
 package tests.ui;
 
-import io.qameta.allure.Description;
-import io.qameta.allure.Feature;
-import io.qameta.allure.Story;
-import io.qameta.allure.TmsLink;
+import io.qameta.allure.*;
 import org.testng.annotations.Test;
 import tests.base.BaseTest;
 
@@ -12,11 +9,12 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.webdriver;
 import static com.codeborne.selenide.WebDriverConditions.urlContaining;
-import static dict.Elements.SIGN_IN;
+import static ui.pages.LoginPage.SIGN_IN;
 import static utils.PropertyReader.getProperty;
 
 public class LogoutTest extends BaseTest {
     @Test(groups = "smoke")
+    @Owner("Yanina Savich")
     @TmsLink("TC-00")
     @Feature("Logout")
     @Story("Logout")
