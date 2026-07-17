@@ -1,7 +1,7 @@
 package tests.api;
 
-import adapters.ProjectAdapter;
-import models.project.ProjectRq;
+import api.adapters.ProjectAdapter;
+import api.models.project.ProjectRq;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 

@@ -1,9 +1,6 @@
 package tests.ui;
 
-import io.qameta.allure.Description;
-import io.qameta.allure.Feature;
-import io.qameta.allure.Story;
-import io.qameta.allure.TmsLink;
+import io.qameta.allure.*;
 import org.testng.annotations.Test;
 import tests.base.BaseTest;
 
@@ -17,6 +14,7 @@ public class SuiteTest extends BaseTest {
     public static final String suiteDescription = "Test_Suite";
 
     @Test(groups = "smoke", priority = 1)
+    @Owner("Yanina Savich")
     @TmsLink("TC-004")
     @Feature("Suits")
     @Story("Create Suite")
@@ -39,6 +37,7 @@ public class SuiteTest extends BaseTest {
     }
 
     @Test(groups = "smoke", priority = 2)
+    @Owner("Yanina Savich")
     @TmsLink("TC-009")
     @Feature("Suits")
     @Story("Edit Suite")
@@ -71,6 +70,7 @@ public class SuiteTest extends BaseTest {
     }
 
     @Test(groups = "smoke", priority = 3)
+    @Owner("Yanina Savich")
     @TmsLink("TC-005")
     @Feature("Suits")
     @Story("Create Nested Suite")
@@ -96,7 +96,8 @@ public class SuiteTest extends BaseTest {
                 .shouldNotHaveProject(projectName);
     }
 
-    @Test(groups = "regression", priority = 4, dependsOnMethods = "checkCreateSuite")
+    @Test(groups = "regression", priority = 4)
+    @Owner("Yanina Savich")
     @TmsLink("TC-014")
     @Feature("Suits")
     @Story("Delete Suite")

@@ -1,9 +1,6 @@
 package tests.ui;
 
-import io.qameta.allure.Description;
-import io.qameta.allure.Feature;
-import io.qameta.allure.Story;
-import io.qameta.allure.TmsLink;
+import io.qameta.allure.*;
 import org.testng.annotations.Test;
 import tests.base.BaseTest;
 
@@ -11,11 +8,12 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverConditions.urlContaining;
-import static dict.Elements.CREATE_NEW_PROJECT;
+import static ui.pages.LoginPage.CREATE_NEW_PROJECT;
 import static utils.PropertyReader.getProperty;
 
 public class LoginTest extends BaseTest {
     @Test(groups = "smoke")
+    @Owner("Yanina Savich")
     @TmsLink("TC-001")
     @Feature("Authentication")
     @Story("Login")
@@ -31,6 +29,10 @@ public class LoginTest extends BaseTest {
     }
 
     @Test(groups = "regression")
+    @Owner("Yanina Savich")
+    @TmsLink("TC-00")
+    @Feature("Authentication")
+    @Story("Login")
     public void checkLoginWithEmptyPassword() {
         loginPage.openPage();
         loginPage.login(getProperty("user"),"");
@@ -39,6 +41,10 @@ public class LoginTest extends BaseTest {
     }
 
     @Test(groups = "regression")
+    @Owner("Yanina Savich")
+    @TmsLink("TC-00")
+    @Feature("Authentication")
+    @Story("Login")
     public void checkLoginWithEmptyEmail() {
         loginPage.openPage();
         loginPage.login("", getProperty("password"));
@@ -47,6 +53,10 @@ public class LoginTest extends BaseTest {
     }
 
     @Test(groups = "regression")
+    @Owner("Yanina Savich")
+    @TmsLink("TC-00")
+    @Feature("Authentication")
+    @Story("Login")
     public void checkLoginWithNegativeCred() {
         loginPage.openPage();
         loginPage.login("test@gmail.com","password");

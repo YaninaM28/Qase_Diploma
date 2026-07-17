@@ -1,15 +1,14 @@
-package adapters;
+package api.adapters;
 
-import com.google.gson.Gson;
-import models.project.ProjectRq;
-import models.project.ProjectRs;
+import api.models.project.ProjectRq;
+import api.models.project.ProjectRs;
+import io.qameta.allure.Step;
 
 import static io.restassured.RestAssured.given;
 
 public class ProjectAdapter extends BaseAdapter{
 
-    static Gson gson = new Gson();
-
+    @Step("")
     public static ProjectRs createProject(ProjectRq rq) {
         return given()
                 .spec(spec)
@@ -23,6 +22,7 @@ public class ProjectAdapter extends BaseAdapter{
                 .as(ProjectRs.class);
     }
 
+    @Step("")
     public static void deleteProject(String code) {
         given()
                 .spec(spec)

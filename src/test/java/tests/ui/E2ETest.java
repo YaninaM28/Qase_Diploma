@@ -1,9 +1,6 @@
 package tests.ui;
 
-import io.qameta.allure.Description;
-import io.qameta.allure.Feature;
-import io.qameta.allure.Story;
-import io.qameta.allure.TmsLink;
+import io.qameta.allure.*;
 import org.testng.annotations.Test;
 import tests.base.BaseTest;
 
@@ -17,6 +14,7 @@ import static utils.PropertyReader.getProperty;
 public class E2ETest extends BaseTest {
 
     @Test(groups = "smoke")
+    @Owner("Yanina Savich")
     @TmsLink("TC-016")
     @Feature("Full business test")
     @Story("End to end test")

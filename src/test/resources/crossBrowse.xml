@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite thread-count="2"
-       name="Qase Automation Suite"
-       parallel="tests">
+<suite name="Qase Automation Suite"
+       parallel="false">
 
     <listeners>
         <listener class-name="listeners.TestListener"/>
@@ -13,14 +12,22 @@
         <classes>
             <class name="tests.ui.LoginTest"/>
             <class name="tests.ui.LogoutTest"/>
+            <class name="tests.ui.ProjectTest"/>
+            <class name="tests.ui.SuiteTest"/>
+            <class name="tests.ui.TestCaseTest"/>
+            <class name="tests.ui.E2ETest"/>
         </classes>
     </test>
 
-    <test name="Opera">
-        <parameter name="browser" value="opera"/>
+    <test name="Firefox">
+        <parameter name="browser" value="firefox"/>
         <classes>
             <class name="tests.ui.LoginTest"/>
             <class name="tests.ui.LogoutTest"/>
+            <class name="tests.ui.ProjectTest"/>
+            <class name="tests.ui.SuiteTest"/>
+            <class name="tests.ui.TestCaseTest"/>
+            <class name="tests.ui.E2ETest"/>
         </classes>
     </test>
 </suite>
