@@ -40,7 +40,7 @@ public class BaseTest {
                         .includeSelenideSteps(true)
         );
         Configuration.browser = browser;
-        Configuration.headless = true;
+        Configuration.headless = false;
         Configuration.baseUrl = "https://app.qase.io";
         Configuration.timeout = 20000;
         Configuration.pageLoadTimeout = 50000;
@@ -58,10 +58,12 @@ public class BaseTest {
             options.addArguments("--disable-notifications");
             options.addArguments("--disable-popup-blocking");
             options.addArguments("--disable-infobars");
-            options.addArguments("--headless=new");
+//            options.addArguments("--headless");
             options.addArguments("--no-sandbox");
             options.addArguments("--disable-dev-shm-usage");
             options.addArguments("--disable-gpu");
+            options.addArguments("--disable-http2");
+            options.addArguments("--disable-quic");
 
             Configuration.browserCapabilities = options;
         } else if (browser.equalsIgnoreCase("firefox")) {
