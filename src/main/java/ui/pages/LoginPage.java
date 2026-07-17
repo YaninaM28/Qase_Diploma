@@ -7,8 +7,7 @@ import lombok.extern.log4j.Log4j2;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.shadowCss;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 @Log4j2
 public class LoginPage {
@@ -24,8 +23,9 @@ public class LoginPage {
     @Step("Открыть страницу логина")
     public LoginPage openPage() {
         open("/login");
-        log.info("Current URL: {}", WebDriverRunner.url());
-        log.info("Page title: {}", WebDriverRunner.getWebDriver().getTitle());
+        log.info("URL: {}", WebDriverRunner.url());
+        log.info("Title: {}", title());
+        log.info("Body:\n{}", $("body").getText());
         return this;
     }
 
