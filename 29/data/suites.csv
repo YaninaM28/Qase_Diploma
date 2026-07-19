@@ -1,0 +1,7 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"Редактирование suite","32683","checkEditeSuite","Qase Automation Suite","2026-07-19","failed","2026-07-19","tests.ui.SuiteTest","Thread 1","tests.ui.SuiteTest","checkEditeSuite"
+"Проверка создания нового вложенного suite","32702","checkCreateNestedSuite","Qase Automation Suite","2026-07-19","failed","2026-07-19","tests.ui.SuiteTest","Thread 1","tests.ui.SuiteTest","checkCreateNestedSuite"
+"Проверка выхода из системы","22812","checkLogout","Qase Automation Suite","2026-07-19","failed","2026-07-19","tests.ui.LogoutTest","Thread 2","tests.ui.LogoutTest","checkLogout"
+"Проверка создания нового проекта","32982","checkCreateProject","Qase Automation Suite","2026-07-19","failed","2026-07-19","tests.ui.ProjectTest","Thread 1","tests.ui.ProjectTest","checkCreateProject"
+"Проверка успешной авторизации пользователя","22730","checkLoginWithPositiveCred","Qase Automation Suite","2026-07-19","failed","2026-07-19","tests.ui.LoginTest","Thread 1","tests.ui.LoginTest","checkLoginWithPositiveCred"
+"Проверка создания нового suite","32741","checkCreateSuite","Qase Automation Suite","2026-07-19","failed","2026-07-19","tests.ui.SuiteTest","Thread 1","tests.ui.SuiteTest","checkCreateSuite"
