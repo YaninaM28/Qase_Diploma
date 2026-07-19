@@ -3,6 +3,8 @@ package ui.pages;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 
+import java.time.Duration;
+
 import static com.codeborne.selenide.Condition.exist;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
@@ -26,7 +28,7 @@ public class DashboardPage {
     @Step("Создать новый проект")
     public ProjectPage clickCreateProject() {
         log.info("Clicking 'Create new project'");
-        $(byText(CREATE_NEW_PROJECT)).click();
+        $(byText(CREATE_NEW_PROJECT)).shouldBe(visible, Duration.ofSeconds(30)).click();
         return new ProjectPage();
     }
 
