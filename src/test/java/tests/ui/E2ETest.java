@@ -14,7 +14,7 @@ public class E2ETest extends BaseTest {
 
     @Test(groups = "smoke")
     @Owner("Yanina Savich")
-    @TmsLink("TC-016")
+    @TmsLink("TC-008")
     @Feature("Full business test")
     @Story("End to end test")
     @Description("Проверка полного теста с входом, созданием проекта, созданием suite, test case с шагами, и затем удаление test case, suite и самого проекта")

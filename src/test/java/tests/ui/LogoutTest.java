@@ -14,7 +14,7 @@ import static ui.pages.LoginPage.SIGN_IN;
 public class LogoutTest extends BaseTest {
     @Test(groups = "smoke")
     @Owner("Yanina Savich")
-    @TmsLink("TC-00")
+    @TmsLink("TC-016")
     @Feature("Logout")
     @Story("Logout")
     @Description("Проверка выхода из системы")

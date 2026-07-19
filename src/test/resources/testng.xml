@@ -9,22 +9,27 @@
         <listener class-name="listeners.RetryListener"/>
     </listeners>
 
-    <test name="Thread 1">
-        <groups>
-            <run>
-                <include name="smoke"/>
-            </run>
-        </groups>
+    <test name="UI Tests">
+<!--        <groups>-->
+<!--            <run>-->
+<!--                <include name="smoke"/>-->
+<!--            </run>-->
+<!--        </groups>-->
         <classes>
             <class name="tests.ui.LoginTest"/>
             <class name="tests.ui.ProjectTest"/>
             <class name="tests.ui.SuiteTest"/>
+            <class name="tests.ui.TestCaseTest"/>
+            <class name="tests.ui.E2ETest"/>
+            <class name="tests.ui.LogoutTest"/>
+
         </classes>
     </test>
 
-    <test name="Thread 2">
+    <test name="API TEST">
         <classes>
-            <class name="tests.ui.LogoutTest"/>
+            <class name="tests.api.ProjectAPITest"/>
+            <class name="tests.api.CaseAPITest"/>
         </classes>
     </test>
 
