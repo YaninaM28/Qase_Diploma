@@ -71,7 +71,7 @@ public class TestCaseTest extends BaseTest {
 
     @Test(groups = "regression", priority = 3)
     @Owner("Yanina Savich")
-    @TmsLink("TC-00")
+    @TmsLink("TC-013")
     @Feature("Test case")
     @Story("Cancel test case")
     @Description("Проверка нажатия отмена при создании нового test case")
@@ -99,7 +99,7 @@ public class TestCaseTest extends BaseTest {
     
     @Test(groups = "regression", priority = 4)
     @Owner("Yanina Savich")
-    @TmsLink("TC-013")
+    @TmsLink("TC-014")
     @Feature("Test case")
     @Story("Delete test case")
     @Description("Проверка удаления test case")

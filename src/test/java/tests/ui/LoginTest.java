@@ -29,7 +29,7 @@ public class LoginTest extends BaseTest {
 
     @Test(groups = "regression")
     @Owner("Yanina Savich")
-    @TmsLink("TC-00")
+    @TmsLink("TC-1.2")
     @Feature("Authentication")
     @Story("Login")
     public void checkLoginWithEmptyPassword() {
@@ -41,7 +41,7 @@ public class LoginTest extends BaseTest {
 
     @Test(groups = "regression")
     @Owner("Yanina Savich")
-    @TmsLink("TC-00")
+    @TmsLink("TC-1.3")
     @Feature("Authentication")
     @Story("Login")
     public void checkLoginWithEmptyEmail() {
@@ -53,7 +53,7 @@ public class LoginTest extends BaseTest {
 
     @Test(groups = "regression")
     @Owner("Yanina Savich")
-    @TmsLink("TC-00")
+    @TmsLink("TC-1.4")
     @Feature("Authentication")
     @Story("Login")
     public void checkLoginWithNegativeCred() {

@@ -37,7 +37,7 @@ public class SuiteTest extends BaseTest {
 
     @Test(groups = "smoke", priority = 2)
     @Owner("Yanina Savich")
-    @TmsLink("TC-009")
+    @TmsLink("TC-010")
     @Feature("Suits")
     @Story("Edit Suite")
     @Description("Редактирование suite")
@@ -97,7 +97,7 @@ public class SuiteTest extends BaseTest {
 
     @Test(groups = "regression", priority = 4)
     @Owner("Yanina Savich")
-    @TmsLink("TC-014")
+    @TmsLink("TC-015")
     @Feature("Suits")
     @Story("Delete Suite")
     @Description("Проверка удаления suite")

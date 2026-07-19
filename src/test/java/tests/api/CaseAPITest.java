@@ -4,6 +4,7 @@ import api.adapters.CaseAdapter;
 import api.models.cases.CaseRq;
 import api.models.cases.CaseRs;
 import api.models.cases.Step;
+import io.qameta.allure.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -11,7 +12,13 @@ import java.util.List;
 
 public class CaseAPITest extends BaseAPITest {
 
-    @Test
+    @Test(groups = "api")
+    @Owner("Yanina Savich")
+    @TmsLink("API-TC-002")
+    @Epic("API")
+    @Feature("Cases API")
+    @Story("Create, Update and Delete Case")
+    @Description("Проверка создания, обновления и удаления тест-кейса через API")
     public void checkCreateUpdateDeleteCase() {
 
         Step step = Step.builder()

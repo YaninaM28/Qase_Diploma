@@ -31,7 +31,7 @@ public class ProjectTest extends BaseTest {
 
     @Test(groups = "regression", priority = 2)
     @Owner("Yanina Savich")
-    @TmsLink("TC-008")
+    @TmsLink("TC-009")
     @Feature("Projects")
     @Story("Edit Project")
     @Description("Редактирование существующего проекта")
@@ -57,7 +57,7 @@ public class ProjectTest extends BaseTest {
 
     @Test(groups = "regression", priority = 3)
     @Owner("Yanina Savich")
-    @TmsLink("TC-015")
+    @TmsLink("TC-016")
     @Feature("Projects")
     @Story("Delete Project")
     @Description("Проверка удаления существующего проекта")
