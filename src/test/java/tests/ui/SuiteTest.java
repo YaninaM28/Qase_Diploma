@@ -6,7 +6,6 @@ import tests.base.BaseTest;
 
 import static tests.ui.ProjectTest.projectCode;
 import static tests.ui.ProjectTest.projectName;
-import static utils.PropertyReader.getProperty;
 
 public class SuiteTest extends BaseTest {
 
@@ -22,8 +21,8 @@ public class SuiteTest extends BaseTest {
     public void checkCreateSuite() {
         loginPage.openPage()
                 .login(
-                        getProperty("user"),
-                        getProperty("password"))
+                        user,
+                        password)
                 .clickCreateProject()
                 .setProjectName(projectName)
                 .setProjectCode(projectCode)
@@ -45,8 +44,8 @@ public class SuiteTest extends BaseTest {
     public void checkEditeSuite() {
         loginPage.openPage()
                 .login(
-                        getProperty("user"),
-                        getProperty("password"))
+                        user,
+                        password)
                 .clickCreateProject()
                 .setProjectName(projectName)
                 .setProjectCode(projectCode)
@@ -78,8 +77,8 @@ public class SuiteTest extends BaseTest {
     public void checkCreateNestedSuite() {
         loginPage.openPage()
                 .login(
-                        getProperty("user"),
-                        getProperty("password"))
+                        user,
+                        password)
                 .clickCreateProject()
                 .setProjectName(projectName)
                 .setProjectCode(projectCode)
@@ -105,8 +104,8 @@ public class SuiteTest extends BaseTest {
     public void checkDeleteSuite() {
         loginPage.openPage()
                 .login(
-                        getProperty("user"),
-                        getProperty("password"))
+                        user,
+                        password)
                 .clickCreateProject()
                 .setProjectName(projectName)
                 .setProjectCode(projectCode)

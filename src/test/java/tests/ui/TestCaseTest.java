@@ -8,7 +8,6 @@ import static tests.ui.ProjectTest.projectCode;
 import static tests.ui.ProjectTest.projectName;
 import static tests.ui.SuiteTest.suiteDescription;
 import static tests.ui.SuiteTest.suiteName;
-import static utils.PropertyReader.getProperty;
 
 public class TestCaseTest extends BaseTest {
 
@@ -24,8 +23,8 @@ public class TestCaseTest extends BaseTest {
     public void checkCreateTestCase() {
         loginPage.openPage()
                 .login(
-                        getProperty("user"),
-                        getProperty("password"))
+                        user,
+                        password)
                 .clickCreateProject()
                 .setProjectName(projectName)
                 .setProjectCode(projectCode)
@@ -50,8 +49,8 @@ public class TestCaseTest extends BaseTest {
     public void checkAddTestCaseWithSteps() {
         loginPage.openPage()
                 .login(
-                        getProperty("user"),
-                        getProperty("password"))
+                        user,
+                        password)
                 .clickCreateProject()
                 .setProjectName(projectName)
                 .setProjectCode(projectCode)
@@ -79,8 +78,8 @@ public class TestCaseTest extends BaseTest {
     public void checkCancelTestCase() {
         loginPage.openPage()
                 .login(
-                        getProperty("user"),
-                        getProperty("password"))
+                        user,
+                        password)
                 .clickCreateProject()
                 .setProjectName(projectName)
                 .setProjectCode(projectCode)
@@ -107,8 +106,8 @@ public class TestCaseTest extends BaseTest {
     public void checkDeleteTestCase() {
         loginPage.openPage()
                 .login(
-                        getProperty("user"),
-                        getProperty("password"))
+                        user,
+                        password)
                 .clickCreateProject()
                 .setProjectName(projectName)
                 .setProjectCode(projectCode)

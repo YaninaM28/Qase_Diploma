@@ -10,7 +10,6 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.webdriver;
 import static com.codeborne.selenide.WebDriverConditions.urlContaining;
 import static ui.pages.LoginPage.SIGN_IN;
-import static utils.PropertyReader.getProperty;
 
 public class LogoutTest extends BaseTest {
     @Test(groups = "smoke")
@@ -22,8 +21,8 @@ public class LogoutTest extends BaseTest {
     public void checkLogout() {
         loginPage.openPage();
         loginPage.login(
-                getProperty("user"),
-                getProperty("password")
+                user,
+                password
         );
         webdriver().shouldHave(urlContaining("/projects"));
         loginPage.logout();

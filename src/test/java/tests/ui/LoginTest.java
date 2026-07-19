@@ -9,7 +9,6 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverConditions.urlContaining;
 import static ui.pages.LoginPage.CREATE_NEW_PROJECT;
-import static utils.PropertyReader.getProperty;
 
 public class LoginTest extends BaseTest {
     @Test(groups = "smoke")
@@ -35,7 +34,7 @@ public class LoginTest extends BaseTest {
     @Story("Login")
     public void checkLoginWithEmptyPassword() {
         loginPage.openPage();
-        loginPage.login(getProperty("user"),"");
+        loginPage.login(user,"");
         webdriver().shouldHave(urlContaining("/login"));
         $(byText("This field is required")).shouldBe(visible);
     }
@@ -47,7 +46,7 @@ public class LoginTest extends BaseTest {
     @Story("Login")
     public void checkLoginWithEmptyEmail() {
         loginPage.openPage();
-        loginPage.login("", getProperty("password"));
+        loginPage.login("", password);
         webdriver().shouldHave(urlContaining("/login"));
         $(byText("This field is required")).shouldBe(visible);
     }
