@@ -1,0 +1,7 @@
+"BROKEN","EPIC","FAILED","FEATURE","PASSED","SKIPPED","STORY","UNKNOWN"
+"0","","1","Suits","0","0","Edit Suite","0"
+"0","","0","Authentication","1","0","Login","0"
+"0","","0","Suits","1","0","Create Suite","0"
+"0","","1","Logout","0","0","Logout","0"
+"0","","1","Suits","0","0","Create Nested Suite","0"
+"0","","1","Projects","0","0","Create Project","0"
