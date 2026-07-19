@@ -19,6 +19,8 @@
             <class name="tests.ui.LoginTest"/>
             <class name="tests.ui.ProjectTest"/>
             <class name="tests.ui.SuiteTest"/>
+            <class name="tests.ui.TestCaseTest"/>
+            <class name="tests.ui.E2ETest"/>
         </classes>
     </test>
 
