@@ -8,7 +8,7 @@ import static io.restassured.RestAssured.given;
 
 public class ProjectAdapter extends BaseAdapter{
 
-    @Step("")
+    @Step("Создать проект")
     public static ProjectRs createProject(ProjectRq rq) {
         return given()
                 .spec(spec)
@@ -22,7 +22,7 @@ public class ProjectAdapter extends BaseAdapter{
                 .as(ProjectRs.class);
     }
 
-    @Step("")
+    @Step("Удалить проект")
     public static void deleteProject(String code) {
         given()
                 .spec(spec)
