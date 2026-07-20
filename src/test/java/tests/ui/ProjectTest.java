@@ -25,6 +25,7 @@ public class ProjectTest extends BaseTest {
                 .setProjectCode(projectCode)
                 .clickCreateProject()
                 .shouldHaveProject(projectName)
+                .openPage()
                 .deleteProject(projectName)
                 .shouldNotHaveProject(projectName);
     }
