@@ -24,7 +24,8 @@ public class TestCaseTest extends BaseTest {
         loginPage.openPage()
                 .login(
                         user,
-                        password)
+                        password);
+        dashboardPage.waitUntilOpened()
                 .clickCreateProject()
                 .setProjectName(projectName)
                 .setProjectCode(projectCode)
@@ -50,7 +51,8 @@ public class TestCaseTest extends BaseTest {
         loginPage.openPage()
                 .login(
                         user,
-                        password)
+                        password);
+        dashboardPage.waitUntilOpened()
                 .clickCreateProject()
                 .setProjectName(projectName)
                 .setProjectCode(projectCode)
@@ -79,7 +81,8 @@ public class TestCaseTest extends BaseTest {
         loginPage.openPage()
                 .login(
                         user,
-                        password)
+                        password);
+        dashboardPage.waitUntilOpened()
                 .clickCreateProject()
                 .setProjectName(projectName)
                 .setProjectCode(projectCode)
@@ -107,7 +110,8 @@ public class TestCaseTest extends BaseTest {
         loginPage.openPage()
                 .login(
                         user,
-                        password)
+                        password);
+        dashboardPage.waitUntilOpened()
                 .clickCreateProject()
                 .setProjectName(projectName)
                 .setProjectCode(projectCode)
