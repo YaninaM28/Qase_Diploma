@@ -26,6 +26,7 @@ jobs:
     env:
       USER: ${{secrets.QASE_USER}}
       PASSWORD: ${{secrets.QASE_PASSWORD}}
+      TOKEN: ${{secrets.QASE_TOKEN}}
 
     steps:
       - uses: actions/checkout@v4
@@ -36,7 +37,7 @@ jobs:
           distribution: 'temurin'
           cache: maven
       - name: Run tests
-        run: mvn clean test -Duser=$USER -Dpassword=$PASSWORD
+        run: mvn clean test -Duser=$USER -Dpassword=$PASSWORD -Dtoken=$TOKEN
 
       - name: Get Allure history
         uses: actions/checkout@v2

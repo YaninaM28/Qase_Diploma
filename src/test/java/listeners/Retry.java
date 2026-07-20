@@ -7,8 +7,8 @@ import org.testng.ITestResult;
 @Log4j2
 public class Retry implements IRetryAnalyzer {
 
-    private int attempt = 1;
-    private static final int MAX_RETRY = 2;
+    private int attempt = 0;
+    private static final int MAX_RETRY = 1;
 
     @Override
     public boolean retry(ITestResult iTestResult) {
