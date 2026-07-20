@@ -8,6 +8,7 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverConditions.urlContaining;
+import static ui.pages.LoginPage.CREATE_NEW_PROJECT;
 
 public class LoginTest extends BaseTest {
     @Test(groups = "smoke")
@@ -23,7 +24,7 @@ public class LoginTest extends BaseTest {
                 password
         );
         webdriver().shouldHave(urlContaining("/projects"));
-        loginPage.shouldBeLoggedIn();
+        $(byText(CREATE_NEW_PROJECT)).shouldBe(visible);
     }
 
     @Test(groups = "regression")

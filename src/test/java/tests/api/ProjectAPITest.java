@@ -15,7 +15,7 @@ public class ProjectAPITest extends BaseAPITest {
     @Test(groups = "api")
     @Owner("Yanina Savich")
     @TmsLink("API-TC-001")
-    @Feature("API")
+    @Feature("Projects API")
     @Story("Create Project")
     @Description("Проверка создания нового проекта через API")
     public void checkCreateProject() {
