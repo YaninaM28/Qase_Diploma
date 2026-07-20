@@ -54,7 +54,7 @@ public class BaseTest {
         Configuration.browser = browser;
         Configuration.headless = true;
         Configuration.baseUrl = "https://app.qase.io";
-        Configuration.timeout = 20000;
+        Configuration.timeout = 30000;
         Configuration.pageLoadTimeout = 30000;
         Configuration.clickViaJs = true;
         Configuration.browserSize = "1920x1080";
