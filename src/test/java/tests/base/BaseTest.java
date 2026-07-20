@@ -52,7 +52,7 @@ public class BaseTest {
         log.info("PASSWORD EXISTS = {}", password != null);
 
         Configuration.browser = browser;
-        Configuration.headless = true;
+        Configuration.headless = false;
         Configuration.baseUrl = "https://app.qase.io";
         Configuration.timeout = 20000;
         Configuration.pageLoadTimeout = 30000;

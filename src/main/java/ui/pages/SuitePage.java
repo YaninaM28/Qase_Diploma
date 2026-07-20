@@ -16,9 +16,15 @@ public class SuitePage {
     private final String SUITE_NAME = "#title";
     private final String DESCRIPTION = "#description";
     private final String SUBMIT_CREATE = "Create";
+    private final String DELETE_SUITE_OPTION = "Delete";
+    private final String DELETE_SUITE_CONFIRMATION = "//span[contains(text(),'Are you sure you want to delete the suite')]";
     private final String CONFIRM_DELETE_SUITE = "//div[text()='Delete the suite and all its test cases']";
-    private final String DELETE_SUITE = "//span[text()='Delete']";
+    private final String DELETE_SUITE = "//button[.//span[text()='Delete']]";
     private final String SAVE_SUITE_BUTTON = "Save";
+    private final String MENU_BUTTON = "svg[data-icon='ellipsis-vertical']";
+    private final String SELECT_CREATE_SUITE_OPTION = "Create suite";
+    private final String EDIT_SUITE = "Edit";
+
 
     @Step("Открыть форму создания suite")
     public SuitePage openCreateSuiteForm() {
@@ -81,16 +87,16 @@ public class SuitePage {
 
     @Step("Выбрать созданный suite")
     public SuitePage selectSuite() {
-        $("svg[data-icon='ellipsis-vertical']").click();
-        $(byText("Create suite")).click();
+        $(MENU_BUTTON).click();
+        $(byText(SELECT_CREATE_SUITE_OPTION)).click();
         return this;
     }
 
     @Step("Нажать Edit suite")
     public SuitePage editSuite() {
         log.info("Opening suite edit form");
-        $("svg[data-icon='ellipsis-vertical']").click();
-        $(byText("Edit")).click();
+        $(MENU_BUTTON).click();
+        $(byText(EDIT_SUITE)).click();
         return this;
     }
 
@@ -104,10 +110,10 @@ public class SuitePage {
     @Step("Удалить suite")
     public SuitePage deleteSuite(String suiteName) {
         log.info("Deleting suite '{}'", suiteName);
-        $("svg[data-icon='ellipsis-vertical']").click();
-        $(byText("Delete")).click();
-        $x(CONFIRM_DELETE_SUITE).click();
-        $x(DELETE_SUITE).click();
+        $(MENU_BUTTON).click();
+        $(byText(DELETE_SUITE_OPTION)).click();
+        $x(DELETE_SUITE_CONFIRMATION).shouldBe(visible);
+        $x(DELETE_SUITE).shouldBe(visible).click();
         return this;
     }
 }

@@ -106,28 +106,6 @@ public class TestCasePage {
         return this;
     }
 
-    @Step("Выбрать созданный test case")
-    public TestCasePage selectTestCase(String testCaseName) {
-        $("svg[data-icon='folder']").click();
-        shouldHaveTestCase(testCaseName);
-        $(testCaseName).click();
-        return this;
-    }
-
-    @Step("Нажать Edit test case")
-    public TestCasePage editTestCase() {
-        log.info("Opening test case edit form");
-        $("svg[data-icon='pen']").click();
-        return this;
-    }
-
-    @Step("Применить изменения для test case")
-    public TestCasePage saveEditedTestCase() {
-        log.info("Saving test case changes");
-        $(byText(SAVE_TEST_CASE_BUTTON)).click();
-        return this;
-    }
-
     @Step("Удалить test case")
     public SuitePage deleteTestCase(String testCaseName) {
         log.info("Deleting test case '{}'", testCaseName);
