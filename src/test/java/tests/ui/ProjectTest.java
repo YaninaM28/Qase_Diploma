@@ -15,11 +15,11 @@ public class ProjectTest extends BaseTest {
     @Story("Create Project")
     @Description("Проверка создания нового проекта")
     public void checkCreateProject() {
-
         loginPage.openPage()
                 .login(
                         user,
-                        password)
+                        password);
+        dashboardPage.waitUntilOpened()
                 .clickCreateProject()
                 .setProjectName(projectName)
                 .setProjectCode(projectCode)
@@ -40,7 +40,8 @@ public class ProjectTest extends BaseTest {
         loginPage.openPage()
                 .login(
                         user,
-                        password)
+                        password);
+        dashboardPage.waitUntilOpened()
                 .clickCreateProject()
                 .setProjectName(projectName)
                 .setProjectCode(projectCode)
@@ -73,7 +74,8 @@ public class ProjectTest extends BaseTest {
         loginPage.openPage()
                 .login(
                         user,
-                        password)
+                        password);
+        dashboardPage.waitUntilOpened()
                 .clickCreateProject()
                 .setProjectName(projectName)
                 .setProjectCode(projectCode)

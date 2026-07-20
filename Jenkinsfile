@@ -16,11 +16,25 @@ pipeline {
                 // Get some code from a GitHub repository
                 git 'https://github.com/YaninaM28/Qase_Diploma.git'
 
+                withCredentials([
+                    string(credentialsId: 'USER', variable: 'QASE_USER'),
+                    string(credentialsId: 'PASSWORD', variable: 'QASE_PASSWORD'),
+                    string(credentialsId: 'TOKEN', variable: 'QASE_TOKEN')
+                    ]) {
+
                 // Run Maven on a Unix agent.
-                bat "mvn clean test -Dbrowser=${params.BROWSER}"
+                bat """
+                mvn clean test ^
+                -Dbrowser=${params.BROWSER} ^
+                -Duser=%QASE_USER% ^
+                -Dpassword=%QASE_PASSWORD% ^
+                -Dtoken=%QASE_TOKEN%
+                """
+
 
                 // To run Maven on a Windows agent, use
                 // bat "mvn -Dmaven.test.failure.ignore=true clean package"
+                }
             }
 
             post {

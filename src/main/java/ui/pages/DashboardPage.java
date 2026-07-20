@@ -9,6 +9,7 @@ import static com.codeborne.selenide.Condition.exist;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.WebDriverConditions.urlContaining;
 import static ui.pages.LoginPage.CREATE_NEW_PROJECT;
 
 @Log4j2
@@ -22,6 +23,13 @@ public class DashboardPage {
     public DashboardPage openPage() {
         log.info("Opening Dashboard page");
         open("/projects");
+        return this;
+    }
+
+    @Step("Дождаться открытия Dashboard")
+    public DashboardPage waitUntilOpened() {
+        webdriver().shouldHave(urlContaining("/projects"));
+        $(byText(CREATE_NEW_PROJECT)).shouldBe(visible);
         return this;
     }
 

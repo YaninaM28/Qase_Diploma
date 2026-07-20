@@ -4,8 +4,6 @@ import com.codeborne.selenide.WebDriverRunner;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 
-import java.time.Duration;
-
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.shadowCss;
@@ -32,7 +30,7 @@ public class LoginPage {
     }
 
     @Step("Авторизоваться своим юзером")
-    public DashboardPage login(String user, String password) {
+    public LoginPage login(String user, String password) {
         log.info("Opening Login page");
         acceptCookiesIfPresent();
 //        $(shadowCss("#accept", "#usercentrics-cmp-ui")).click();
@@ -41,11 +39,12 @@ public class LoginPage {
         log.info("User = {}", user);
         log.info("Password empty = {}", password == null || password.isEmpty());
         $(byText(SIGN_IN)).click();
-        $(byText(CREATE_NEW_PROJECT))
-                .shouldBe(visible, Duration.ofSeconds(30));
         log.info("User logged in");
-        return new DashboardPage();
+        return this;
     }
+
+//    $(byText(CREATE_NEW_PROJECT))
+//            .shouldBe(visible, Duration.ofSeconds(30));
 
     private void acceptCookiesIfPresent() {
         try {
