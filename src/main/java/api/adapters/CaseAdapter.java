@@ -9,7 +9,7 @@ import static io.restassured.RestAssured.given;
 
 public class CaseAdapter {
 
-    @Step("")
+    @Step("Создать Test case")
     public static CaseRs createCase(String projectCode, CaseRq rq) {
         return given()
                 .spec(spec)
@@ -23,7 +23,7 @@ public class CaseAdapter {
                 .as(CaseRs.class);
     }
 
-    @Step("")
+    @Step("Редактирование Test case")
     public static CaseRs updateCase(String projectCode, int caseId, CaseRq rq) {
         return given()
                 .spec(spec)
@@ -38,7 +38,7 @@ public class CaseAdapter {
                 .as(CaseRs.class);
     }
 
-    @Step("")
+    @Step("Удаление Test case")
     public static void deleteCase(String projectCode, int caseId) {
         given()
                 .spec(spec)
@@ -50,7 +50,7 @@ public class CaseAdapter {
                 .spec(ok200);
     }
 
-    @Step("")
+    @Step("Получить тест-кейс {caseId} из проекта {projectCode}")
     public static CaseRs getCase(String projectCode, int caseId) {
         return given()
                 .spec(spec)

@@ -40,7 +40,13 @@ public class ProjectTest extends BaseTest {
         loginPage.openPage()
                 .login(
                         user,
-                        password);
+                        password)
+                .clickCreateProject()
+                .setProjectName(projectName)
+                .setProjectCode(projectCode)
+                .clickCreateProject()
+                .openPage()
+                .shouldHaveProject(projectName);
         dashboardPage.editProject(projectName)
                 .setProjectName("TMS01(edited)")
                 .setProjectCode("TMS001new")
@@ -52,6 +58,7 @@ public class ProjectTest extends BaseTest {
                 .setProjectCode(projectCode)
                 .clickUpdateProject();
         dashboardPage.shouldHaveProject(projectName)
+                .openPage()
                 .deleteProject(projectName)
                 .shouldNotHaveProject(projectName);
     }
@@ -71,6 +78,7 @@ public class ProjectTest extends BaseTest {
                 .setProjectName(projectName)
                 .setProjectCode(projectCode)
                 .clickCreateProject()
+                .openPage()
                 .shouldHaveProject(projectName)
                 .deleteProject(projectName)
                 .shouldNotHaveProject(projectName);
