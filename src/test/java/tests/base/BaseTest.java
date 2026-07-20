@@ -52,7 +52,7 @@ public class BaseTest {
         log.info("PASSWORD EXISTS = {}", password != null);
 
         Configuration.browser = browser;
-        Configuration.headless = false;
+        Configuration.headless = true;
         Configuration.baseUrl = "https://app.qase.io";
         Configuration.timeout = 20000;
         Configuration.pageLoadTimeout = 30000;
@@ -68,7 +68,6 @@ public class BaseTest {
             options.setExperimentalOption("prefs", chromePrefs);
             options.addArguments("--incognito");
             options.addArguments("--disable-notifications");
-//            options.addArguments("--headless=new");
             options.addArguments("--disable-popup-blocking");
             options.addArguments("--disable-infobars");
             options.addArguments("--no-sandbox");
@@ -82,7 +81,6 @@ public class BaseTest {
             FirefoxOptions options = new FirefoxOptions();
             options.addArguments("-private");
             options.addPreference("dom.webnotifications.enabled", false);
-//            options.addArguments("--headless=new");
             options.addArguments("--no-sandbox");
             options.addArguments("--disable-dev-shm-usage");
             options.addArguments("--disable-gpu");
