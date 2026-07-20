@@ -41,15 +41,9 @@ public class LoginPage {
         log.info("User = {}", user);
         log.info("Password empty = {}", password == null || password.isEmpty());
         $(byText(SIGN_IN)).click();
-        log.info("User logged in");
-        return new DashboardPage();
-    }
-
-    @Step("Проверить успешный вход")
-    public DashboardPage shouldBeLoggedIn() {
         $(byText(CREATE_NEW_PROJECT))
                 .shouldBe(visible, Duration.ofSeconds(30));
-
+        log.info("User logged in");
         return new DashboardPage();
     }
 
