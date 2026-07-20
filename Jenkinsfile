@@ -17,7 +17,7 @@ pipeline {
                 git 'https://github.com/YaninaM28/Qase_Diploma.git'
 
                 // Run Maven on a Unix agent.
-                sh "mvn clean test -Dbrowser=${params.BROWSER}"
+                bat "mvn clean test -Dbrowser=${params.BROWSER}"
 
                 // To run Maven on a Windows agent, use
                 // bat "mvn -Dmaven.test.failure.ignore=true clean package"
