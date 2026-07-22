@@ -28,7 +28,10 @@ pipeline {
                 -Dbrowser=${params.BROWSER} ^
                 -Duser=%QASE_USER% ^
                 -Dpassword=%QASE_PASSWORD% ^
-                -Dtoken=%QASE_TOKEN%
+                -Dtoken=%QASE_TOKEN% ^
+                -Dselenide.headless=true ^
+                -Dselenide.timeout=30000 ^
+                -Dselenide.pageLoadTimeout=45000
                 """
 
 

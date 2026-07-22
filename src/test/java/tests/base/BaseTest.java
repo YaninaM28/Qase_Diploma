@@ -39,23 +39,30 @@ public class BaseTest {
                         .savePageSource(true)
                         .includeSelenideSteps(true)
         );
+
         user = System.getProperty("user");
         password = System.getProperty("password");
+
         if (user == null) {
             user = PropertyReader.getProperty("user");
         }
-
         if (password == null) {
             password = PropertyReader.getProperty("password");
         }
         log.info("TEST USER = {}", user);
         log.info("PASSWORD EXISTS = {}", password != null);
 
+        String browserProperty = System.getProperty("browser");
+        if (browserProperty != null && !browserProperty.isBlank()) {
+            browser = browserProperty;
+        }
+
         Configuration.browser = browser;
-        Configuration.headless = true;
+        Configuration.headless = Boolean.parseBoolean(System.getProperty("selenide.headless", "false"));
         Configuration.baseUrl = "https://app.qase.io";
         Configuration.timeout = 30000;
-        Configuration.pageLoadTimeout = 30000;
+        Configuration.pageLoadTimeout = 45000;
+        Configuration.fastSetValue = true;
         Configuration.clickViaJs = true;
         Configuration.browserSize = "1920x1080";
 
@@ -73,7 +80,12 @@ public class BaseTest {
             options.addArguments("--no-sandbox");
             options.addArguments("--disable-dev-shm-usage");
             options.addArguments("--disable-gpu");
+            options.addArguments("--disable-blink-features=AutomationControlled");
 
+
+            if (Configuration.headless) {
+                options.addArguments("--headless=new");
+            }
 
             Configuration.browserCapabilities = options;
         } else if (browser.equalsIgnoreCase("firefox")) {
@@ -84,6 +96,10 @@ public class BaseTest {
             options.addArguments("--no-sandbox");
             options.addArguments("--disable-dev-shm-usage");
             options.addArguments("--disable-gpu");
+
+            if (Configuration.headless) {
+                options.addArguments("--headless");
+            }
 
             Configuration.browserCapabilities = options;
         } else {

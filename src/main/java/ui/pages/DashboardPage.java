@@ -28,8 +28,8 @@ public class DashboardPage {
 
     @Step("Дождаться открытия Dashboard")
     public DashboardPage waitUntilOpened() {
-        webdriver().shouldHave(urlContaining("/projects"));
-        $(byText(CREATE_NEW_PROJECT)).shouldBe(visible);
+        webdriver().shouldHave(urlContaining("/projects"), Duration.ofSeconds(20));
+        $(byText(CREATE_NEW_PROJECT)).shouldBe(visible, Duration.ofSeconds(15));
         return this;
     }
 
@@ -50,7 +50,7 @@ public class DashboardPage {
     @Step("Проект отображается на главной странице")
     public DashboardPage shouldHaveProject(String projectName) {
         log.info("Verifying project '{}' is not displayed", projectName);
-        $(byText(projectName)).shouldBe(visible);
+        $(byText(projectName)).shouldBe(visible, Duration.ofSeconds(15));
         return this;
     }
 

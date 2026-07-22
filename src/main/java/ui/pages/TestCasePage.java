@@ -4,7 +4,10 @@ import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 
-import static com.codeborne.selenide.Condition.*;
+import java.time.Duration;
+
+import static com.codeborne.selenide.Condition.exist;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -22,12 +25,14 @@ public class TestCasePage {
     private final String STEP_ACTION = "div[data-placeholder='Step action']";
     private final String STEP_DATA = "div[data-placeholder='Data']";
     private final String STEP_RESULT = "div[data-placeholder='Expected result']";
+    private final String MENU_ACTIONS = "svg[data-icon='ellipsis-vertical']";
+
 
     @Step("Открыть форму создания test case")
     public TestCasePage openCreateTestCaseForm() {
         log.info("Opening test case creation form");
-        $("svg[data-icon='ellipsis-vertical']").click();
-        $(byText(CREATE_NEW_TEST_CASE)).click();
+        $(MENU_ACTIONS).click();
+        $(byText(CREATE_NEW_TEST_CASE)).shouldBe(visible, Duration.ofSeconds(15)).click();
         return this;
     }
 
@@ -42,7 +47,7 @@ public class TestCasePage {
     @Step("Ввести название test case: {testCaseName}")
     public TestCasePage setTestCaseName(String testCaseName) {
         log.info("Setting test case name '{}'", testCaseName);
-        $x(TEST_CASE_TITLE).shouldBe(visible).setValue(testCaseName);
+        $x(TEST_CASE_TITLE).shouldBe(visible, Duration.ofSeconds(15)).setValue(testCaseName);
         return this;
     }
 
@@ -72,14 +77,14 @@ public class TestCasePage {
     @Step("Подтвердить создание test case")
     public SuitePage saveTestCase() {
         log.info("Saving test case");
-        $(byText(SAVE_TEST_CASE_BUTTON)).click();
+        $(byText(SAVE_TEST_CASE_BUTTON)).shouldBe(visible, Duration.ofSeconds(15)).click();
         return new SuitePage();
     }
 
     @Step("Отменить создание test case")
     public TestCasePage cancelTestCase() {
         log.info("Cancelling test case creation");
-        $(byText(CANCEL_TEST_CASE_BUTTON)).click();
+        $(byText(CANCEL_TEST_CASE_BUTTON)).shouldBe(visible, Duration.ofSeconds(15)).click();
         return this;
     }
 
@@ -110,7 +115,7 @@ public class TestCasePage {
     public SuitePage deleteTestCase(String testCaseName) {
         log.info("Deleting test case '{}'", testCaseName);
         $("svg[data-icon='trash']").click();
-        $x(DELETE_TEST_CASE).click();
+        $x(DELETE_TEST_CASE).shouldBe(visible, Duration.ofSeconds(15)).click();
         return new SuitePage();
     }
 }
