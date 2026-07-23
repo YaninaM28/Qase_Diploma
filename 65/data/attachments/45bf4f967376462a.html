@@ -1,0 +1,909 @@
+<html lang="en" style="font-size: 16px;" data-theme="light"><head><style id="react-aria-pressable-style">@layer {
+  [data-react-aria-pressable] {
+    touch-action: pan-x pan-y pinch-zoom;
+  }
+}</style>
+    <script type="text/javascript" async="" src="https://widget.intercom.io/widget/wsaz8vex"></script><script>
+        window.UC_UI_DOMAINS = {
+            crossDomainConsentSharingIFrame: 'https://qase.io/cross-domain-bridge.html',
+        };
+    </script>
+    
+    
+
+    <meta charset="UTF-8">
+    <meta name="sentry-trace" content="3bfa0c78dbb3eedf8ac872d57b0ed254-880307e48fbd9511-0">
+<meta name="baggage" content="sentry-environment=production,sentry-release=release-202607230835,sentry-public_key=5c4961c1c6d94f50b57187ee70cbaf59,sentry-trace_id=3bfa0c78dbb3eedf8ac872d57b0ed254,sentry-org_id=151863,sentry-sampled=false,sentry-sample_rand=0.19892665891168781,sentry-sample_rate=0.01">
+    
+        <title>Projects | Qase</title>
+    
+    <style type="text/css">:root, :host {
+  --fa-font-solid: normal 900 1em/1 "Font Awesome 6 Solid";
+  --fa-font-regular: normal 400 1em/1 "Font Awesome 6 Regular";
+  --fa-font-light: normal 300 1em/1 "Font Awesome 6 Light";
+  --fa-font-thin: normal 100 1em/1 "Font Awesome 6 Thin";
+  --fa-font-duotone: normal 900 1em/1 "Font Awesome 6 Duotone";
+  --fa-font-sharp-solid: normal 900 1em/1 "Font Awesome 6 Sharp";
+  --fa-font-brands: normal 400 1em/1 "Font Awesome 6 Brands";
+}
+
+svg:not(:root).svg-inline--fa, svg:not(:host).svg-inline--fa {
+  overflow: visible;
+  box-sizing: content-box;
+}
+
+.svg-inline--fa {
+  display: var(--fa-display, inline-block);
+  height: 1em;
+  overflow: visible;
+  vertical-align: -0.125em;
+}
+.svg-inline--fa.fa-2xs {
+  vertical-align: 0.1em;
+}
+.svg-inline--fa.fa-xs {
+  vertical-align: 0em;
+}
+.svg-inline--fa.fa-sm {
+  vertical-align: -0.0714285705em;
+}
+.svg-inline--fa.fa-lg {
+  vertical-align: -0.2em;
+}
+.svg-inline--fa.fa-xl {
+  vertical-align: -0.25em;
+}
+.svg-inline--fa.fa-2xl {
+  vertical-align: -0.3125em;
+}
+.svg-inline--fa.fa-pull-left {
+  margin-right: var(--fa-pull-margin, 0.3em);
+  width: auto;
+}
+.svg-inline--fa.fa-pull-right {
+  margin-left: var(--fa-pull-margin, 0.3em);
+  width: auto;
+}
+.svg-inline--fa.fa-li {
+  width: var(--fa-li-width, 2em);
+  top: 0.25em;
+}
+.svg-inline--fa.fa-fw {
+  width: var(--fa-fw-width, 1.25em);
+}
+
+.fa-layers svg.svg-inline--fa {
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.fa-layers-counter, .fa-layers-text {
+  display: inline-block;
+  position: absolute;
+  text-align: center;
+}
+
+.fa-layers {
+  display: inline-block;
+  height: 1em;
+  position: relative;
+  text-align: center;
+  vertical-align: -0.125em;
+  width: 1em;
+}
+.fa-layers svg.svg-inline--fa {
+  -webkit-transform-origin: center center;
+          transform-origin: center center;
+}
+
+.fa-layers-text {
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-transform-origin: center center;
+          transform-origin: center center;
+}
+
+.fa-layers-counter {
+  background-color: var(--fa-counter-background-color, #ff253a);
+  border-radius: var(--fa-counter-border-radius, 1em);
+  box-sizing: border-box;
+  color: var(--fa-inverse, #fff);
+  line-height: var(--fa-counter-line-height, 1);
+  max-width: var(--fa-counter-max-width, 5em);
+  min-width: var(--fa-counter-min-width, 1.5em);
+  overflow: hidden;
+  padding: var(--fa-counter-padding, 0.25em 0.5em);
+  right: var(--fa-right, 0);
+  text-overflow: ellipsis;
+  top: var(--fa-top, 0);
+  -webkit-transform: scale(var(--fa-counter-scale, 0.25));
+          transform: scale(var(--fa-counter-scale, 0.25));
+  -webkit-transform-origin: top right;
+          transform-origin: top right;
+}
+
+.fa-layers-bottom-right {
+  bottom: var(--fa-bottom, 0);
+  right: var(--fa-right, 0);
+  top: auto;
+  -webkit-transform: scale(var(--fa-layers-scale, 0.25));
+          transform: scale(var(--fa-layers-scale, 0.25));
+  -webkit-transform-origin: bottom right;
+          transform-origin: bottom right;
+}
+
+.fa-layers-bottom-left {
+  bottom: var(--fa-bottom, 0);
+  left: var(--fa-left, 0);
+  right: auto;
+  top: auto;
+  -webkit-transform: scale(var(--fa-layers-scale, 0.25));
+          transform: scale(var(--fa-layers-scale, 0.25));
+  -webkit-transform-origin: bottom left;
+          transform-origin: bottom left;
+}
+
+.fa-layers-top-right {
+  top: var(--fa-top, 0);
+  right: var(--fa-right, 0);
+  -webkit-transform: scale(var(--fa-layers-scale, 0.25));
+          transform: scale(var(--fa-layers-scale, 0.25));
+  -webkit-transform-origin: top right;
+          transform-origin: top right;
+}
+
+.fa-layers-top-left {
+  left: var(--fa-left, 0);
+  right: auto;
+  top: var(--fa-top, 0);
+  -webkit-transform: scale(var(--fa-layers-scale, 0.25));
+          transform: scale(var(--fa-layers-scale, 0.25));
+  -webkit-transform-origin: top left;
+          transform-origin: top left;
+}
+
+.fa-1x {
+  font-size: 1em;
+}
+
+.fa-2x {
+  font-size: 2em;
+}
+
+.fa-3x {
+  font-size: 3em;
+}
+
+.fa-4x {
+  font-size: 4em;
+}
+
+.fa-5x {
+  font-size: 5em;
+}
+
+.fa-6x {
+  font-size: 6em;
+}
+
+.fa-7x {
+  font-size: 7em;
+}
+
+.fa-8x {
+  font-size: 8em;
+}
+
+.fa-9x {
+  font-size: 9em;
+}
+
+.fa-10x {
+  font-size: 10em;
+}
+
+.fa-2xs {
+  font-size: 0.625em;
+  line-height: 0.1em;
+  vertical-align: 0.225em;
+}
+
+.fa-xs {
+  font-size: 0.75em;
+  line-height: 0.0833333337em;
+  vertical-align: 0.125em;
+}
+
+.fa-sm {
+  font-size: 0.875em;
+  line-height: 0.0714285718em;
+  vertical-align: 0.0535714295em;
+}
+
+.fa-lg {
+  font-size: 1.25em;
+  line-height: 0.05em;
+  vertical-align: -0.075em;
+}
+
+.fa-xl {
+  font-size: 1.5em;
+  line-height: 0.0416666682em;
+  vertical-align: -0.125em;
+}
+
+.fa-2xl {
+  font-size: 2em;
+  line-height: 0.03125em;
+  vertical-align: -0.1875em;
+}
+
+.fa-fw {
+  text-align: center;
+  width: 1.25em;
+}
+
+.fa-ul {
+  list-style-type: none;
+  margin-left: var(--fa-li-margin, 2.5em);
+  padding-left: 0;
+}
+.fa-ul > li {
+  position: relative;
+}
+
+.fa-li {
+  left: calc(var(--fa-li-width, 2em) * -1);
+  position: absolute;
+  text-align: center;
+  width: var(--fa-li-width, 2em);
+  line-height: inherit;
+}
+
+.fa-border {
+  border-color: var(--fa-border-color, #eee);
+  border-radius: var(--fa-border-radius, 0.1em);
+  border-style: var(--fa-border-style, solid);
+  border-width: var(--fa-border-width, 0.08em);
+  padding: var(--fa-border-padding, 0.2em 0.25em 0.15em);
+}
+
+.fa-pull-left {
+  float: left;
+  margin-right: var(--fa-pull-margin, 0.3em);
+}
+
+.fa-pull-right {
+  float: right;
+  margin-left: var(--fa-pull-margin, 0.3em);
+}
+
+.fa-beat {
+  -webkit-animation-name: fa-beat;
+          animation-name: fa-beat;
+  -webkit-animation-delay: var(--fa-animation-delay, 0s);
+          animation-delay: var(--fa-animation-delay, 0s);
+  -webkit-animation-direction: var(--fa-animation-direction, normal);
+          animation-direction: var(--fa-animation-direction, normal);
+  -webkit-animation-duration: var(--fa-animation-duration, 1s);
+          animation-duration: var(--fa-animation-duration, 1s);
+  -webkit-animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+          animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  -webkit-animation-timing-function: var(--fa-animation-timing, ease-in-out);
+          animation-timing-function: var(--fa-animation-timing, ease-in-out);
+}
+
+.fa-bounce {
+  -webkit-animation-name: fa-bounce;
+          animation-name: fa-bounce;
+  -webkit-animation-delay: var(--fa-animation-delay, 0s);
+          animation-delay: var(--fa-animation-delay, 0s);
+  -webkit-animation-direction: var(--fa-animation-direction, normal);
+          animation-direction: var(--fa-animation-direction, normal);
+  -webkit-animation-duration: var(--fa-animation-duration, 1s);
+          animation-duration: var(--fa-animation-duration, 1s);
+  -webkit-animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+          animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  -webkit-animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.28, 0.84, 0.42, 1));
+          animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.28, 0.84, 0.42, 1));
+}
+
+.fa-fade {
+  -webkit-animation-name: fa-fade;
+          animation-name: fa-fade;
+  -webkit-animation-delay: var(--fa-animation-delay, 0s);
+          animation-delay: var(--fa-animation-delay, 0s);
+  -webkit-animation-direction: var(--fa-animation-direction, normal);
+          animation-direction: var(--fa-animation-direction, normal);
+  -webkit-animation-duration: var(--fa-animation-duration, 1s);
+          animation-duration: var(--fa-animation-duration, 1s);
+  -webkit-animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+          animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  -webkit-animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.4, 0, 0.6, 1));
+          animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.4, 0, 0.6, 1));
+}
+
+.fa-beat-fade {
+  -webkit-animation-name: fa-beat-fade;
+          animation-name: fa-beat-fade;
+  -webkit-animation-delay: var(--fa-animation-delay, 0s);
+          animation-delay: var(--fa-animation-delay, 0s);
+  -webkit-animation-direction: var(--fa-animation-direction, normal);
+          animation-direction: var(--fa-animation-direction, normal);
+  -webkit-animation-duration: var(--fa-animation-duration, 1s);
+          animation-duration: var(--fa-animation-duration, 1s);
+  -webkit-animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+          animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  -webkit-animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.4, 0, 0.6, 1));
+          animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.4, 0, 0.6, 1));
+}
+
+.fa-flip {
+  -webkit-animation-name: fa-flip;
+          animation-name: fa-flip;
+  -webkit-animation-delay: var(--fa-animation-delay, 0s);
+          animation-delay: var(--fa-animation-delay, 0s);
+  -webkit-animation-direction: var(--fa-animation-direction, normal);
+          animation-direction: var(--fa-animation-direction, normal);
+  -webkit-animation-duration: var(--fa-animation-duration, 1s);
+          animation-duration: var(--fa-animation-duration, 1s);
+  -webkit-animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+          animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  -webkit-animation-timing-function: var(--fa-animation-timing, ease-in-out);
+          animation-timing-function: var(--fa-animation-timing, ease-in-out);
+}
+
+.fa-shake {
+  -webkit-animation-name: fa-shake;
+          animation-name: fa-shake;
+  -webkit-animation-delay: var(--fa-animation-delay, 0s);
+          animation-delay: var(--fa-animation-delay, 0s);
+  -webkit-animation-direction: var(--fa-animation-direction, normal);
+          animation-direction: var(--fa-animation-direction, normal);
+  -webkit-animation-duration: var(--fa-animation-duration, 1s);
+          animation-duration: var(--fa-animation-duration, 1s);
+  -webkit-animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+          animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  -webkit-animation-timing-function: var(--fa-animation-timing, linear);
+          animation-timing-function: var(--fa-animation-timing, linear);
+}
+
+.fa-spin {
+  -webkit-animation-name: fa-spin;
+          animation-name: fa-spin;
+  -webkit-animation-delay: var(--fa-animation-delay, 0s);
+          animation-delay: var(--fa-animation-delay, 0s);
+  -webkit-animation-direction: var(--fa-animation-direction, normal);
+          animation-direction: var(--fa-animation-direction, normal);
+  -webkit-animation-duration: var(--fa-animation-duration, 2s);
+          animation-duration: var(--fa-animation-duration, 2s);
+  -webkit-animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+          animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  -webkit-animation-timing-function: var(--fa-animation-timing, linear);
+          animation-timing-function: var(--fa-animation-timing, linear);
+}
+
+.fa-spin-reverse {
+  --fa-animation-direction: reverse;
+}
+
+.fa-pulse,
+.fa-spin-pulse {
+  -webkit-animation-name: fa-spin;
+          animation-name: fa-spin;
+  -webkit-animation-direction: var(--fa-animation-direction, normal);
+          animation-direction: var(--fa-animation-direction, normal);
+  -webkit-animation-duration: var(--fa-animation-duration, 1s);
+          animation-duration: var(--fa-animation-duration, 1s);
+  -webkit-animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+          animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  -webkit-animation-timing-function: var(--fa-animation-timing, steps(8));
+          animation-timing-function: var(--fa-animation-timing, steps(8));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fa-beat,
+.fa-bounce,
+.fa-fade,
+.fa-beat-fade,
+.fa-flip,
+.fa-pulse,
+.fa-shake,
+.fa-spin,
+.fa-spin-pulse {
+    -webkit-animation-delay: -1ms;
+            animation-delay: -1ms;
+    -webkit-animation-duration: 1ms;
+            animation-duration: 1ms;
+    -webkit-animation-iteration-count: 1;
+            animation-iteration-count: 1;
+    transition-delay: 0s;
+    transition-duration: 0s;
+  }
+}
+@-webkit-keyframes fa-beat {
+  0%, 90% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  45% {
+    -webkit-transform: scale(var(--fa-beat-scale, 1.25));
+            transform: scale(var(--fa-beat-scale, 1.25));
+  }
+}
+@keyframes fa-beat {
+  0%, 90% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  45% {
+    -webkit-transform: scale(var(--fa-beat-scale, 1.25));
+            transform: scale(var(--fa-beat-scale, 1.25));
+  }
+}
+@-webkit-keyframes fa-bounce {
+  0% {
+    -webkit-transform: scale(1, 1) translateY(0);
+            transform: scale(1, 1) translateY(0);
+  }
+  10% {
+    -webkit-transform: scale(var(--fa-bounce-start-scale-x, 1.1), var(--fa-bounce-start-scale-y, 0.9)) translateY(0);
+            transform: scale(var(--fa-bounce-start-scale-x, 1.1), var(--fa-bounce-start-scale-y, 0.9)) translateY(0);
+  }
+  30% {
+    -webkit-transform: scale(var(--fa-bounce-jump-scale-x, 0.9), var(--fa-bounce-jump-scale-y, 1.1)) translateY(var(--fa-bounce-height, -0.5em));
+            transform: scale(var(--fa-bounce-jump-scale-x, 0.9), var(--fa-bounce-jump-scale-y, 1.1)) translateY(var(--fa-bounce-height, -0.5em));
+  }
+  50% {
+    -webkit-transform: scale(var(--fa-bounce-land-scale-x, 1.05), var(--fa-bounce-land-scale-y, 0.95)) translateY(0);
+            transform: scale(var(--fa-bounce-land-scale-x, 1.05), var(--fa-bounce-land-scale-y, 0.95)) translateY(0);
+  }
+  57% {
+    -webkit-transform: scale(1, 1) translateY(var(--fa-bounce-rebound, -0.125em));
+            transform: scale(1, 1) translateY(var(--fa-bounce-rebound, -0.125em));
+  }
+  64% {
+    -webkit-transform: scale(1, 1) translateY(0);
+            transform: scale(1, 1) translateY(0);
+  }
+  100% {
+    -webkit-transform: scale(1, 1) translateY(0);
+            transform: scale(1, 1) translateY(0);
+  }
+}
+@keyframes fa-bounce {
+  0% {
+    -webkit-transform: scale(1, 1) translateY(0);
+            transform: scale(1, 1) translateY(0);
+  }
+  10% {
+    -webkit-transform: scale(var(--fa-bounce-start-scale-x, 1.1), var(--fa-bounce-start-scale-y, 0.9)) translateY(0);
+            transform: scale(var(--fa-bounce-start-scale-x, 1.1), var(--fa-bounce-start-scale-y, 0.9)) translateY(0);
+  }
+  30% {
+    -webkit-transform: scale(var(--fa-bounce-jump-scale-x, 0.9), var(--fa-bounce-jump-scale-y, 1.1)) translateY(var(--fa-bounce-height, -0.5em));
+            transform: scale(var(--fa-bounce-jump-scale-x, 0.9), var(--fa-bounce-jump-scale-y, 1.1)) translateY(var(--fa-bounce-height, -0.5em));
+  }
+  50% {
+    -webkit-transform: scale(var(--fa-bounce-land-scale-x, 1.05), var(--fa-bounce-land-scale-y, 0.95)) translateY(0);
+            transform: scale(var(--fa-bounce-land-scale-x, 1.05), var(--fa-bounce-land-scale-y, 0.95)) translateY(0);
+  }
+  57% {
+    -webkit-transform: scale(1, 1) translateY(var(--fa-bounce-rebound, -0.125em));
+            transform: scale(1, 1) translateY(var(--fa-bounce-rebound, -0.125em));
+  }
+  64% {
+    -webkit-transform: scale(1, 1) translateY(0);
+            transform: scale(1, 1) translateY(0);
+  }
+  100% {
+    -webkit-transform: scale(1, 1) translateY(0);
+            transform: scale(1, 1) translateY(0);
+  }
+}
+@-webkit-keyframes fa-fade {
+  50% {
+    opacity: var(--fa-fade-opacity, 0.4);
+  }
+}
+@keyframes fa-fade {
+  50% {
+    opacity: var(--fa-fade-opacity, 0.4);
+  }
+}
+@-webkit-keyframes fa-beat-fade {
+  0%, 100% {
+    opacity: var(--fa-beat-fade-opacity, 0.4);
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    -webkit-transform: scale(var(--fa-beat-fade-scale, 1.125));
+            transform: scale(var(--fa-beat-fade-scale, 1.125));
+  }
+}
+@keyframes fa-beat-fade {
+  0%, 100% {
+    opacity: var(--fa-beat-fade-opacity, 0.4);
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    -webkit-transform: scale(var(--fa-beat-fade-scale, 1.125));
+            transform: scale(var(--fa-beat-fade-scale, 1.125));
+  }
+}
+@-webkit-keyframes fa-flip {
+  50% {
+    -webkit-transform: rotate3d(var(--fa-flip-x, 0), var(--fa-flip-y, 1), var(--fa-flip-z, 0), var(--fa-flip-angle, -180deg));
+            transform: rotate3d(var(--fa-flip-x, 0), var(--fa-flip-y, 1), var(--fa-flip-z, 0), var(--fa-flip-angle, -180deg));
+  }
+}
+@keyframes fa-flip {
+  50% {
+    -webkit-transform: rotate3d(var(--fa-flip-x, 0), var(--fa-flip-y, 1), var(--fa-flip-z, 0), var(--fa-flip-angle, -180deg));
+            transform: rotate3d(var(--fa-flip-x, 0), var(--fa-flip-y, 1), var(--fa-flip-z, 0), var(--fa-flip-angle, -180deg));
+  }
+}
+@-webkit-keyframes fa-shake {
+  0% {
+    -webkit-transform: rotate(-15deg);
+            transform: rotate(-15deg);
+  }
+  4% {
+    -webkit-transform: rotate(15deg);
+            transform: rotate(15deg);
+  }
+  8%, 24% {
+    -webkit-transform: rotate(-18deg);
+            transform: rotate(-18deg);
+  }
+  12%, 28% {
+    -webkit-transform: rotate(18deg);
+            transform: rotate(18deg);
+  }
+  16% {
+    -webkit-transform: rotate(-22deg);
+            transform: rotate(-22deg);
+  }
+  20% {
+    -webkit-transform: rotate(22deg);
+            transform: rotate(22deg);
+  }
+  32% {
+    -webkit-transform: rotate(-12deg);
+            transform: rotate(-12deg);
+  }
+  36% {
+    -webkit-transform: rotate(12deg);
+            transform: rotate(12deg);
+  }
+  40%, 100% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+}
+@keyframes fa-shake {
+  0% {
+    -webkit-transform: rotate(-15deg);
+            transform: rotate(-15deg);
+  }
+  4% {
+    -webkit-transform: rotate(15deg);
+            transform: rotate(15deg);
+  }
+  8%, 24% {
+    -webkit-transform: rotate(-18deg);
+            transform: rotate(-18deg);
+  }
+  12%, 28% {
+    -webkit-transform: rotate(18deg);
+            transform: rotate(18deg);
+  }
+  16% {
+    -webkit-transform: rotate(-22deg);
+            transform: rotate(-22deg);
+  }
+  20% {
+    -webkit-transform: rotate(22deg);
+            transform: rotate(22deg);
+  }
+  32% {
+    -webkit-transform: rotate(-12deg);
+            transform: rotate(-12deg);
+  }
+  36% {
+    -webkit-transform: rotate(12deg);
+            transform: rotate(12deg);
+  }
+  40%, 100% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+}
+@-webkit-keyframes fa-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+@keyframes fa-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+.fa-rotate-90 {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+.fa-rotate-180 {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.fa-rotate-270 {
+  -webkit-transform: rotate(270deg);
+          transform: rotate(270deg);
+}
+
+.fa-flip-horizontal {
+  -webkit-transform: scale(-1, 1);
+          transform: scale(-1, 1);
+}
+
+.fa-flip-vertical {
+  -webkit-transform: scale(1, -1);
+          transform: scale(1, -1);
+}
+
+.fa-flip-both,
+.fa-flip-horizontal.fa-flip-vertical {
+  -webkit-transform: scale(-1, -1);
+          transform: scale(-1, -1);
+}
+
+.fa-rotate-by {
+  -webkit-transform: rotate(var(--fa-rotate-angle, none));
+          transform: rotate(var(--fa-rotate-angle, none));
+}
+
+.fa-stack {
+  display: inline-block;
+  vertical-align: middle;
+  height: 2em;
+  position: relative;
+  width: 2.5em;
+}
+
+.fa-stack-1x,
+.fa-stack-2x {
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: var(--fa-stack-z-index, auto);
+}
+
+.svg-inline--fa.fa-stack-1x {
+  height: 1em;
+  width: 1.25em;
+}
+.svg-inline--fa.fa-stack-2x {
+  height: 2em;
+  width: 2.5em;
+}
+
+.fa-inverse {
+  color: var(--fa-inverse, #fff);
+}
+
+.sr-only,
+.fa-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.sr-only-focusable:not(:focus),
+.fa-sr-only-focusable:not(:focus) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.svg-inline--fa .fa-primary {
+  fill: var(--fa-primary-color, currentColor);
+  opacity: var(--fa-primary-opacity, 1);
+}
+
+.svg-inline--fa .fa-secondary {
+  fill: var(--fa-secondary-color, currentColor);
+  opacity: var(--fa-secondary-opacity, 0.4);
+}
+
+.svg-inline--fa.fa-swap-opacity .fa-primary {
+  opacity: var(--fa-secondary-opacity, 0.4);
+}
+
+.svg-inline--fa.fa-swap-opacity .fa-secondary {
+  opacity: var(--fa-primary-opacity, 1);
+}
+
+.svg-inline--fa mask .fa-primary,
+.svg-inline--fa mask .fa-secondary {
+  fill: black;
+}
+
+.fad.fa-inverse,
+.fa-duotone.fa-inverse {
+  color: var(--fa-inverse, #fff);
+}</style><style type="text/css">
+        @font-face {
+            font-family: "Inter Fallback";
+            src: local('Arial');
+            ascent-override: 90.0021%;
+            descent-override: 22.4345%;
+            size-adjust: 107.6364%;
+        }
+    </style>
+    <link rel="icon" href="/favicon.ico" sizes="32x32">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png"><!-- 180×180 -->
+    <link rel="manifest" href="/manifest.webmanifest">
+    <!-- Fonts preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <!-- Variable font (doesn't need separate bold, thin, etc.) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex">
+    
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self' data: ws: o151863.ingest.sentry.io ingest.tiden.ai rum.qase.io translate.googleapis.com google.com fonts.googleapis.com google-analytics.com *.google-analytics.com analytics.google.com *.analytics.google.com *.googletagmanager.com *.g.doubleclick.net google.ad google.ae google.com.af google.com.ag google.al google.am google.co.ao google.com.ar google.as google.at google.com.au google.az google.ba google.com.bd google.be google.bf google.bg google.com.bh google.bi google.bj google.com.bn google.com.bo google.com.br google.bs google.bt google.co.bw google.by google.com.bz google.ca google.cd google.cf google.cg google.ch google.ci google.co.ck google.cl google.cm google.cn google.com.co google.co.cr google.com.cu google.cv google.com.cy google.cz google.de google.dj google.dk google.dm google.com.do google.dz google.com.ec google.ee google.com.eg google.es google.com.et google.fi google.com.fj google.fm google.fr google.ga google.ge google.gg google.com.gh google.com.gi google.gl google.gm google.gr google.com.gt google.gy google.com.hk google.hn google.hr google.ht google.hu google.co.id google.ie google.co.il google.im google.co.in google.iq google.is google.it google.je google.com.jm google.jo google.co.jp google.co.ke google.com.kh google.ki google.kg google.co.kr google.com.kw google.kz google.la google.com.lb google.li google.lk google.co.ls google.lt google.lu google.lv google.com.ly google.co.ma google.md google.me google.mg google.mk google.ml google.com.mm google.mn google.com.mt google.mu google.mv google.mw google.com.mx google.com.my google.co.mz google.com.na google.com.ng google.com.ni google.ne google.nl google.no google.com.np google.nr google.nu google.co.nz google.com.om google.com.pa google.com.pe google.com.pg google.com.ph google.com.pk google.pl google.pn google.com.pr google.ps google.pt google.com.py google.com.qa google.ro google.ru google.rw google.com.sa google.com.sb google.sc google.se google.com.sg google.sh google.si google.sk google.com.sl google.sn google.so google.sm google.sr google.st google.com.sv google.td google.tg google.co.th google.com.tj google.tl google.tm google.tn google.to google.com.tr google.tt google.com.tw google.co.tz google.com.ua google.co.ug google.co.uk google.com.uy google.co.uz google.com.vc google.co.ve google.co.vi google.com.vn google.vu google.ws google.rs google.co.za google.co.zm google.co.zw google.cat *.google.com *.google.ad *.google.ae *.google.com.af *.google.com.ag *.google.al *.google.am *.google.co.ao *.google.com.ar *.google.as *.google.at *.google.com.au *.google.az *.google.ba *.google.com.bd *.google.be *.google.bf *.google.bg *.google.com.bh *.google.bi *.google.bj *.google.com.bn *.google.com.bo *.google.com.br *.google.bs *.google.bt *.google.co.bw *.google.by *.google.com.bz *.google.ca *.google.cd *.google.cf *.google.cg *.google.ch *.google.ci *.google.co.ck *.google.cl *.google.cm *.google.cn *.google.com.co *.google.co.cr *.google.com.cu *.google.cv *.google.com.cy *.google.cz *.google.de *.google.dj *.google.dk *.google.dm *.google.com.do *.google.dz *.google.com.ec *.google.ee *.google.com.eg *.google.es *.google.com.et *.google.fi *.google.com.fj *.google.fm *.google.fr *.google.ga *.google.ge *.google.gg *.google.com.gh *.google.com.gi *.google.gl *.google.gm *.google.gr *.google.com.gt *.google.gy *.google.com.hk *.google.hn *.google.hr *.google.ht *.google.hu *.google.co.id *.google.ie *.google.co.il *.google.im *.google.co.in *.google.iq *.google.is *.google.it *.google.je *.google.com.jm *.google.jo *.google.co.jp *.google.co.ke *.google.com.kh *.google.ki *.google.kg *.google.co.kr *.google.com.kw *.google.kz *.google.la *.google.com.lb *.google.li *.google.lk *.google.co.ls *.google.lt *.google.lu *.google.lv *.google.com.ly *.google.co.ma *.google.md *.google.me *.google.mg *.google.mk *.google.ml *.google.com.mm *.google.mn *.google.com.mt *.google.mu *.google.mv *.google.mw *.google.com.mx *.google.com.my *.google.co.mz *.google.com.na *.google.com.ng *.google.com.ni *.google.ne *.google.nl *.google.no *.google.com.np *.google.nr *.google.nu *.google.co.nz *.google.com.om *.google.com.pa *.google.com.pe *.google.com.pg *.google.com.ph *.google.com.pk *.google.pl *.google.pn *.google.com.pr *.google.ps *.google.pt *.google.com.py *.google.com.qa *.google.ro *.google.ru *.google.rw *.google.com.sa *.google.com.sb *.google.sc *.google.se *.google.com.sg *.google.sh *.google.si *.google.sk *.google.com.sl *.google.sn *.google.so *.google.sm *.google.sr *.google.st *.google.com.sv *.google.td *.google.tg *.google.co.th *.google.com.tj *.google.tl *.google.tm *.google.tn *.google.to *.google.com.tr *.google.tt *.google.com.tw *.google.co.tz *.google.com.ua *.google.co.ug *.google.co.uk *.google.com.uy *.google.co.uz *.google.com.vc *.google.co.ve *.google.co.vi *.google.com.vn *.google.vu *.google.ws *.google.rs *.google.co.za *.google.co.zm *.google.co.zw *.google.cat *.intercom.io *.intercomcdn.com *.intercomcdn.eu *.intercomusercontent.com https://*.intercom-messenger.com wss://*.intercom-messenger.com *.hubapi.com js.hscta.net *.hubspot.com *.hs-banner.com *.hscollectedforms.net *.hsforms.com https://uploads.userpilot.io https://api.userpilot.io wss://api.userpilot.io https://find.userpilot.io https://find-x.userpilot.io https://find-y.userpilot.io https://find-z.userpilot.io https://find-w.userpilot.io wss://analytex.userpilot.io wss://analytex-us.userpilot.io wss://analytex-eu.userpilot.io wss://analytex-in.userpilot.io https://analytex.userpilot.io https://analytex-us.userpilot.io https://analytex-eu.userpilot.io https://analytex-in.userpilot.io https://reporting.userpilot.io wss://reporting.userpilot.io https://playground.userpilot.io https://web.cmp.usercentrics.eu https://v1.api.service.cmp.usercentrics.eu https://consent-api.service.consent.usercentrics.eu *.googlesyndication.com https://*.g2.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' ajax.googleapis.com connect-cdn.atl-paas.net www.google.com cdn.headwayapp.co cdn.jsdelivr.net gstatic.com www.gstatic.com code.jquery.com cdnjs.cloudflare.com aui-cdn.atlassian.com google-analytics.com *.google-analytics.com analytics.google.com *.analytics.google.com *.googletagmanager.com googleads.g.doubleclick.net js.stripe.com connect-js.stripe.com *.intercom.io js.intercomcdn.com *.hsadspixel.net *.hs-analytics.net js.hscta.net *.hubspot.com static.hsappstatic.net *.usemessages.com *.hs-banner.com *.hubspotusercontent00.net *.hubspotusercontent10.net *.hubspotusercontent20.net *.hubspotusercontent30.net *.hubspotusercontent40.net *.hubspot.net *.hscollectedforms.net *.hsleadflows.net *.hsforms.net *.hsforms.com *.hs-scripts.com *.hubspotfeedback.com feedback.hubapi.com https://js.userpilot.io https://deploy.userpilot.io https://web.cmp.usercentrics.eu https://v1.api.service.cmp.usercentrics.eu https://consent-api.service.consent.usercentrics.eu *.googlesyndication.com https://*.g2.com; style-src 'self' 'unsafe-inline' fonts.googleapis.com aui-cdn.atlassian.com cdn.headwayapp.co cdnjs.cloudflare.com gstatic.com www.gstatic.com connect-cdn.atl-paas.net js.stripe.com unsafe-inline *.hubspotusercontent00.net *.hubspotusercontent10.net *.hubspotusercontent20.net *.hubspotusercontent30.net *.hubspotusercontent40.net cdn2.hubspot.net; img-src * data: blob: *.google-analytics.com *.analytics.google.com *.googletagmanager.com https://media.userpilot.io https://uploads.userpilot.io https://gifs.userpilot.io https://videos.userpilot.io https://web.cmp.usercentrics.eu https://v1.api.service.cmp.usercentrics.eu; font-src 'self' fonts.gstatic.com google.com cdnjs.cloudflare.com aui-cdn.atlassian.com *.intercomcdn.com https://fonts.googleapis.com https://fonts.gstatic.com https://fonts.userpilot.io; frame-src 'self' blob: headway-widget.net google.com www.google.com www.googletagmanager.com td.doubleclick.net js.stripe.com connect-js.stripe.com intercom-sheets.com *.hubspot.com *.hs-sites.com *.hubspot.net play.hubspotvideo.com *.hsforms.net *.hsforms.com https://web.cmp.usercentrics.eu/; media-src data: *.cloudfront.net js.intercomcdn.com https://js.userpilot.io; child-src 'self' intercom-sheets.com www.intercom-reporting.com www.youtube.com player.vimeo.com fast.wistia.net *.hsforms.com">
+    
+    
+        
+            <link rel="stylesheet" href="/assets/client/1784795849464/css/main.DS0PEnQd.css">
+        
+            <link rel="stylesheet" href="/assets/client/1784795849464/css/app.CfSRuZbm.css">
+        
+            <link rel="stylesheet" href="/assets/client/1784795849464/css/sandbox.M-iZgsB_.css">
+        
+            <link rel="stylesheet" href="/assets/client/1784795849464/css/light.Bc6xKUe_.css">
+        
+            <link rel="stylesheet" href="/assets/client/1784795849464/css/ui-kit.BV-8S8ga.css">
+        
+            <link rel="stylesheet" href="/assets/client/1784795849464/css/Button.CGUGrXbL.css">
+        
+            <link rel="stylesheet" href="/assets/client/1784795849464/css/Modal.CBlXC-bK.css">
+        
+            <link rel="stylesheet" href="/assets/client/1784795849464/css/TariffLimitationModal.DHodvVSA.css">
+        
+            <link rel="stylesheet" href="/assets/client/1784795849464/css/ErrorPage.P_MbnJ4d.css">
+        
+            <link rel="stylesheet" href="/assets/client/1784795849464/css/HintText.CKvL4FKI.css">
+        
+            <link rel="stylesheet" href="/assets/client/1784795849464/css/layoutTheme.Cx-EasOg.css">
+        
+    
+    
+    <script type="text/javascript">
+        window.CENTRIFUGO_CONNECTION_URL = 'wss:///app.qase.io/centrifugo/connection/websocket'
+    </script>
+    <script type="text/javascript">
+        window.OAUTH_LOGIN_STATUS = document.cookie.includes('_oauth_login_status=1')
+    </script>
+    
+<link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/es.ChPw-XFg.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/rolldown-runtime.CF6gOSGR.js"><script src="https://js.stripe.com/basil/stripe.js"></script><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/AttachmentModal.BvyOctYS.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/vendor.react.DiqfLEKG.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/sandbox.C5IiIcjt.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/vendor.mobx.D0FmfHEX.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/ui-kit.odhFBhgr.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/reporter.Dj0txsug.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/axios.D6gxI1a_.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/Button.DA6T5iEL.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/light.module.BkEV51EF.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/Me.CpoATLuw.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/dropzone.D5tMZGem.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/Modal.ClzX8S8k.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/assign.C7dnSt3G.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/LocalStorage.D-Cfj_um.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/service.xpMUmEwe.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/vendor.lodash.BG4gfo70.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/configuration.dFQqpDSO.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/Analytics.Q2jKCfxI.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/AttachmentList.uFWJ5yz1.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/storeProvider.CBZle6ba.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/base64.CKjo64xl.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/array.BSqQvBGG.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/string.ITsG3pCh.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/useDeferredDimensions.X4tPU_Y9.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1784795849464/css/useDeferredDimensions.LOl1_Siv.css"><link rel="stylesheet" crossorigin="" href="/assets/client/1784795849464/css/AttachmentList.Ch_OTBvz.css"><link rel="stylesheet" crossorigin="" href="/assets/client/1784795849464/css/AttachmentModal.B6WhFnSb.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/ApplicationsContent.BNLap-RZ.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/decorate.CXyO8pJJ.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/esm5.CSG3JOr0.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/react-redux.D09nySpm.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/redux.Cj-7yC__.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/selectors.BTs1rhVS.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/utils.CwYeK3l8.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/models.DMeVEnEV.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/dist.BPzIAzgo.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/navigation.XmvSavys.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/ErrorPage.BdQDIVLu.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/react-use-intercom.esm.U05srS-V.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/HintText.DXM1ZFQN.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/Configuration.NMoKHvC5.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/Filters.BA_2lK87.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/Milestone.DE75zMpe.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/MilestonesList.DGRawzDl.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/Project.CaV0y5vF.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/Requirement.BF6CPzWC.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/Project.CLwcUUW9.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/ReviewList.Di4ybqn_.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/LoadingDataState.0ExX259R.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/Plan.ovbGusW0.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/SuggestionsAction.r6cIMZ3z.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/TeamAction.CpZe1pGK.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/RequirementType.C2Jl72sT.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/Case.DY71pIOI.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/CustomField.Gm3HFiqd.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/useAppDispatch.UGLDnB_2.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/ProjectList.NjC4qcnB.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/TextArea.CLaeJvTf.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/objectWithoutPropertiesLoose.CDalFlgP.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1784795849464/css/TextArea.B3bhFCqp.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/AuthorList.CgCIKY89.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1784795849464/css/AuthorList.Cj69blkd.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/DeleteProjectModal.BCP91FVJ.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/SelectField.KKanVI8-.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/FieldErrorText.j_myfPoU.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1784795849464/css/FieldErrorText.DEd5IU2M.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/Label.BgisbojV.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/DeleteModal.DJmUZPx_.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1784795849464/css/DeleteModal.Bs5jlm9f.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/PageContainer.BXh-R2R1.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/style.module.EZo611_9.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1784795849464/css/style.BP0qas2O.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/PageControls.Ci-Ft1Xx.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/PageHeader.usdndSyQ.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/PageListFilters.CAYlymv9.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/Filters.2DAZzj57.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/date.DNUiw8_Q.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/format.D4-BubkI.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/FieldOptionIcon.BpyFRlzx.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1784795849464/css/FieldOptionIcon.B7f9N16r.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/Input.DLd_vmuZ.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1784795849464/css/Input.6SeiqZmT.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/layoutTheme.PvIl7ZsJ.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/useDebouncedState.Cdr3Msb5.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/usePrevious.DPHGevYW.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/DatePicker.DMS-Hby5.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/react-datepicker.min.CgT9ZR5j.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/possibleConstructorReturn.DigFtAN5.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1784795849464/css/DatePicker.xCsSx4vQ.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/Hotkey.GvIkd5IZ.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1784795849464/css/Filters.D5GjgJ_U.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/PageListPagination.Dh2Vfw-e.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/Pagination.CdsK2DyM.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/UrlConnectedParam.CwLvpL0o.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/QueryParams.KWzPjs9H.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1784795849464/css/Pagination.DrCUXNA-.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/Table.DEhyYzC2.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1784795849464/css/Table.DHPs6GK3.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/TariffLimitationModal.QnD0IySd.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/locked-features.BLX7_9J4.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/SortIcon.m0up7B44.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/SortableHeader.CTl0eqFp.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1784795849464/css/SortableHeader.DIpYjZ93.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/UseOrderParams.rZ2DS-vM.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/FavoriteButton.C2Pierad.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1784795849464/css/FavoriteButton.Dawngwpr.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/InputField.Bb984LQy.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/FilterStoredValue.1rf_41gv.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/NoEntities.CIspU5Pu.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/EmptyListImage.BfZ2jun0.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1784795849464/css/EmptyListImage.zcmVaGhg.css"><link rel="stylesheet" crossorigin="" href="/assets/client/1784795849464/css/NoEntities.NYS65EU7.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/RadioButton.B9YNIj2p.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1784795849464/css/RadioButton.DGiFHCZC.css"><link rel="modulepreload" as="script" crossorigin="" href="/assets/client/1784795849464/js/Container.JDeXnZ6B.js"><link rel="stylesheet" crossorigin="" href="/assets/client/1784795849464/css/ProjectList.CrXQxFyD.css"></head>
+<body class="">
+
+
+    <script id="initialState" type="application/base64">W3sibmFtZSI6IllhbmEgU2F2aWNoIiwiZmlyc3ROYW1lIjoiWWFuYSIsImxhc3ROYW1lIjoiU2F2aWNoIiwiZW1haWwiOiJ5YW5hc2F2aWNoMTExMUBnbWFpbC5jb20iLCJhdmF0YXJfdXJsIjoiaHR0cHM6Ly9kMmN4dWNzamQ2eHZzZC5jbG91ZGZyb250Lm5ldC9wdWJsaWMvdXNlci90aHVtYi80ZmUwNDA4NTBmY2UyODBmZjZjZmM0YjBhYjA0MDYwMy5wbmciLCJsYXN0X2FjdGlvbiI6IlVua25vd24iLCJpc19hY3RpdmUiOnRydWUsIm1lbWJlcl9pZCI6MSwiYXV0aG9yX2lkIjo0NDQ0OTEsImlzX293bmVyIjp0cnVlLCJpc19hZG1pbiI6ZmFsc2UsInNpbmdsZV90ZW5hbnQiOmZhbHNlLCJvcmdfYmlsbGluZ19lbmFibGVkIjpmYWxzZSwiaGFzaCI6Ijg2MTQ2NjI1MDAzNGFiOTEyMDExODc3NDI0OTEwOWM3NWM4MzI4YzU1NmE1ZTc3MWFkOTViODQwZjUzZTVjOTAiLCJoYXNoX2lkIjoiMDFiM2IzOTE0Nzc2MmMxYTJjMjYyOTkyNGQ2NWU1M2UwYjVkMWMzZGZhNDA2MDM2OTZmNmViODZjMGE2NmQwZSIsInNlbnRyeSI6eyJoYXNoIjoiMjFkZGYwOTZlY2JjN2NmZGQ2Yzg0OGYwOGM2YzY0NTkzNDJkNDZiMjUyMmFjZjBlZDQzNzcxMDYxNDZhMDY5OCJ9LCJ0ZWFtIjp7Imhhc2giOiI5ZGJmYzNkYjM3ZjhiMThiOWE0NjJiNDE5ODM2NDk2ZDBhODAxNTg1Iiwic3NvIjp7ImVuYWJsZWQiOmZhbHNlLCJkaXNhYmxlX2xvZ2luIjpmYWxzZX19LCJzdHJpcGUiOnsiaWQiOm51bGwsInByaWNlIjoiZnJlZV92NCIsInBsYW5fdGl0bGUiOiJGcmVlIn0sIndvcmtzcGFjZV9hdmFpbGFibGVfdGVhbXMiOlt7Imhhc2giOiI5ZGJmYzNkYjM3ZjhiMThiOWE0NjJiNDE5ODM2NDk2ZDBhODAxNTg1IiwidGl0bGUiOiJ0ZXN0In1dLCJhcHBlYXJhbmNlIjp7InRoZW1lIjoibGlnaHQiLCJsYXlvdXQiOiJoIiwic2l6ZSI6Im0ifSwicm9sZSI6IlFBIEVuZ2luZWVyIiwicm9sZV9pZCI6MSwicm9sZV90aXRsZSI6Ik93bmVyIiwidHlwZSI6MCwiYWNjZXNzX3JpZ2h0cyI6eyJwcm9qZWN0IjpbImNyZWF0ZSIsInVwZGF0ZSIsImRlbGV0ZSIsImFjY2VzcyIsImltcG9ydCIsImV4cG9ydCIsImNoYW5nZV9vd25lcnNoaXAiXSwiaW50ZWdyYXRpb25zIjpbImxpc3QiLCJpbnN0YWxsIiwidW5pbnN0YWxsIiwidXBkYXRlIiwibWFuYWdlX211bHRpX3dvcmtzcGFjZSIsImFjY2Vzc19jb250cm9sIiwiYXR0YWNoIl0sImdyb3VwcyI6WyJsaXN0Iiwic2F2ZSIsImRlbGV0ZSIsIm1lbWJlcnMiXSwicm9sZXMiOlsibGlzdCIsInNhdmUiLCJkZWxldGUiLCJtZW1iZXJzIl0sImNhc2VzIjpbInJlcG9zaXRvcnkiLCJzYXZlIiwiZGVsZXRlIiwibW92ZSIsImFwcHJvdmUiLCJyb2xsYmFjayIsIm11dGUiXSwic3VpdGVzIjpbInNhdmUiLCJkZWxldGUiLCJtb3ZlIl0sInJldmlld3MiOlsibGlzdCJdLCJtaWxlc3RvbmVzIjpbImxpc3QiLCJzYXZlIiwiZGVsZXRlIl0sInNoYXJlZF9zdGVwcyI6WyJsaXN0Iiwic2F2ZSIsImRlbGV0ZSJdLCJwbGFucyI6WyJsaXN0Iiwic2F2ZSIsImRlbGV0ZSJdLCJydW5zIjpbImxpc3QiLCJzYXZlIiwic3VibWl0X3Jlc3VsdHMiLCJhc3NpZ24iLCJkZWxldGUiLCJtYW5hZ2VfY29uZmlndXJhdGlvbnMiLCJzY2hlZHVsZV9ydW5zIl0sImRlZmVjdHMiOlsibGlzdCIsInNhdmUiLCJyZXNvbHZlIiwiZGVsZXRlIl0sInRlYW0iOlsiaW52aXRlIiwiYWN0aXZhdGUiLCJtZW1iZXJfdXBkYXRlIiwic2F2ZSIsIm1lbWJlcnNfbGlzdCIsImxvZ3NfbGlzdCJdLCJ0dW5uZWwiOlsibGlzdCIsInNhdmUiLCJkZWxldGUiXSwiY3VzdG9tX2ZpZWxkcyI6WyJsaXN0Iiwic2F2ZSIsImRlbGV0ZSJdLCJzeXN0ZW1fZmllbGRzIjpbImxpc3QiLCJzYXZlIl0sImZpZWxkcyI6WyJsaXN0Iiwic2F2ZSIsImNyZWF0ZSIsImRlbGV0ZSJdLCJ0YWdzIjpbImxpc3QiLCJzYXZlIiwiZGVsZXRlIl0sImF0dGFjaG1lbnRzIjpbImxpc3QiLCJkZWxldGUiXSwid2ViaG9va3MiOlsibGlzdCIsInNhdmUiLCJkZWxldGUiXSwiZW52aXJvbm1lbnRzIjpbImxpc3QiLCJzYXZlIiwiZGVsZXRlIl0sImJpbGxpbmciOlsibWFuYWdlIl0sInJlcXVpcmVtZW50cyI6WyJsaXN0Iiwic2F2ZSIsImRlbGV0ZSJdLCJkYXNoYm9hcmRzIjpbImxpc3QiLCJjcmVhdGUiLCJzYXZlIiwiZGVsZXRlIiwic2hhcmUiXSwic2VjdXJpdHkiOlsic3NvIl0sInFxbCI6WyJsaXN0Iiwic2F2ZSIsImRlbGV0ZSJdLCJzaGFyZWRfcGFyYW1ldGVycyI6WyJsaXN0Iiwic2F2ZSIsImRlbGV0ZSJdLCJhaWRlbiI6WyJtYW51YWxfdGVzdGluZ19jcmVhdGUiLCJhdXRvbWF0aW9uX2NyZWF0ZSIsImF1dG9tYXRpb25fZXhlY3V0ZSIsImFkdmlzb3JfYW5hbHlzZSIsImNvZGVfZG93bmxvYWQiXX0sImZlYXR1cmVzIjp7InRtcyI6dHJ1ZSwiYXBpIjp0cnVlLCJyZWFkX29ubHkiOmZhbHNlLCJyZXF1aXJlbWVudHMiOmZhbHNlLCJjdXN0b21fZmllbGRzIjpmYWxzZSwid2ViaG9va3MiOmZhbHNlLCJyZXZpZXciOmZhbHNlLCJyYmFjIjpmYWxzZSwibG9ncyI6dHJ1ZSwic2FtbCI6ZmFsc2UsInNjaW0iOmZhbHNlLCJkYXNoYm9hcmRzIjpmYWxzZSwicXFsIjpmYWxzZSwidHJhY2VhYmlsaXR5X21hdHJpeCI6ZmFsc2UsImludGVncmF0aW9ucyI6ZmFsc2UsImFwcF9jb250cm9sIjpmYWxzZSwic2NoZWR1bGVkX3J1bnMiOmZhbHNlLCJzaGFyZWRfcGFyYW1ldGVycyI6ZmFsc2UsImdsb2JhbF9zaGFyZWRfc3RlcHMiOmZhbHNlLCJhaWRlbiI6ZmFsc2UsImFpZGVuX3BhcmFsbGVsX2NvbnZlcnNpb25zIjpmYWxzZSwibmxfdG9fcXFsIjpmYWxzZX0sIm9uYm9hcmRpbmciOnsid29ya3NwYWNlX2NyZWF0ZWRfYXQiOiIyMDI2LTA2LTExVDA1OjE2OjQ5KzAwOjAwIiwid29ya3NwYWNlX29uYm9hcmRpbmdfZW5hYmxlZCI6dHJ1ZSwiaXNfZmlyc3RfcHJvamVjdF9jcmVhdGVkIjp0cnVlLCJpc19maXJzdF9hcHBfaW5zdGFsbGVkIjpmYWxzZSwiaXNfZmlyc3RfdXNlcl9pbnZpdGVkIjpmYWxzZSwiaXNfZmlyc3RfcnVuX2NyZWF0ZWQiOmZhbHNlLCJhcmVfY2FzZXNfaW1wb3J0ZWQiOmZhbHNlfX0se30seyJ0aXRsZSI6InRlc3QiLCJpc19haV9lbmFibGVkIjp0cnVlLCJpc19haV9maW5lX3R1bmluZ19lbmFibGVkIjp0cnVlLCJoYXNoIjoiOWRiZmMzZGIzN2Y4YjE4YjlhNDYyYjQxOTgzNjQ5NmQwYTgwMTU4NSIsImlzX3RyaWFsX2F2YWlsYWJsZSI6ZmFsc2UsInRyaWFsX2VuZHNfYXQiOiIyMDI2LTA2LTI1VDA1OjIwOjA3KzAwOjAwIiwiaXNfYmlsbGluZ19kYXRhX25lZWRlZCI6ZmFsc2V9XQ==</script>
+
+
+    <script id="flashMessages" type="application/base64">W10=</script>
+
+
+<div id="app"><div id="layout" class="_0-PKcZ eOohX2 xhoMhl _5F5dM- _3tfhYZ TaCqCj vULLpn IlfFjk TQU6kb light" data-sentry-component="LayoutTheme" data-sentry-source-file="layoutTheme.tsx"><header class="xcQv0x" role="banner"><nav class="dKfORT" aria-label="Main navigation"><a class="b8HUG7 xmY5KU" data-sentry-element="Link" data-sentry-source-file="index.tsx" href="/projects">Projects</a><a class="b8HUG7" data-sentry-element="Link" data-sentry-source-file="index.tsx" href="/workspace">Workspace</a><a data-feature="false" class="b8HUG7" data-sentry-element="FeaturedLink" data-sentry-source-file="index.tsx" href="/report/dashboards">Dashboards</a><a data-feature="false" class="b8HUG7" data-sentry-element="FeaturedLink" data-sentry-source-file="index.tsx" href="/report/queries-list">Queries</a><a data-feature="true" class="b8HUG7" data-sentry-element="FeaturedLink" data-sentry-source-file="index.tsx" href="/apps">Apps</a></nav><div class="B-9E2q" role="toolbar" aria-label="User actions"><button type="button" class="AukLXn" aria-label="Notifications" aria-pressed="false" aria-live="polite" aria-atomic="true" data-balloon-pos="down"><svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="bell" class="svg-inline--fa fa-bell _3rGiS6" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" height="16" width="20"><path fill="currentColor" d="M256 32V49.88C328.5 61.39 384 124.2 384 200V233.4C384 278.8 399.5 322.9 427.8 358.4L442.7 377C448.5 384.2 449.6 394.1 445.6 402.4C441.6 410.7 433.2 416 424 416H24C14.77 416 6.365 410.7 2.369 402.4C-1.628 394.1-.504 384.2 5.26 377L20.17 358.4C48.54 322.9 64 278.8 64 233.4V200C64 124.2 119.5 61.39 192 49.88V32C192 14.33 206.3 0 224 0C241.7 0 256 14.33 256 32V32zM216 96C158.6 96 112 142.6 112 200V233.4C112 281.3 98.12 328 72.31 368H375.7C349.9 328 336 281.3 336 233.4V200C336 142.6 289.4 96 232 96H216zM288 448C288 464.1 281.3 481.3 269.3 493.3C257.3 505.3 240.1 512 224 512C207 512 190.7 505.3 178.7 493.3C166.7 481.3 160 464.1 160 448H288z"></path></svg></button><button type="button" class="AukLXn" aria-label="Chat" data-sentry-element="NavbarButton" data-sentry-source-file="index.tsx" data-balloon-pos="down"><svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="comment" class="svg-inline--fa fa-comment _3rGiS6" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" height="16" width="20"><path fill="currentColor" d="M256 32C114.6 32 .0272 125.1 .0272 240c0 47.63 19.91 91.25 52.91 126.2c-14.88 39.5-45.87 72.88-46.37 73.25c-6.625 7-8.375 17.25-4.625 26C5.818 474.2 14.38 480 24 480c61.5 0 109.1-25.75 139.1-46.25C191.1 442.8 223.3 448 256 448c141.4 0 255.1-93.13 255.1-208S397.4 32 256 32zM256.1 400c-26.75 0-53.12-4.125-78.38-12.12l-22.75-7.125l-19.5 13.75c-14.25 10.12-33.88 21.38-57.5 29c7.375-12.12 14.37-25.75 19.88-40.25l10.62-28l-20.62-21.87C69.82 314.1 48.07 282.2 48.07 240c0-88.25 93.25-160 208-160s208 71.75 208 160S370.8 400 256.1 400z"></path></svg></button><button data-sentry-element="Button" data-sentry-source-file="UserMenuView.tsx" class="BBDwiM" data-rac="" type="button" tabindex="0" aria-haspopup="true" aria-expanded="false" id="react-aria7173081023-:r4:" data-react-aria-pressable="true" aria-label="user"><img class="Ga3rGO Fj3S21" aria-label="User avatar" src="https://d2cxucsjd6xvsd.cloudfront.net/public/user/thumb/4fe040850fce280ff6cfc4b0ab040603.png" alt="Yana Savich" aria-hidden="true" data-sentry-component="Image" data-sentry-source-file="index.tsx"></button></div></header><div class="_1tBlvt" data-sentry-component="ApplicationWrapper" data-sentry-source-file="index.tsx"><div id="application-content" class="_6-1aO-"><div class="IQjKH4"><h1 class="_5GG77s" data-sentry-component="PageHeader" data-sentry-source-file="PageHeader.tsx">Projects</h1><div class="EiTtcl" role="toolbar" aria-label="Project list controls"><div class="hc2ZQm" data-sentry-component="PageControls" data-sentry-source-file="PageControls.tsx"><ui-reset classname="_-3n8kD" data-sentry-element="ui-reset" data-sentry-component="UiReset" data-sentry-source-file="index.tsx"><button class="aMynqT -sT5pb YGnihK ib3-rg" data-rac="" type="button" tabindex="0" data-react-aria-pressable="true" id="react-aria7173081023-:ri:"><span class="Fkj0XN Mgk1mV"><span class="FkBE-5">Create new project</span></span></button></ui-reset><div class="Un1-h4"><div class="ZysOIq"><div class=""><div data-sentry-element="TextField" data-sentry-component="TextInputsWrapper" data-sentry-source-file="TextInputWrapper.tsx" class="bHWpP8 Q9N1j8" data-rac=""><div class="zcPy-h"><input aria-label="Search for projects" type="text" placeholder="Search for projects" tabindex="0" id="react-aria7173081023-:r9:" class="_3hYgYP" data-sentry-element="AriaInput" data-sentry-source-file="index.tsx" data-rac="" value="" title=""></div></div></div></div><div class="mE93LF"><ui-reset classname="_-3n8kD" data-sentry-element="ui-reset" data-sentry-component="UiReset" data-sentry-source-file="index.tsx"><button data-sentry-element="Button" data-sentry-source-file="index.tsx" class="aMynqT -sT5pb Y1JqzI ib3-rg" data-rac="" type="button" tabindex="0" aria-haspopup="true" aria-expanded="false" id="react-aria7173081023-:rk:" data-react-aria-pressable="true"><span class="Fkj0XN Mgk1mV"><span class="FkBE-5"><span class="itRXVB">Status:</span><span class="Frmm0m">Active</span></span></span></button></ui-reset><ui-reset classname="_-3n8kD" data-sentry-element="ui-reset" data-sentry-component="UiReset" data-sentry-source-file="index.tsx"><button class="aMynqT -sT5pb YGnihK SpJWiU ib3-rg" data-rac="" type="button" tabindex="0" aria-haspopup="true" aria-expanded="false" id="react-aria7173081023-:ro:" data-react-aria-pressable="true" aria-label="Add filter"><span class="Fkj0XN Mgk1mV"><span class="FkBE-5">Add filter</span></span></button></ui-reset></div></div></div><div class="fl1vtx" role="group" aria-label="View type controls"><ui-reset classname="_-3n8kD" data-sentry-element="ui-reset" data-sentry-component="UiReset" data-sentry-source-file="index.tsx"><button class="aMynqT -sT5pb YGnihK birYrY" data-rac="" type="button" tabindex="0" data-react-aria-pressable="true" aria-label="List view" aria-pressed="true" id="react-aria7173081023-:re:"><span class="Fkj0XN"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="list" class="svg-inline--fa fa-list qeegmt DYtflN" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M40 48C26.7 48 16 58.7 16 72v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V72c0-13.3-10.7-24-24-24H40zM192 64c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zM16 232v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V232c0-13.3-10.7-24-24-24H40c-13.3 0-24 10.7-24 24zM40 368c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V392c0-13.3-10.7-24-24-24H40z"></path></svg><span class="FkBE-5"></span></span></button></ui-reset><ui-reset classname="_-3n8kD" data-sentry-element="ui-reset" data-sentry-component="UiReset" data-sentry-source-file="index.tsx"><button class="aMynqT -sT5pb Y1JqzI SpJWiU birYrY" data-rac="" type="button" tabindex="0" data-react-aria-pressable="true" aria-label="Grid view" aria-pressed="false" id="react-aria7173081023-:rg:"><span class="Fkj0XN"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="table-cells" class="svg-inline--fa fa-table-cells qeegmt DYtflN" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm88 64v64H64V96h88zm56 0h88v64H208V96zm240 0v64H360V96h88zM64 224h88v64H64V224zm232 0v64H208V224h88zm64 0h88v64H360V224zM152 352v64H64V352h88zm56 0h88v64H208V352zm240 0v64H360V352h88z"></path></svg><span class="FkBE-5"></span></span></button></ui-reset></div></div><div class="_3bKFan k0nLY1" data-sentry-component="NoEntities" data-sentry-source-file="index.tsx"><div class="_8Wp2Uc _50o-bO" data-sentry-component="EmptyListImage" data-sentry-source-file="index.tsx"></div><div class="rRSV93">Looks like you don’t have any projects yet.</div></div></div></div></div><div id="modals"><div class="aLJlC9"></div></div></div></div>
+
+
+    
+        <script type="module" src="/assets/client/1784795849464/js/rolldown-runtime.CF6gOSGR.js"></script>
+    
+        <script type="module" src="/assets/client/1784795849464/js/vendor.react.DiqfLEKG.js"></script>
+    
+        <script type="module" src="/assets/client/1784795849464/js/vendor.mobx.D0FmfHEX.js"></script>
+    
+        <script type="module" src="/assets/client/1784795849464/js/sandbox.C5IiIcjt.js"></script>
+    
+        <script type="module" src="/assets/client/1784795849464/js/axios.D6gxI1a_.js"></script>
+    
+        <script type="module" src="/assets/client/1784795849464/js/reporter.Dj0txsug.js"></script>
+    
+        <script type="module" src="/assets/client/1784795849464/js/vendor.lodash.BG4gfo70.js"></script>
+    
+        <script type="module" src="/assets/client/1784795849464/js/configuration.dFQqpDSO.js"></script>
+    
+        <script type="module" src="/assets/client/1784795849464/js/service.xpMUmEwe.js"></script>
+    
+        <script type="module" src="/assets/client/1784795849464/js/base64.CKjo64xl.js"></script>
+    
+        <script type="module" src="/assets/client/1784795849464/js/LocalStorage.D-Cfj_um.js"></script>
+    
+        <script type="module" src="/assets/client/1784795849464/js/light.module.BkEV51EF.js"></script>
+    
+        <script type="module" src="/assets/client/1784795849464/js/array.BSqQvBGG.js"></script>
+    
+        <script type="module" src="/assets/client/1784795849464/js/Me.CpoATLuw.js"></script>
+    
+        <script type="module" src="/assets/client/1784795849464/js/string.ITsG3pCh.js"></script>
+    
+        <script type="module" src="/assets/client/1784795849464/js/storeProvider.CBZle6ba.js"></script>
+    
+        <script type="module" src="/assets/client/1784795849464/js/Button.DA6T5iEL.js"></script>
+    
+        <script type="module" src="/assets/client/1784795849464/js/ui-kit.odhFBhgr.js"></script>
+    
+        <script type="module" src="/assets/client/1784795849464/js/assign.C7dnSt3G.js"></script>
+    
+        <script type="module" src="/assets/client/1784795849464/js/Analytics.Q2jKCfxI.js"></script>
+    
+        <script type="module" src="/assets/client/1784795849464/js/Modal.ClzX8S8k.js"></script>
+    
+        <script type="module" src="/assets/client/1784795849464/js/react-use-intercom.esm.U05srS-V.js"></script>
+    
+        <script type="module" src="/assets/client/1784795849464/js/Reflect.NFwEcNRJ.js"></script>
+    
+        <script type="module" src="/assets/client/1784795849464/js/TariffLimitationModal.QnD0IySd.js"></script>
+    
+        <script type="module" src="/assets/client/1784795849464/js/locked-features.BLX7_9J4.js"></script>
+    
+        <script type="module" src="/assets/client/1784795849464/js/HintText.DXM1ZFQN.js"></script>
+    
+        <script type="module" src="/assets/client/1784795849464/js/ErrorPage.BdQDIVLu.js"></script>
+    
+        <script type="module" src="/assets/client/1784795849464/js/layoutTheme.PvIl7ZsJ.js"></script>
+    
+        <script type="module" src="/assets/client/1784795849464/js/features.CsWKDGLW.js"></script>
+    
+        <script type="module" src="/assets/client/1784795849464/js/ResourcesStore.Cd4xqxxk.js"></script>
+    
+        <script type="module" src="/assets/client/1784795849464/js/consts.C7HgfYL8.js"></script>
+    
+        <script type="module" src="/assets/client/1784795849464/js/entry.main.Di2ytZHT.js"></script>
+    
+
+
+
+<iframe name="__privateStripeMetricsController8390" frameborder="0" allowtransparency="true" scrolling="no" role="presentation" allow="payment *" src="https://js.stripe.com/v3/m-outer-3437aaddcdf6922d623e172c2d6f9278.html#url=https%3A%2F%2Fapp.qase.io%2Fprojects&amp;title=Projects%20%7C%20Qase&amp;referrer=&amp;muid=9e541beb-53fb-416f-a1a1-c80c5a72cf30cc00ca&amp;sid=8a9c8b38-34c8-43e9-9863-3ec35839c073127462&amp;version=6&amp;preview=false&amp;__shared_params__[version]=basil" aria-hidden="true" tabindex="-1" style="border-width: medium !important; border-style: none !important; border-color: currentcolor !important; border-image: none !important; margin: 0px !important; padding: 0px !important; width: 1px !important; min-width: 100% !important; overflow: hidden !important; display: block !important; visibility: hidden !important; position: fixed !important; height: 1px !important; pointer-events: none !important; user-select: none !important;"></iframe></body></html>
