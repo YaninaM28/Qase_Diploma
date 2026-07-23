@@ -23,7 +23,7 @@ public class LoginTest extends BaseTest {
                 user,
                 password
         );
-        webdriver().shouldHave(urlContaining("/projects"));
+        dashboardPage.waitUntilOpened();
         $(byText(CREATE_NEW_PROJECT)).shouldBe(visible);
     }
 

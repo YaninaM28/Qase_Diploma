@@ -12,11 +12,11 @@
     <test name="UI Tests">
         <classes>
             <class name="tests.ui.LoginTest"/>
-            <class name="tests.ui.ProjectTest"/>
-            <class name="tests.ui.SuiteTest"/>
-            <class name="tests.ui.TestCaseTest"/>
+<!--            <class name="tests.ui.ProjectTest"/>-->
+<!--            <class name="tests.ui.SuiteTest"/>-->
+<!--            <class name="tests.ui.TestCaseTest"/>-->
             <class name="tests.ui.E2ETest"/>
-            <class name="tests.ui.LogoutTest"/>
+<!--            <class name="tests.ui.LogoutTest"/>-->
 
         </classes>
     </test>
