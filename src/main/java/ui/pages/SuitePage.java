@@ -18,13 +18,12 @@ public class SuitePage {
     private final String SUBMIT_CREATE = "Create";
     private final String DELETE_SUITE_OPTION = "Delete";
     private final String DELETE_SUITE_CONFIRMATION = "//span[contains(text(),'Are you sure you want to delete the suite')]";
-    private final String CONFIRM_DELETE_SUITE = "//div[text()='Delete the suite and all its test cases']";
+//    private final String CONFIRM_DELETE_SUITE = "//div[text()='Delete the suite and all its test cases']";
     private final String DELETE_SUITE = "//button[.//span[text()='Delete']]";
     private final String SAVE_SUITE_BUTTON = "Save";
     private final String MENU_BUTTON = "svg[data-icon='ellipsis-vertical']";
     private final String SELECT_CREATE_SUITE_OPTION = "Create suite";
     private final String EDIT_SUITE = "Edit";
-
 
     @Step("Открыть форму создания suite")
     public SuitePage openCreateSuiteForm() {

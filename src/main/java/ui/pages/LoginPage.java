@@ -7,10 +7,8 @@ import lombok.extern.log4j.Log4j2;
 
 import java.time.Duration;
 
-import static com.codeborne.selenide.Condition.enabled;
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selectors.shadowCss;
 import static com.codeborne.selenide.Selenide.*;
 
 @Log4j2
@@ -38,39 +36,39 @@ public class LoginPage {
     public LoginPage login(String user, String password) {
         log.info("Opening Login page");
         acceptCookiesIfPresent();
-        $(LOGIN).shouldBe(visible, Duration.ofSeconds(10)).setValue(user);
-        $(PASSWORD).shouldBe(visible, Duration.ofSeconds(10)).setValue(password);
+        $(LOGIN).shouldBe(visible, Duration.ofSeconds(10)).sendKeys(user);
+        $(PASSWORD).shouldBe(visible, Duration.ofSeconds(10)).sendKeys(password);
+        $(PASSWORD).shouldHave(value(password));
         log.info("User = {}", user);
         log.info("Password empty = {}", password == null || password.isEmpty());
         SelenideElement signInButton = $(byText(SIGN_IN))
                 .shouldBe(visible, Duration.ofSeconds(15))
                 .shouldBe(enabled, Duration.ofSeconds(15));
         signInButton.click();
-//        $(byText(SIGN_IN)).shouldBe(visible, Duration.ofSeconds(10)).click();
-//        webdriver().shouldHave(urlContaining("/projects"), Duration.ofSeconds(20));
         log.info("User logged in");
         return this;
     }
 
     private void acceptCookiesIfPresent() {
-        try {
-            SelenideElement acceptButton = $(shadowCss("#accept", "#usercentrics-cmp-ui"));
-
-            if (!acceptButton.exists()) {
-                acceptButton = $(byText("Accept all"));
-//                acceptButton.shouldBe(visible).click();
-            }
-            if (acceptButton.exists()) {
-                acceptButton.shouldBe(visible, Duration.ofSeconds(5)).click();
-                log.info("Cookie banner closed");
-            }
-//            else {
-//                log.info("Usercentrics cookie banner not found. Continue without accepting cookies.");
+//        try {
+//            SelenideElement acceptButton = $(shadowCss("#accept", "#usercentrics-cmp-ui"));
+//
+//            if (!acceptButton.exists()) {
+//                acceptButton = $(byText("Accept all"));
 //            }
+//            if (acceptButton.exists()) {
+//                acceptButton.shouldBe(visible, Duration.ofSeconds(5)).click();
+//                log.info("Cookie banner closed");
+//            }
+//
+//        } catch (Exception e) {
+//            log.warn("Unable to accept cookies. Continue without it.", e);
+//        }
+        executeJavaScript (
+                        "let uc = document.getElementById('usercentrics-cmp-ui');" +
+                                "if (uc) uc.remove();"
+        );
 
-        } catch (Exception e) {
-            log.warn("Unable to accept cookies. Continue without it.", e);
-        }
     }
 
     @Step("Выход из системы")

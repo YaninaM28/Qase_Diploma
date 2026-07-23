@@ -30,7 +30,6 @@ public class BaseAdapter {
                     "Token is missing. Add -Dtoken or token in config.properties"
             );
         }
-
         return token;
     }
 
