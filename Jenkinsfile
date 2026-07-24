@@ -104,11 +104,6 @@ pipeline {
                             -Dpassword=${QASE_PASSWORD_VAL} \
                             -Dtoken=${QASE_TOKEN_VAL} \
                             -Dselenide.headless=${HEADLESS} \
-                            -Dselenide.timeout=30000 \
-                            -Dselenide.pageLoadTimeout=45000 \
-                            -Dselenide.fastSetValue=true \
-                            -Dselenide.clickViaJs=true \
-                            -Dselenide.browserSize=1920x1080 \
                             || true
                     '''
                 }

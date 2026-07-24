@@ -4,11 +4,13 @@ import io.qameta.allure.*;
 import org.testng.annotations.Test;
 import tests.base.BaseTest;
 
+import java.time.Duration;
+
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.webdriver;
 import static com.codeborne.selenide.WebDriverConditions.urlContaining;
-import static ui.pages.LoginPage.CREATE_NEW_PROJECT;
 
 public class LoginTest extends BaseTest {
     @Test(groups = "smoke")
@@ -19,12 +21,9 @@ public class LoginTest extends BaseTest {
     @Description("Проверка успешной авторизации пользователя")
     public void checkLoginWithPositiveCred() {
         loginPage.openPage();
-        loginPage.login(
-                user,
-                password
-        );
-        dashboardPage.waitUntilOpened();
-        $(byText(CREATE_NEW_PROJECT)).shouldBe(visible);
+        loginPage.login(user, password);
+        webdriver().shouldHave(urlContaining("/projects"), Duration.ofSeconds(10));
+        $(byText("Create new project")).shouldBe(visible, Duration.ofSeconds(10));
     }
 
     @Test(groups = "regression")
@@ -34,7 +33,7 @@ public class LoginTest extends BaseTest {
     @Story("Login")
     public void checkLoginWithEmptyPassword() {
         loginPage.openPage();
-        loginPage.login(user,"");
+        loginPage.login(user, "");
         webdriver().shouldHave(urlContaining("/login"));
         $(byText("This field is required")).shouldBe(visible);
     }
@@ -58,9 +57,8 @@ public class LoginTest extends BaseTest {
     @Story("Login")
     public void checkLoginWithNegativeCred() {
         loginPage.openPage();
-        loginPage.login("test@gmail.com","password");
-        sleep(2000);
-        webdriver().shouldHave(urlContaining("/reset"));
-        $(byText("Send password reset link")).shouldBe(visible);
+        loginPage.login("test@gmail.com", "password");
+        $(byText("These credentials do not match our records.")).shouldBe(visible, Duration.ofSeconds(10));
+        webdriver().shouldHave(urlContaining("/login"));
     }
 }

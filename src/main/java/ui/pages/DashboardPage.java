@@ -29,7 +29,6 @@ public class DashboardPage {
     @Step("Дождаться открытия Dashboard")
     public DashboardPage waitUntilOpened() {
         webdriver().shouldHave(urlContaining("/projects"), Duration.ofSeconds(20));
-        $(byText(CREATE_NEW_PROJECT)).shouldBe(visible, Duration.ofSeconds(15));
         return this;
     }
 
@@ -67,8 +66,9 @@ public class DashboardPage {
         $(byText(projectName))
                 .ancestor("tr")
                 .find(ACTION_MENU)
+                .shouldBe(visible, Duration.ofSeconds(10))
                 .click();
-        $(EDIT_BUTTON).click();
+        $(EDIT_BUTTON).shouldBe(visible, Duration.ofSeconds(10)).click();
         return new ProjectPage();
     }
 
@@ -78,9 +78,11 @@ public class DashboardPage {
         $(byText(projectName))
                 .ancestor("tr")
                 .find(ACTION_MENU)
+                .shouldBe(visible, Duration.ofSeconds(10))
                 .click();
-        $(REMOVE_BUTTON).click();
-        $x(CONFIRM_DELETE_BUTTON).click();
+        $(REMOVE_BUTTON).shouldBe(visible, Duration.ofSeconds(10)).click();
+        $x(CONFIRM_DELETE_BUTTON).shouldBe(visible, Duration.ofSeconds(10)).click();
+        $x(CONFIRM_DELETE_BUTTON).shouldNotBe(visible, Duration.ofSeconds(10));
         return this;
     }
 }

@@ -28,6 +28,7 @@ public class SuitePage {
     @Step("Открыть форму создания suite")
     public SuitePage openCreateSuiteForm() {
         log.info("Opening suite creation form");
+        $(byText(CREATE_NEW_SUITE)).shouldBe(visible);
         $(byText(CREATE_NEW_SUITE)).click();
         return this;
     }

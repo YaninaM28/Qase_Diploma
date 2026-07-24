@@ -60,10 +60,11 @@ public class BaseTest {
         Configuration.browser = browser;
         Configuration.headless = Boolean.parseBoolean(System.getProperty("selenide.headless", "false"));
         Configuration.baseUrl = "https://app.qase.io";
-        Configuration.timeout = 30000;
-        Configuration.pageLoadTimeout = 45000;
-        Configuration.fastSetValue = true;
-        Configuration.clickViaJs = true;
+        Configuration.timeout = 10000;
+        Configuration.pageLoadTimeout = 30000;
+        Configuration.pageLoadStrategy = "normal";
+//        Configuration.fastSetValue = true;
+//        Configuration.clickViaJs = true;
         Configuration.browserSize = "1920x1080";
 
         if (browser.equalsIgnoreCase("chrome")) {
@@ -80,11 +81,16 @@ public class BaseTest {
             options.addArguments("--no-sandbox");
             options.addArguments("--disable-dev-shm-usage");
             options.addArguments("--disable-gpu");
+            options.addArguments("--disable-background-networking");
+            options.addArguments("--disable-background-timer-throttling");
+            options.addArguments("--disable-renderer-backgrounding");
+            options.addArguments("--disable-features=Translate,BackForwardCache,MediaRouter");
             options.addArguments("--disable-blink-features=AutomationControlled");
 
 
             if (Configuration.headless) {
                 options.addArguments("--headless=new");
+                options.addArguments("--window-size=1920,1080");
             }
 
             Configuration.browserCapabilities = options;

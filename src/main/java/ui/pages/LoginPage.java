@@ -7,8 +7,9 @@ import lombok.extern.log4j.Log4j2;
 
 import java.time.Duration;
 
-import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selectors.byText;
+import static com.codeborne.selenide.Condition.enabled;
+import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 
 @Log4j2
@@ -21,54 +22,40 @@ public class LoginPage {
     private final String PASSWORD = "[name=password]";
     private final String USER_AVATAR = "img[aria-label='User avatar']";
     private final String LOGOUT = "Sign out";
+    private final String SIGN_IN_BUTTON = "button[type='submit']";
 
     @Step("Открыть страницу логина")
     public LoginPage openPage() {
         open("/login");
         log.info("URL: {}", WebDriverRunner.url());
-        log.info("Title: {}", title());
         acceptCookiesIfPresent();
-        sleep(500);
         return this;
     }
 
     @Step("Авторизоваться своим юзером")
     public LoginPage login(String user, String password) {
-        log.info("Opening Login page");
-        acceptCookiesIfPresent();
-        $(LOGIN).shouldBe(visible, Duration.ofSeconds(10)).sendKeys(user);
-        $(PASSWORD).shouldBe(visible, Duration.ofSeconds(10)).sendKeys(password);
-        $(PASSWORD).shouldHave(value(password));
-        log.info("User = {}", user);
-        log.info("Password empty = {}", password == null || password.isEmpty());
-        SelenideElement signInButton = $(byText(SIGN_IN))
-                .shouldBe(visible, Duration.ofSeconds(15))
-                .shouldBe(enabled, Duration.ofSeconds(15));
-        signInButton.click();
-        log.info("User logged in");
+        log.info("Logging in as {}", user);
+        $(byName("email")).shouldBe(visible, Duration.ofSeconds(10)).setValue(user);
+        $(byName("password")).shouldBe(visible, Duration.ofSeconds(10)).setValue(password);
+        $(SIGN_IN_BUTTON).shouldBe(enabled, Duration.ofSeconds(10)).click();
         return this;
     }
 
     private void acceptCookiesIfPresent() {
-//        try {
-//            SelenideElement acceptButton = $(shadowCss("#accept", "#usercentrics-cmp-ui"));
-//
-//            if (!acceptButton.exists()) {
-//                acceptButton = $(byText("Accept all"));
-//            }
-//            if (acceptButton.exists()) {
-//                acceptButton.shouldBe(visible, Duration.ofSeconds(5)).click();
-//                log.info("Cookie banner closed");
-//            }
-//
-//        } catch (Exception e) {
-//            log.warn("Unable to accept cookies. Continue without it.", e);
-//        }
-        executeJavaScript (
-                        "let uc = document.getElementById('usercentrics-cmp-ui');" +
-                                "if (uc) uc.remove();"
-        );
-
+        try {
+            executeJavaScript("localStorage.setItem('uc_user_interaction', 'true');");
+            executeJavaScript("localStorage.setItem('usercentrics_id', 'test');");
+            
+            if (shadowCss("#accept", "#usercentrics-cmp-ui").toString().contains("#accept")) {
+               SelenideElement acceptButton = $(shadowCss("#accept", "#usercentrics-cmp-ui"));
+               if (acceptButton.is(visible)) {
+                   acceptButton.click();
+                   log.info("Cookie banner closed via shadow DOM");
+               }
+            }
+        } catch (Exception e) {
+            log.warn("Unable to handle cookies, continuing: {}", e.getMessage());
+        }
     }
 
     @Step("Выход из системы")
