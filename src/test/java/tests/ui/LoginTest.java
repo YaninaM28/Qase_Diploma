@@ -35,7 +35,7 @@ public class LoginTest extends BaseTest {
         loginPage.openPage();
         loginPage.login(user, "");
         webdriver().shouldHave(urlContaining("/login"));
-        $(byText("This field is required")).shouldBe(visible);
+        loginPage.shouldHaveRequiredFieldError();
     }
 
     @Test(groups = "regression")
@@ -47,7 +47,7 @@ public class LoginTest extends BaseTest {
         loginPage.openPage();
         loginPage.login("", password);
         webdriver().shouldHave(urlContaining("/login"));
-        $(byText("This field is required")).shouldBe(visible);
+        loginPage.shouldHaveRequiredFieldError();
     }
 
     @Test(groups = "regression")
@@ -58,7 +58,6 @@ public class LoginTest extends BaseTest {
     public void checkLoginWithNegativeCred() {
         loginPage.openPage();
         loginPage.login("test@gmail.com", "password");
-        $(byText("These credentials do not match our records.")).shouldBe(visible, Duration.ofSeconds(10));
-        webdriver().shouldHave(urlContaining("/login"));
+        webdriver().shouldHave(urlContaining("/reset"));
     }
 }

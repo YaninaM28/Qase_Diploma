@@ -1,31 +1,12 @@
-/**
- * Qase Automation Framework - CI/CD Pipeline
- * 
- * Jenkins Pipeline for automated test execution with:
- * - Multiple browser support (Chrome, Firefox)
- * - Allure reporting
- * - Email notifications
- * - Artifact archiving
- * 
- * Requirements:
- * - Maven 3.9.6+
- * - Java 17+
- * - Chrome or Firefox browser
- * - Jenkins plugins: Email Extension, Allure
- * - Jenkins credentials: QASE_USER, QASE_PASSWORD, QASE_TOKEN
- */
-
 pipeline {
     agent any
 
     options {
-        // Limit build history to save disk space
+        // ограничение билдов для экономии места на диске!
         buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '5'))
-        // Timeout the build after 30 minutes
         timeout(time: 30, unit: 'MINUTES')
-        // Disable concurrent builds for this job
+        // отключение параллельной сборки
         disableConcurrentBuilds()
-        // Add timestamps to console output
         timestamps()
     }
 
@@ -112,7 +93,6 @@ pipeline {
 
         stage('Generate Allure Report') {
             when {
-                // Always generate report, even if tests fail
                 always {}
             }
             steps {

@@ -87,7 +87,6 @@ public class BaseTest {
             options.addArguments("--disable-features=Translate,BackForwardCache,MediaRouter");
             options.addArguments("--disable-blink-features=AutomationControlled");
 
-
             if (Configuration.headless) {
                 options.addArguments("--headless=new");
                 options.addArguments("--window-size=1920,1080");

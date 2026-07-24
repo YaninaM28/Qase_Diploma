@@ -18,13 +18,12 @@ public class ProjectAPITest extends BaseAPITest {
     @Story("Create Project")
     @Description("Проверка создания нового проекта через API")
     public void checkCreateProject() {
-        String newProjectCode = "QA" + System.currentTimeMillis();
+        String newProjectCode = "QA" + System.currentTimeMillis() % 1000000;
         ProjectRq rq = ProjectRq.builder()
                 .title("QA34")
                 .code(newProjectCode)
                 .description("test")
                 .access("all")
-                .group("test")
                 .build();
 
         ProjectRs rs = createProject(rq);

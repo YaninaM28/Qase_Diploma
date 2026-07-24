@@ -24,6 +24,8 @@ public class LoginPage {
     private final String USER_AVATAR = "img[aria-label='User avatar']";
     private final String LOGOUT = "Sign out";
     private final String SIGN_IN_BUTTON = "button[type='submit']";
+    private static final String REQUIRED_FIELD = "This field is required";
+    private static final String INVALID_CREDENTIALS = "These credentials do not match our records.";
 
     @Step("Открыть страницу логина")
     public LoginPage openPage() {
@@ -43,20 +45,6 @@ public class LoginPage {
     }
 
     private void acceptCookiesIfPresent() {
-//        try {
-//            executeJavaScript("localStorage.setItem('uc_user_interaction', 'true');");
-//            executeJavaScript("localStorage.setItem('usercentrics_id', 'test');");
-//
-//            if (shadowCss("#accept", "#usercentrics-cmp-ui").toString().contains("#accept")) {
-//               SelenideElement acceptButton = $(shadowCss("#accept", "#usercentrics-cmp-ui"));
-//               if (acceptButton.is(visible)) {
-//                   acceptButton.click();
-//                   log.info("Cookie banner closed via shadow DOM");
-//               }
-//            }
-//        } catch (Exception e) {
-//            log.warn("Unable to handle cookies, continuing: {}", e.getMessage());
-//        }
         try {
             SelenideElement acceptButton =
                     $(shadowCss("#accept", "#usercentrics-cmp-ui"));
@@ -70,6 +58,19 @@ public class LoginPage {
         } catch (Throwable e) {
             log.info("Cookie banner not displayed");
         }
+    }
+
+    @Step("Проверить сообщение об обязательном поле")
+    public LoginPage shouldHaveRequiredFieldError() {
+        $(byText(REQUIRED_FIELD)).shouldBe(visible);
+        return this;
+    }
+
+    @Step("Проверить сообщение о неверных учетных данных")
+    public LoginPage shouldHaveInvalidCredentialsError() {
+        $(byText(INVALID_CREDENTIALS))
+                .shouldBe(visible, Duration.ofSeconds(10));
+        return this;
     }
 
     @Step("Выход из системы")

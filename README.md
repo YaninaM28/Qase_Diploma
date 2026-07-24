@@ -5,20 +5,20 @@
 ![Selenide](https://img.shields.io/badge/Selenide-7.16.2-green)
 ![TestNG](https://img.shields.io/badge/TestNG-Framework-red)
 ![Allure](https://img.shields.io/badge/Allure-Report-blue)
-![Jenkins](https://img.shields.io/badge/GitActions-CI-critical)
+![Jenkins](https://img.shields.io/badge/GitActions+Jenkins-CI-critical)
 
 ---
 # 🛠 Technology Stack
 
-| Technology                | Purpose |
-|---------------------------|---------|
-| ☕ Java 17                 | Programming language |
-| 📦 Maven                  | Build tool |
-| 🌐 Selenide               | UI automation |
-| ✅ TestNG                  | Test framework |
-| 📊 Allure                 | Test reporting |
-| 📝 Log4j2                 | Logging |
-| 🔄 GitActions (+Jenkins?) | Continuous Integration |
+| Technology               | Purpose |
+|--------------------------|---------|
+| ☕ Java 17                | Programming language |
+| 📦 Maven                 | Build tool |
+| 🌐 Selenide              | UI automation |
+| ✅ TestNG                 | Test framework |
+| 📊 Allure                | Test reporting |
+| 📝 Log4j2                | Logging |
+| 🔄 GitActions (+Jenkins) | Continuous Integration |
 
 ---
 
