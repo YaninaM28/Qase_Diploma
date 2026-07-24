@@ -18,7 +18,6 @@
             <class name="tests.ui.TestCaseTest"/>
             <class name="tests.ui.E2ETest"/>
             <class name="tests.ui.LogoutTest"/>
-
         </classes>
     </test>
 
@@ -28,6 +27,4 @@
             <class name="tests.api.CaseAPITest"/>
         </classes>
     </test>
-
-
     </suite>
