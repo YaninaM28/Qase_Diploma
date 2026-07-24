@@ -19,7 +19,6 @@ public class TestCasePage {
     private final String DESCRIPTION = "div[contenteditable='true']";
     private final String SAVE_TEST_CASE_BUTTON = "Save";
     private final String CANCEL_TEST_CASE_BUTTON = "Cancel";
-//    private final String CONFIRM_DELETE_TEST_CASE = "//div[text()='Delete the test case']";
     private final String DELETE_TEST_CASE = "//span[text()='Delete']";
     private final String ADD_TEST_CASE_STEP = "//span[text()='New step']";
     private final String STEP_ACTION = "div[data-placeholder='Step action']";

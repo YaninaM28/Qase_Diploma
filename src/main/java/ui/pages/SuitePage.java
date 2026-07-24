@@ -4,26 +4,37 @@ import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 
-import static com.codeborne.selenide.Condition.exist;
-import static com.codeborne.selenide.Condition.visible;
+import java.time.Duration;
+
+import static com.codeborne.selenide.CollectionCondition.size;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 @Log4j2
 public class SuitePage {
 
+    private static final String EMPTY_SUITE_MESSAGE = "Looks like you don’t have any suites and cases yet.";
     private final String CREATE_NEW_SUITE = "Create new suite";
     private final String SUITE_NAME = "#title";
     private final String DESCRIPTION = "#description";
     private final String SUBMIT_CREATE = "Create";
     private final String DELETE_SUITE_OPTION = "Delete";
     private final String DELETE_SUITE_CONFIRMATION = "//span[contains(text(),'Are you sure you want to delete the suite')]";
-//    private final String CONFIRM_DELETE_SUITE = "//div[text()='Delete the suite and all its test cases']";
     private final String DELETE_SUITE = "//button[.//span[text()='Delete']]";
     private final String SAVE_SUITE_BUTTON = "Save";
     private final String MENU_BUTTON = "svg[data-icon='ellipsis-vertical']";
+    private final String DUPLICATE_OPTION = "Duplicate";
+    private final String CLONE_BUTTON = "Clone";
     private final String SELECT_CREATE_SUITE_OPTION = "Create suite";
     private final String EDIT_SUITE = "Edit";
+
+    @Step("Проверить, что у проекта нет созданных suites и cases")
+    public SuitePage shouldHaveEmptySuite() {
+        $(byText(EMPTY_SUITE_MESSAGE))
+                .shouldBe(visible, Duration.ofSeconds(10));
+        return this;
+    }
 
     @Step("Открыть форму создания suite")
     public SuitePage openCreateSuiteForm() {
@@ -104,6 +115,26 @@ public class SuitePage {
     public SuitePage saveEditedSuite() {
         log.info("Saving suite changes");
         $(byText(SAVE_SUITE_BUTTON)).click();
+        return this;
+    }
+
+    @Step("Дублировать suite")
+    public SuitePage duplicateSuite(String suiteName) {
+        log.info("Duplicating Suite {}", suiteName);
+        $(MENU_BUTTON).click();
+        $(byText(DUPLICATE_OPTION)).click();
+        $$("button")
+                .findBy(exactText(CLONE_BUTTON))
+                .shouldBe(visible, Duration.ofSeconds(10))
+                .click();
+        return this;
+    }
+
+    @Step("Проверить, что создано 2 suites с именем {suiteName}")
+    public SuitePage shouldHaveTwoSuites(String suiteName) {
+        log.info("2 Suites are displayed");
+        $$x(String.format("//*[text()='%s']", suiteName))
+                .shouldHave(size(2), Duration.ofSeconds(10));
         return this;
     }
 

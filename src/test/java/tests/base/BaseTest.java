@@ -37,7 +37,7 @@ public class BaseTest {
                 new AllureSelenide()
                         .screenshots(true)
                         .savePageSource(true)
-                        .includeSelenideSteps(true)
+                        .includeSelenideSteps(false)
         );
 
         user = System.getProperty("user");
@@ -63,8 +63,6 @@ public class BaseTest {
         Configuration.timeout = 10000;
         Configuration.pageLoadTimeout = 30000;
         Configuration.pageLoadStrategy = "normal";
-//        Configuration.fastSetValue = true;
-//        Configuration.clickViaJs = true;
         Configuration.browserSize = "1920x1080";
 
         if (browser.equalsIgnoreCase("chrome")) {
@@ -91,8 +89,8 @@ public class BaseTest {
                 options.addArguments("--headless=new");
                 options.addArguments("--window-size=1920,1080");
             }
-
             Configuration.browserCapabilities = options;
+
         } else if (browser.equalsIgnoreCase("firefox")) {
 
             FirefoxOptions options = new FirefoxOptions();
@@ -105,8 +103,8 @@ public class BaseTest {
             if (Configuration.headless) {
                 options.addArguments("--headless");
             }
-
             Configuration.browserCapabilities = options;
+
         } else {
             throw new IllegalArgumentException("Unsupported browser: " + browser);
         }

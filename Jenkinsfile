@@ -2,10 +2,8 @@ pipeline {
     agent any
 
     options {
-        // ограничение билдов для экономии места на диске!
         buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '5'))
         timeout(time: 30, unit: 'MINUTES')
-        // отключение параллельной сборки
         disableConcurrentBuilds()
         timestamps()
     }
@@ -29,38 +27,14 @@ pipeline {
         )
     }
 
-    environment {
-        // Build information
-        BUILD_INFO = "Build #${env.BUILD_NUMBER} on ${env.NODE_NAME}"
-        // Allure results directory
-        ALLURE_RESULTS_DIR = "${WORKSPACE}/target/allure-results"
-        // Log file path
-        LOG_FILE = "${WORKSPACE}/target/tests.log"
-    }
-
     stages {
         stage('Checkout') {
             steps {
-                script {
-                    echo "=== STAGE: Checkout Code ==="
-                    echo "Build: ${BUILD_INFO}"
-                }
-                // Clone repository
                 checkout([
                     $class: 'GitSCM',
                     branches: [[name: '*/main']],
                     userRemoteConfigs: [[url: 'https://github.com/YaninaM28/Qase_Diploma.git']]
                 ])
-            }
-        }
-
-        stage('Build') {
-            steps {
-                script {
-                    echo "=== STAGE: Build Project ==="
-                }
-                // Clean and compile
-                sh 'mvn clean compile -DskipTests=true'
             }
         }
 
@@ -90,37 +64,11 @@ pipeline {
                 }
             }
         }
-
-        stage('Generate Allure Report') {
-            when {
-                always {}
-            }
-            steps {
-                script {
-                    echo "=== STAGE: Generate Allure Report ==="
-                }
-                sh 'mvn allure:report || true'
-            }
-        }
     }
 
     post {
         always {
-            script {
-                echo "=== POST: Always Execute ==="
-            }
-
-            // Archive test results
             junit '**/target/surefire-reports/TEST-*.xml'
-
-            // Archive Allure results
-            archiveArtifacts artifacts: 'target/allure-results/**', 
-                             allowEmptyArchive: true,
-                             fingerprint: true
-
-            // Archive logs
-            archiveArtifacts artifacts: 'target/tests.log',
-                             allowEmptyArchive: true
 
             // Generate Allure report in Jenkins
             allure([
@@ -137,11 +85,6 @@ pipeline {
         }
 
         success {
-            script {
-                echo "=== POST: Tests Passed ✅ ==="
-            }
-            
-            // Send success email
             emailext(
                 subject: "✅ Test Execution Successful - Build #${BUILD_NUMBER}",
                 body: '''
@@ -173,15 +116,10 @@ pipeline {
                     <h2>❌ Test Execution FAILED</h2>
                     <p><b>Job:</b> ${JOB_NAME}</p>
                     <p><b>Build Number:</b> ${BUILD_NUMBER}</p>
-                    <p><b>Build URL:</b> <a href="${BUILD_URL}">${BUILD_URL}</a></p>
                     <p><b>Browser:</b> ${BROWSER}</p>
                     <p><b>Headless:</b> ${HEADLESS}</p>
                     <br/>
-                    <h3>⚠️ Failed Tests Found!</h3>
-                    <p>Please review the test results and logs to identify the failures.</p>
-                    <br/>
                     <p><b>Allure Report:</b> <a href="${BUILD_URL}allure/">View Report</a></p>
-                    <p><b>Test Results:</b> <a href="${BUILD_URL}testReport/">Test Report</a></p>
                     <p><b>Console Output:</b> <a href="${BUILD_URL}console">View Logs</a></p>
                     <br/>
                     <p><b>Error Log Excerpt:</b></p>
@@ -191,22 +129,6 @@ pipeline {
                 attachmentsPattern: '**/target/site/allure-report/**',
                 mimeType: 'text/html'
             )
-
-            // Mark build as unstable if tests fail
-            currentBuild.result = 'UNSTABLE'
-        }
-
-        unstable {
-            script {
-                echo "=== POST: Build Unstable ⚠️ ==="
-            }
-        }
-
-        cleanup {
-            script {
-                echo "=== POST: Cleanup ==="
-                echo "Workspace: ${WORKSPACE}"
-            }
         }
     }
 }

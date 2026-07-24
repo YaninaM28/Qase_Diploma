@@ -24,7 +24,6 @@ public class BaseAdapter {
         if (token == null || token.isEmpty()) {
             token = PropertyReader.getProperty("token");
         }
-
         if (token == null || token.isEmpty()) {
             throw new IllegalArgumentException(
                     "Token is missing. Add -Dtoken or token in config.properties"

@@ -51,11 +51,12 @@
 |        | ---------------------------------------------------- | |
 | TC-009 | Edit Project                                         | ✅ |
 | TC-010 | Edit Suite                                           | ✅ |
-| TC-011 | Cancel Test Case                                     | ✅ |
-| TC-012 | Delete Test Case                                     | ✅ |
-| TC-013 | Delete Suite                                         | ✅ |
-| TC-014 | Delete Project                                       | ✅ |
-| TC-015 | Logout Test                                          | ✅ |
+| TC-011 | Duplicate Suite                                      | ✅ |
+| TC-012 | Cancel Test Case                                     | ✅ |
+| TC-013 | Delete Test Case                                     | ✅ |
+| TC-014 | Delete Suite                                         | ✅ |
+| TC-015 | Delete Project                                       | ✅ |
+| TC-016 | Logout Test                                          | ✅ |
 
 ---
 
@@ -101,7 +102,6 @@ Logout
 | Dependencies          | ✅ |
 | Project Structure     | ✅ |
 | Base Test             | ✅ |
-| Driver Configuration  | ✅ |
 | Login Page            | ✅ |
 | Dashboard Page        | ✅ |
 | Project Page          | ✅ |

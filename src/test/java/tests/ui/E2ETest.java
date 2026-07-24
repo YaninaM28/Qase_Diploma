@@ -36,7 +36,7 @@ public class E2ETest extends BaseTest {
                 .setTestCaseStep()
                 .saveTestCase();
         testCasePage.shouldNotHaveTestCase(testCaseName)
-                     .deleteTestCase(testCaseName);
+                .deleteTestCase(testCaseName);
         dashboardPage.openPage()
                 .deleteProject(projectName)
                 .shouldNotHaveProject(projectName);

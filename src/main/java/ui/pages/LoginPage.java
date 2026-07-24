@@ -25,7 +25,6 @@ public class LoginPage {
     private final String LOGOUT = "Sign out";
     private final String SIGN_IN_BUTTON = "button[type='submit']";
     private static final String REQUIRED_FIELD = "This field is required";
-    private static final String INVALID_CREDENTIALS = "These credentials do not match our records.";
 
     @Step("Открыть страницу логина")
     public LoginPage openPage() {
@@ -38,23 +37,17 @@ public class LoginPage {
     @Step("Авторизоваться своим юзером")
     public LoginPage login(String user, String password) {
         log.info("Logging in as {}", user);
-        $(byName("email")).shouldBe(visible, Duration.ofSeconds(10)).setValue(user);
-        $(byName("password")).shouldBe(visible, Duration.ofSeconds(10)).setValue(password);
+        $(LOGIN).shouldBe(visible, Duration.ofSeconds(10)).setValue(user);
+        $(PASSWORD).shouldBe(visible, Duration.ofSeconds(10)).setValue(password);
         $(SIGN_IN_BUTTON).shouldBe(enabled, Duration.ofSeconds(10)).click();
         return this;
     }
 
     private void acceptCookiesIfPresent() {
         try {
-            SelenideElement acceptButton =
-                    $(shadowCss("#accept", "#usercentrics-cmp-ui"));
-
-            acceptButton
-                    .shouldBe(visible, Duration.ofSeconds(10))
-                    .click();
-
+            SelenideElement acceptButton = $(shadowCss("#accept", "#usercentrics-cmp-ui"));
+            acceptButton.shouldBe(visible, Duration.ofSeconds(10)).click();
             log.info("Cookie banner closed");
-
         } catch (Throwable e) {
             log.info("Cookie banner not displayed");
         }
@@ -63,13 +56,6 @@ public class LoginPage {
     @Step("Проверить сообщение об обязательном поле")
     public LoginPage shouldHaveRequiredFieldError() {
         $(byText(REQUIRED_FIELD)).shouldBe(visible);
-        return this;
-    }
-
-    @Step("Проверить сообщение о неверных учетных данных")
-    public LoginPage shouldHaveInvalidCredentialsError() {
-        $(byText(INVALID_CREDENTIALS))
-                .shouldBe(visible, Duration.ofSeconds(10));
         return this;
     }
 
