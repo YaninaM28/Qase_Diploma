@@ -1,0 +1,7 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"Проверка создания нового проекта через API","242","checkCreateProject","Qase Automation Suite","2026-07-24","skipped","2026-07-24","tests.api.ProjectAPITest","API TEST","tests.api.ProjectAPITest","checkCreateProject"
+"Проверка успешной авторизации пользователя","4963","checkLoginWithPositiveCred","Qase Automation Suite","2026-07-24","passed","2026-07-24","tests.ui.LoginTest","UI Tests","tests.ui.LoginTest","checkLoginWithPositiveCred"
+"Проверка полного теста с входом, созданием проекта, созданием suite, test case с шагами, и затем удаление test case, suite и самого проекта","13987","checkEnd2End","Qase Automation Suite","2026-07-24","passed","2026-07-24","tests.ui.E2ETest","UI Tests","tests.ui.E2ETest","checkEnd2End"
+"","45748","checkLoginWithEmptyEmail","Qase Automation Suite","2026-07-24","passed","2026-07-24","tests.ui.LoginTest","UI Tests","tests.ui.LoginTest","checkLoginWithEmptyEmail"
+"","2532","checkLoginWithEmptyPassword","Qase Automation Suite","2026-07-24","passed","2026-07-24","tests.ui.LoginTest","UI Tests","tests.ui.LoginTest","checkLoginWithEmptyPassword"
+"","12669","checkLoginWithNegativeCred","Qase Automation Suite","2026-07-24","failed","2026-07-24","tests.ui.LoginTest","UI Tests","tests.ui.LoginTest","checkLoginWithNegativeCred"
