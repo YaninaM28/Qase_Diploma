@@ -5,20 +5,20 @@
 ![Selenide](https://img.shields.io/badge/Selenide-7.16.2-green)
 ![TestNG](https://img.shields.io/badge/TestNG-Framework-red)
 ![Allure](https://img.shields.io/badge/Allure-Report-blue)
-![Jenkins](https://img.shields.io/badge/GitActions-CI-critical)
+![Jenkins](https://img.shields.io/badge/GitActions+Jenkins-CI-critical)
 
 ---
 # 🛠 Technology Stack
 
-| Technology                | Purpose |
-|---------------------------|---------|
-| ☕ Java 17                 | Programming language |
-| 📦 Maven                  | Build tool |
-| 🌐 Selenide               | UI automation |
-| ✅ TestNG                  | Test framework |
-| 📊 Allure                 | Test reporting |
-| 📝 Log4j2                 | Logging |
-| 🔄 GitActions (+Jenkins?) | Continuous Integration |
+| Technology               | Purpose |
+|--------------------------|---------|
+| ☕ Java 17                | Programming language |
+| 📦 Maven                 | Build tool |
+| 🌐 Selenide              | UI automation |
+| ✅ TestNG                 | Test framework |
+| 📊 Allure                | Test reporting |
+| 📝 Log4j2                | Logging |
+| 🔄 GitActions (+Jenkins) | Continuous Integration |
 
 ---
 
@@ -51,11 +51,12 @@
 |        | ---------------------------------------------------- | |
 | TC-009 | Edit Project                                         | ✅ |
 | TC-010 | Edit Suite                                           | ✅ |
-| TC-011 | Cancel Test Case                                     | ✅ |
-| TC-012 | Delete Test Case                                     | ✅ |
-| TC-013 | Delete Suite                                         | ✅ |
-| TC-014 | Delete Project                                       | ✅ |
-| TC-015 | Logout Test                                          | ✅ |
+| TC-011 | Duplicate Suite                                      | ✅ |
+| TC-012 | Cancel Test Case                                     | ✅ |
+| TC-013 | Delete Test Case                                     | ✅ |
+| TC-014 | Delete Suite                                         | ✅ |
+| TC-015 | Delete Project                                       | ✅ |
+| TC-016 | Logout Test                                          | ✅ |
 
 ---
 
@@ -101,7 +102,6 @@ Logout
 | Dependencies          | ✅ |
 | Project Structure     | ✅ |
 | Base Test             | ✅ |
-| Driver Configuration  | ✅ |
 | Login Page            | ✅ |
 | Dashboard Page        | ✅ |
 | Project Page          | ✅ |

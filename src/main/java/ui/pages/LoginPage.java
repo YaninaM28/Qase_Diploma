@@ -1,13 +1,17 @@
 package ui.pages;
 
+import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 
+import java.time.Duration;
+
+import static com.codeborne.selenide.Condition.enabled;
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selectors.shadowCss;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selectors.*;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
 
 @Log4j2
 public class LoginPage {
@@ -19,47 +23,40 @@ public class LoginPage {
     private final String PASSWORD = "[name=password]";
     private final String USER_AVATAR = "img[aria-label='User avatar']";
     private final String LOGOUT = "Sign out";
+    private final String SIGN_IN_BUTTON = "button[type='submit']";
+    private static final String REQUIRED_FIELD = "This field is required";
 
     @Step("Открыть страницу логина")
     public LoginPage openPage() {
         open("/login");
         log.info("URL: {}", WebDriverRunner.url());
-        log.info("Title: {}", title());
-        log.info("Body:\n{}", $("body").getText());
+        acceptCookiesIfPresent();
         return this;
     }
 
     @Step("Авторизоваться своим юзером")
     public LoginPage login(String user, String password) {
-        log.info("Opening Login page");
-        acceptCookiesIfPresent();
-//        $(shadowCss("#accept", "#usercentrics-cmp-ui")).click();
-        $(LOGIN).setValue(user);
-        $(PASSWORD).setValue(password);
-        log.info("User = {}", user);
-        log.info("Password empty = {}", password == null || password.isEmpty());
-        $(byText(SIGN_IN)).click();
-        log.info("User logged in");
+        log.info("Logging in as {}", user);
+        $(LOGIN).shouldBe(visible, Duration.ofSeconds(10)).setValue(user);
+        $(PASSWORD).shouldBe(visible, Duration.ofSeconds(10)).setValue(password);
+        $(SIGN_IN_BUTTON).shouldBe(enabled, Duration.ofSeconds(10)).click();
         return this;
     }
 
-//    $(byText(CREATE_NEW_PROJECT))
-//            .shouldBe(visible, Duration.ofSeconds(30));
-
     private void acceptCookiesIfPresent() {
         try {
-            var acceptButton = $(shadowCss("#accept", "#usercentrics-cmp-ui"));
-
-            if (acceptButton.exists()) {
-                log.info("Usercentrics cookie banner found. Accepting cookies...");
-                acceptButton.shouldBe(visible).click();
-            } else {
-                log.info("Usercentrics cookie banner not found. Continue without accepting cookies.");
-            }
-
-        } catch (Exception e) {
-            log.warn("Unable to accept cookies. Continue without it.", e);
+            SelenideElement acceptButton = $(shadowCss("#accept", "#usercentrics-cmp-ui"));
+            acceptButton.shouldBe(visible, Duration.ofSeconds(10)).click();
+            log.info("Cookie banner closed");
+        } catch (Throwable e) {
+            log.info("Cookie banner not displayed");
         }
+    }
+
+    @Step("Проверить сообщение об обязательном поле")
+    public LoginPage shouldHaveRequiredFieldError() {
+        $(byText(REQUIRED_FIELD)).shouldBe(visible);
+        return this;
     }
 
     @Step("Выход из системы")

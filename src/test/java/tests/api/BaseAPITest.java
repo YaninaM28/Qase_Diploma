@@ -12,15 +12,14 @@ public class BaseAPITest {
 
     @BeforeMethod
     public void setUp() {
-
-        projectCode = "QA" + (System.currentTimeMillis() % 100000);
+        projectCode = "QA" + (System.currentTimeMillis() % 1000000);
+        String projectTitle = "Project " + projectCode;
 
         ProjectRq rq = ProjectRq.builder()
-                .title("QA34")
+                .title(projectTitle)
                 .code(projectCode)
-                .description("test")
+                .description("test description")
                 .access("all")
-                .group("test")
                 .build();
 
         ProjectAdapter.createProject(rq);

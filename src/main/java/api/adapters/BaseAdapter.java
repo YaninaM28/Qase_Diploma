@@ -17,11 +17,26 @@ public class BaseAdapter {
             .setPrettyPrinting()
             .create();
 
+    private static String getToken() {
+
+        String token = System.getProperty("token");
+
+        if (token == null || token.isEmpty()) {
+            token = PropertyReader.getProperty("token");
+        }
+        if (token == null || token.isEmpty()) {
+            throw new IllegalArgumentException(
+                    "Token is missing. Add -Dtoken or token in config.properties"
+            );
+        }
+        return token;
+    }
+
     public static RequestSpecification spec = new RequestSpecBuilder()
             .setBaseUri("https://api.qase.io")
             .setBasePath("/v1")
             .setContentType(ContentType.JSON)
-            .addHeader("Token", PropertyReader.getProperty("token"))
+            .addHeader("Token", getToken())
             .addFilter(new AllureRestAssured())
             .build();
 

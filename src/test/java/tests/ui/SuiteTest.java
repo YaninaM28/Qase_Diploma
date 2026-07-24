@@ -100,7 +100,33 @@ public class SuiteTest extends BaseTest {
 
     @Test(groups = "regression", priority = 4)
     @Owner("Yanina Savich")
-    @TmsLink("TC-015")
+    @TmsLink("TC-011")
+    @Feature("Suits")
+    @Story("Duplicate Suite")
+    @Description("Проверка дублирования suite")
+    public void checkDuplicateSuite() {
+        loginPage.openPage()
+                .login(
+                        user,
+                        password);
+        dashboardPage.waitUntilOpened()
+                .clickCreateProject()
+                .setProjectName(projectName)
+                .setProjectCode(projectCode)
+                .clickCreateProject()
+                .shouldHaveProject(projectName)
+                .clickProject(projectName);
+        suitePage.createSuite(suiteName, suiteDescription)
+                .duplicateSuite(suiteName)
+                .shouldHaveTwoSuites(suiteName);
+        dashboardPage.openPage()
+                .deleteProject(projectName)
+                .shouldNotHaveProject(projectName);
+    }
+
+    @Test(groups = "regression", priority = 5)
+    @Owner("Yanina Savich")
+    @TmsLink("TC-014")
     @Feature("Suits")
     @Story("Delete Suite")
     @Description("Проверка удаления suite")

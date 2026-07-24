@@ -39,24 +39,30 @@ public class BaseTest {
                         .savePageSource(true)
                         .includeSelenideSteps(true)
         );
+
         user = System.getProperty("user");
         password = System.getProperty("password");
+
         if (user == null) {
             user = PropertyReader.getProperty("user");
         }
-
         if (password == null) {
             password = PropertyReader.getProperty("password");
         }
         log.info("TEST USER = {}", user);
         log.info("PASSWORD EXISTS = {}", password != null);
 
+        String browserProperty = System.getProperty("browser");
+        if (browserProperty != null && !browserProperty.isBlank()) {
+            browser = browserProperty;
+        }
+
         Configuration.browser = browser;
-        Configuration.headless = true;
+        Configuration.headless = Boolean.parseBoolean(System.getProperty("selenide.headless", "true"));
         Configuration.baseUrl = "https://app.qase.io";
-        Configuration.timeout = 20000;
+        Configuration.timeout = 10000;
         Configuration.pageLoadTimeout = 30000;
-        Configuration.clickViaJs = true;
+        Configuration.pageLoadStrategy = "normal";
         Configuration.browserSize = "1920x1080";
 
         if (browser.equalsIgnoreCase("chrome")) {
@@ -68,26 +74,37 @@ public class BaseTest {
             options.setExperimentalOption("prefs", chromePrefs);
             options.addArguments("--incognito");
             options.addArguments("--disable-notifications");
-//            options.addArguments("--headless=new");
             options.addArguments("--disable-popup-blocking");
             options.addArguments("--disable-infobars");
             options.addArguments("--no-sandbox");
             options.addArguments("--disable-dev-shm-usage");
             options.addArguments("--disable-gpu");
+            options.addArguments("--disable-background-networking");
+            options.addArguments("--disable-background-timer-throttling");
+            options.addArguments("--disable-renderer-backgrounding");
+            options.addArguments("--disable-features=Translate,BackForwardCache,MediaRouter");
+            options.addArguments("--disable-blink-features=AutomationControlled");
 
-
+            if (Configuration.headless) {
+                options.addArguments("--headless=new");
+                options.addArguments("--window-size=1920,1080");
+            }
             Configuration.browserCapabilities = options;
+
         } else if (browser.equalsIgnoreCase("firefox")) {
 
             FirefoxOptions options = new FirefoxOptions();
             options.addArguments("-private");
             options.addPreference("dom.webnotifications.enabled", false);
-//            options.addArguments("--headless=new");
             options.addArguments("--no-sandbox");
             options.addArguments("--disable-dev-shm-usage");
             options.addArguments("--disable-gpu");
 
+            if (Configuration.headless) {
+                options.addArguments("--headless");
+            }
             Configuration.browserCapabilities = options;
+
         } else {
             throw new IllegalArgumentException("Unsupported browser: " + browser);
         }

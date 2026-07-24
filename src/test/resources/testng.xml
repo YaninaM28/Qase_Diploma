@@ -10,11 +10,6 @@
     </listeners>
 
     <test name="UI Tests">
-<!--        <groups>-->
-<!--            <run>-->
-<!--                <include name="smoke"/>-->
-<!--            </run>-->
-<!--        </groups>-->
         <classes>
             <class name="tests.ui.LoginTest"/>
             <class name="tests.ui.ProjectTest"/>

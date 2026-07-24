@@ -21,7 +21,4 @@ public class ProjectRq {
     @SerializedName("access")
     @Expose
     private String access;
-    @SerializedName("group")
-    @Expose
-    private String group;
 }
