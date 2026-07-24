@@ -10,7 +10,8 @@ import java.time.Duration;
 import static com.codeborne.selenide.Condition.enabled;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.*;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
 
 @Log4j2
 public class LoginPage {
@@ -42,19 +43,32 @@ public class LoginPage {
     }
 
     private void acceptCookiesIfPresent() {
+//        try {
+//            executeJavaScript("localStorage.setItem('uc_user_interaction', 'true');");
+//            executeJavaScript("localStorage.setItem('usercentrics_id', 'test');");
+//
+//            if (shadowCss("#accept", "#usercentrics-cmp-ui").toString().contains("#accept")) {
+//               SelenideElement acceptButton = $(shadowCss("#accept", "#usercentrics-cmp-ui"));
+//               if (acceptButton.is(visible)) {
+//                   acceptButton.click();
+//                   log.info("Cookie banner closed via shadow DOM");
+//               }
+//            }
+//        } catch (Exception e) {
+//            log.warn("Unable to handle cookies, continuing: {}", e.getMessage());
+//        }
         try {
-            executeJavaScript("localStorage.setItem('uc_user_interaction', 'true');");
-            executeJavaScript("localStorage.setItem('usercentrics_id', 'test');");
-            
-            if (shadowCss("#accept", "#usercentrics-cmp-ui").toString().contains("#accept")) {
-               SelenideElement acceptButton = $(shadowCss("#accept", "#usercentrics-cmp-ui"));
-               if (acceptButton.is(visible)) {
-                   acceptButton.click();
-                   log.info("Cookie banner closed via shadow DOM");
-               }
-            }
-        } catch (Exception e) {
-            log.warn("Unable to handle cookies, continuing: {}", e.getMessage());
+            SelenideElement acceptButton =
+                    $(shadowCss("#accept", "#usercentrics-cmp-ui"));
+
+            acceptButton
+                    .shouldBe(visible, Duration.ofSeconds(10))
+                    .click();
+
+            log.info("Cookie banner closed");
+
+        } catch (Throwable e) {
+            log.info("Cookie banner not displayed");
         }
     }
 

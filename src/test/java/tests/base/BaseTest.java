@@ -58,7 +58,7 @@ public class BaseTest {
         }
 
         Configuration.browser = browser;
-        Configuration.headless = Boolean.parseBoolean(System.getProperty("selenide.headless", "false"));
+        Configuration.headless = Boolean.parseBoolean(System.getProperty("selenide.headless", "true"));
         Configuration.baseUrl = "https://app.qase.io";
         Configuration.timeout = 10000;
         Configuration.pageLoadTimeout = 30000;
