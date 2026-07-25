@@ -37,8 +37,9 @@ public class LoginPage {
     @Step("Авторизоваться своим юзером")
     public LoginPage login(String user, String password) {
         log.info("Logging in as {}", user);
-        $(LOGIN).shouldBe(visible, Duration.ofSeconds(10)).setValue(user);
-        $(PASSWORD).shouldBe(visible, Duration.ofSeconds(10)).setValue(password);
+        //                                                для jenkins sendkeys
+        $(LOGIN).shouldBe(visible, Duration.ofSeconds(10)).sendKeys(user);
+        $(PASSWORD).shouldBe(visible, Duration.ofSeconds(10)).sendKeys(password);
         $(SIGN_IN_BUTTON).shouldBe(enabled, Duration.ofSeconds(10)).click();
         return this;
     }
