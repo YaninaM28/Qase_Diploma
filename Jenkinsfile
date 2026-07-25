@@ -11,7 +11,7 @@ pipeline {
     tools {
         // Use Maven 3.9.6 (must be configured in Jenkins)
         maven "maven 3.9.6"
-        jdk "Java 17"
+        jdk "JDK"
     }
 
     parameters {
@@ -51,15 +51,14 @@ pipeline {
                     string(credentialsId: 'QASE_PASSWORD', variable: 'QASE_PASSWORD_VAL'),
                     string(credentialsId: 'QASE_TOKEN', variable: 'QASE_TOKEN_VAL')
                 ]) {
-                    sh '''
+                    bat '''
                         echo "Starting test execution..."
-                        mvn clean test \
-                            -Dbrowser=${BROWSER} \
-                            -Duser=${QASE_USER_VAL} \
-                            -Dpassword=${QASE_PASSWORD_VAL} \
-                            -Dtoken=${QASE_TOKEN_VAL} \
-                            -Dselenide.headless=${HEADLESS} \
-                            || true
+                        mvn clean test ^
+                        -Dbrowser=%BROWSER% ^
+                        -Duser=%QASE_USER_VAL% ^
+                        -Dpassword=%QASE_PASSWORD_VAL% ^
+                        -Dtoken=%QASE_TOKEN_VAL% ^
+                        -Dselenide.headless=%HEADLESS%
                     '''
                 }
             }
@@ -71,11 +70,11 @@ pipeline {
             junit '**/target/surefire-reports/TEST-*.xml'
 
             // Generate Allure report in Jenkins
-            allure([
-                resultPattern: 'target/allure-results',
-                reportBuildPolicy: 'ALWAYS',
-                reportPath: 'target/site/allure-report'
-            ])
+           allure(
+               includeProperties: false,
+               jdk: '',
+               results: [[path: 'target/allure-results']]
+           )
 
             // Clean workspace to save disk space
             cleanWs(
