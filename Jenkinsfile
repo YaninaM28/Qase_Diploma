@@ -9,7 +9,6 @@ pipeline {
     }
 
     tools {
-        // Use Maven 3.9.6 (must be configured in Jenkins)
         maven "maven 3.9.6"
         jdk "JDK"
     }
@@ -47,9 +46,9 @@ pipeline {
                 }
 
                 withCredentials([
-                    string(credentialsId: 'QASE_USER', variable: 'QASE_USER_VAL'),
-                    string(credentialsId: 'QASE_PASSWORD', variable: 'QASE_PASSWORD_VAL'),
-                    string(credentialsId: 'QASE_TOKEN', variable: 'QASE_TOKEN_VAL')
+                    string(credentialsId: 'USER', variable: 'QASE_USER'),
+                    string(credentialsId: 'PASSWORD', variable: 'QASE_PASSWORD'),
+                    string(credentialsId: 'TOKEN', variable: 'QASE_TOKEN')
                 ]) {
                     bat '''
                         echo "Starting test execution..."
