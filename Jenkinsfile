@@ -9,7 +9,6 @@ pipeline {
     }
 
     tools {
-        // Use Maven 3.9.6 (must be configured in Jenkins)
         maven "maven 3.9.6"
         jdk "JDK"
     }
