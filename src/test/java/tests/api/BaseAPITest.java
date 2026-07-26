@@ -5,7 +5,6 @@ import api.models.project.ProjectRq;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
-
 public class BaseAPITest {
 
     protected String projectCode;

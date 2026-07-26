@@ -37,8 +37,18 @@ public class LoginPage {
     @Step("Авторизоваться своим юзером")
     public LoginPage login(String user, String password) {
         log.info("Logging in as {}", user);
-        $(LOGIN).shouldBe(visible, Duration.ofSeconds(10)).setValue(user);
-        $(PASSWORD).shouldBe(visible, Duration.ofSeconds(10)).setValue(password);
+        
+        SelenideElement loginInput = $(LOGIN).shouldBe(visible, Duration.ofSeconds(10));
+        // Для Jenkins: чтобы явно фокусировало элемент
+        loginInput.click();
+        loginInput.clear();
+        loginInput.sendKeys(user);
+        
+        SelenideElement passwordInput = $(PASSWORD).shouldBe(visible, Duration.ofSeconds(10));
+        passwordInput.click();
+        passwordInput.clear();
+        passwordInput.sendKeys(password);
+        
         $(SIGN_IN_BUTTON).shouldBe(enabled, Duration.ofSeconds(10)).click();
         return this;
     }

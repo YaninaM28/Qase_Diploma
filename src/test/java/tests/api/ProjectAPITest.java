@@ -11,6 +11,14 @@ import static api.adapters.ProjectAdapter.createProject;
 
 public class ProjectAPITest extends BaseAPITest {
 
+    @Override
+    public void setUp() {
+    }
+
+    @Override
+    public void tearDown() {
+    }
+
     @Test(groups = "api")
     @Owner("Yanina Savich")
     @TmsLink("API-TC-001")
