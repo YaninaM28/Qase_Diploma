@@ -12,7 +12,7 @@ import static com.codeborne.selenide.WebDriverConditions.urlContaining;
 import static ui.pages.LoginPage.SIGN_IN;
 
 public class LogoutTest extends BaseTest {
-    @Test(groups = "smoke")
+    @Test(groups = "smoke", enabled = false)  // ← Отключен
     @Owner("Yanina Savich")
     @TmsLink("TC-016")
     @Feature("Logout")

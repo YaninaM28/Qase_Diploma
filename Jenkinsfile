@@ -34,6 +34,17 @@ pipeline {
                     branches: [[name: '*/master']],
                     userRemoteConfigs: [[url: 'https://github.com/YaninaM28/Qase_Diploma.git']]
                 ])
+                echo "✅ Repository checked out successfully"
+            }
+        }
+
+        stage('Build') {
+            steps {
+                script {
+                    echo "=== STAGE: Build Project ==="
+                }
+                bat 'mvn clean compile -DskipTests'
+                echo "✅ Project compiled successfully"
             }
         }
 
@@ -60,6 +71,32 @@ pipeline {
                         -Dselenide.headless=%HEADLESS%
                     '''
                 }
+                echo "✅ Tests completed"
+            }
+        }
+
+        stage('Generate Allure Report') {
+            steps {
+                script {
+                    echo "=== STAGE: Generate Allure Report ==="
+                }
+                allure(
+                    includeProperties: false,
+                    jdk: '',
+                    results: [[path: 'target/allure-results']]
+                )
+                echo "✅ Allure report generated"
+            }
+        }
+
+        stage('Archive Artifacts') {
+            steps {
+                script {
+                    echo "=== STAGE: Archive Test Results ==="
+                }
+                archiveArtifacts artifacts: 'target/surefire-reports/**/*.xml, target/allure-results/**', 
+                                 allowEmptyArchive: true
+                echo "✅ Artifacts archived"
             }
         }
     }

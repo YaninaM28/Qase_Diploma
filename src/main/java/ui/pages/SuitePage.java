@@ -98,16 +98,28 @@ public class SuitePage {
 
     @Step("Выбрать созданный suite")
     public SuitePage selectSuite() {
-        $(MENU_BUTTON).click();
-        $(byText(SELECT_CREATE_SUITE_OPTION)).click();
+        $(MENU_BUTTON).shouldBe(visible, Duration.ofSeconds(10)).click();
+        $(byText(SELECT_CREATE_SUITE_OPTION)).shouldBe(visible, Duration.ofSeconds(5)).click();
+        
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
         return this;
     }
 
     @Step("Нажать Edit suite")
     public SuitePage editSuite() {
         log.info("Opening suite edit form");
-        $(MENU_BUTTON).click();
-        $(byText(EDIT_SUITE)).click();
+        $(MENU_BUTTON).shouldBe(visible, Duration.ofSeconds(10)).click();
+        $(byText(EDIT_SUITE)).shouldBe(visible, Duration.ofSeconds(5)).click();
+        
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
         return this;
     }
 
@@ -141,7 +153,17 @@ public class SuitePage {
     @Step("Удалить suite")
     public SuitePage deleteSuite(String suiteName) {
         log.info("Deleting suite '{}'", suiteName);
-        $(MENU_BUTTON).click();
+        
+        try {
+            SelenideElement dialog = $("dialog[open]");
+            if (dialog.isDisplayed()) {
+                dialog.shouldNot(visible, Duration.ofSeconds(5));
+            }
+        } catch (Exception e) {
+            log.debug("No dialog to wait for");
+        }
+        
+        $(MENU_BUTTON).shouldBe(visible, Duration.ofSeconds(10)).click();
         $(byText(DELETE_SUITE_OPTION)).click();
         $x(DELETE_SUITE_CONFIRMATION).shouldBe(visible);
         $x(DELETE_SUITE).shouldBe(visible).click();
