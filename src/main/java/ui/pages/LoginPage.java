@@ -39,7 +39,6 @@ public class LoginPage {
         log.info("Logging in as {}", user);
         
         SelenideElement loginInput = $(LOGIN).shouldBe(visible, Duration.ofSeconds(10));
-        // Для Jenkins: чтобы явно фокусировало элемент
         loginInput.click();
         loginInput.clear();
         loginInput.sendKeys(user);

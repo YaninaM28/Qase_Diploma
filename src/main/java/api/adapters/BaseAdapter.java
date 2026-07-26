@@ -32,7 +32,6 @@ public class BaseAdapter {
         return token;
     }
 
-    // Lazy initialization holder pattern to avoid static initializer issues
     private static class SpecHolder {
         static final RequestSpecification INSTANCE = new RequestSpecBuilder()
                 .setBaseUri("https://api.qase.io")

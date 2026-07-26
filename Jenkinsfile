@@ -105,14 +105,12 @@ pipeline {
         always {
             junit '**/target/surefire-reports/TEST-*.xml'
 
-            // Generate Allure report in Jenkins
            allure(
                includeProperties: false,
                jdk: '',
                results: [[path: 'target/allure-results']]
            )
 
-            // Clean workspace to save disk space
             cleanWs(
                 deleteDirs: true,
                 patterns: [[pattern: '**/.*', type: 'INCLUDE']]
@@ -144,7 +142,6 @@ pipeline {
                 echo "=== POST: Tests Failed ❌ ==="
             }
 
-            // Send failure email with details
             emailext(
                 subject: "❌ Test Execution Failed - Build #${BUILD_NUMBER}",
                 body: '''

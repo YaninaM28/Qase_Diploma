@@ -18,7 +18,7 @@
 | ✅ TestNG                 | Test framework |
 | 📊 Allure                | Test reporting |
 | 📝 Log4j2                | Logging |
-| 🔄 GitActions (+Jenkins) | Continuous Integration |
+| 🔄 Jenkins | Continuous Integration |
 
 ---
 
