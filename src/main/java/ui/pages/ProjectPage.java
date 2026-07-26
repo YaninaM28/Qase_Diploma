@@ -14,7 +14,6 @@ public class ProjectPage {
     private final String PROJECT_CODE = "#project-code";
     private final String UPDATE_PROJECT = "Update settings";
 
-
     @Step("Ввести название проекта: {name}")
     public ProjectPage setProjectName(String name) {
         log.info("Setting project name '{}'", name);

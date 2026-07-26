@@ -143,7 +143,6 @@ public class SuiteTest extends BaseTest {
                 .clickProject(projectName)
                 .createSuite(suiteName, suiteDescription)
                 .shouldHaveSuite(suiteName)
-                .selectSuite()
                 .deleteSuite(suiteName)
                 .shouldNotHaveSuite(suiteName);
         dashboardPage.openPage()

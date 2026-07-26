@@ -35,14 +35,6 @@ public class TestCasePage {
         return this;
     }
 
-    @Step("Очистить и ввести значение в input")
-    public TestCasePage clearAndType(SelenideElement element, String value) {
-        executeJavaScript("arguments[0].value = '';", element);
-        executeJavaScript("arguments[0].dispatchEvent(new Event('input', { bubbles: true }));", element);
-        element.setValue(value);
-        return this;
-    }
-
     @Step("Ввести название test case: {testCaseName}")
     public TestCasePage setTestCaseName(String testCaseName) {
         log.info("Setting test case name '{}'", testCaseName);

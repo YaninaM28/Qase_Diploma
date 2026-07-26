@@ -8,7 +8,7 @@ import org.testng.ITestResult;
 public class Retry implements IRetryAnalyzer {
 
     private int attempt = 0;
-    private static final int MAX_RETRY = 0;  // Отключен retry - чтобы избежать проблем с количеством попыток авторизации
+    private static final int MAX_RETRY = 0;
 
     @Override
     public boolean retry(ITestResult iTestResult) {
