@@ -37,7 +37,7 @@ public class BaseTest {
                 new AllureSelenide()
                         .screenshots(true)
                         .savePageSource(true)
-                        .includeSelenideSteps(false)
+                        .includeSelenideSteps(true)
         );
 
         user = System.getProperty("user");
