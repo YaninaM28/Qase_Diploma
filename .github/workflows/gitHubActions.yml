@@ -4,12 +4,12 @@
 
 name: Qase CI
 
-on:
-  push:
-    branches: [ "feature/*" ]
-  pull_request:
-    branches: [ "master", "feature/*" ]
-  workflow_dispatch:
+#on:
+#  push:
+#    branches: [ "feature/*" ]
+#  pull_request:
+#    branches: [ "master", "feature/*" ]
+#  workflow_dispatch:
 
 permissions:
   contents: write
@@ -18,11 +18,6 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
-    env:
-      USER: ${{secrets.QASE_USER}}
-      PASSWORD: ${{secrets.QASE_PASSWORD}}
-      TOKEN: ${{secrets.QASE_TOKEN}}
 
     steps:
       - uses: actions/checkout@v4
@@ -33,7 +28,7 @@ jobs:
           distribution: 'temurin'
           cache: maven
       - name: Run tests
-        run: mvn clean test -Duser=$USER -Dpassword=$PASSWORD -Dtoken=$TOKEN -Dselenide.headless=true
+        run: mvn clean test -Duser=${{ secrets.QASE_USER }} -Dpassword=${{ secrets.QASE_PASSWORD }} -Dtoken=${{ secrets.QASE_TOKEN }} -Dselenide.headless=true
 
       - name: Get Allure history
         uses: actions/checkout@v2

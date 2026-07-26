@@ -54,9 +54,9 @@ pipeline {
                         echo "Starting test execution..."
                         mvn clean test ^
                         -Dbrowser=%BROWSER% ^
-                        -Duser=%QASE_USER_VAL% ^
-                        -Dpassword=%QASE_PASSWORD_VAL% ^
-                        -Dtoken=%QASE_TOKEN_VAL% ^
+                        -Duser=%QASE_USER% ^
+                        -Dpassword=%QASE_PASSWORD% ^
+                        -Dtoken=%QASE_TOKEN% ^
                         -Dselenide.headless=%HEADLESS%
                     '''
                 }

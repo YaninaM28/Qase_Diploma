@@ -32,13 +32,30 @@ public class BaseAdapter {
         return token;
     }
 
-    public static RequestSpecification spec = new RequestSpecBuilder()
-            .setBaseUri("https://api.qase.io")
-            .setBasePath("/v1")
-            .setContentType(ContentType.JSON)
-            .addHeader("Token", getToken())
-            .addFilter(new AllureRestAssured())
-            .build();
+    // Lazy initialization holder pattern to avoid static initializer issues
+    private static class SpecHolder {
+        static final RequestSpecification INSTANCE = new RequestSpecBuilder()
+                .setBaseUri("https://api.qase.io")
+                .setBasePath("/v1")
+                .setContentType(ContentType.JSON)
+                .addHeader("Token", getToken())
+                .addFilter(new AllureRestAssured())
+                .build();
+    }
+
+    public static RequestSpecification getSpec() {
+        return SpecHolder.INSTANCE;
+    }
+
+    public static RequestSpecification spec;
+    
+    static {
+        try {
+            spec = getSpec();
+        } catch (Exception e) {
+            System.err.println("Warning: Unable to initialize API spec: " + e.getMessage());
+        }
+    }
 
     public static ResponseSpecification ok200 = new ResponseSpecBuilder()
             .expectStatusCode(200)
