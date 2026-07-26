@@ -1,0 +1,4 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"Проверка выхода из системы","1","checkLogout","Qase Automation Suite","2026-07-26","unknown","2026-07-26","tests.ui.LogoutTest","UI Tests","tests.ui.LogoutTest","checkLogout"
+"","3020","checkLoginWithEmptyPassword","Qase Automation Suite","2026-07-26","passed","2026-07-26","tests.ui.LoginTest","UI Tests","tests.ui.LoginTest","checkLoginWithEmptyPassword"
+"","14446","checkLoginWithEmptyEmail","Qase Automation Suite","2026-07-26","passed","2026-07-26","tests.ui.LoginTest","UI Tests","tests.ui.LoginTest","checkLoginWithEmptyEmail"
