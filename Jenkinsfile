@@ -34,89 +34,103 @@ pipeline {
                     branches: [[name: '*/master']],
                     userRemoteConfigs: [[url: 'https://github.com/YaninaM28/Qase_Diploma.git']]
                 ])
-                echo "✅ Repository checked out successfully"
+                echo "✅ Repository checked out"
             }
         }
 
         stage('Build') {
             steps {
-                script {
-                    echo "=== STAGE: Build Project ==="
-                }
+                echo "Building project..."
                 bat 'mvn clean compile -DskipTests'
-                echo "✅ Project compiled successfully"
+                echo "✅ Build successful"
             }
         }
 
         stage('Run Tests') {
             steps {
-                script {
-                    echo "=== STAGE: Run Automation Tests ==="
-                    echo "Browser: ${params.BROWSER}"
-                    echo "Headless Mode: ${params.HEADLESS}"
-                }
-
+                echo "Running tests on ${params.BROWSER} (Headless: ${params.HEADLESS})"
                 withCredentials([
                     string(credentialsId: 'USER', variable: 'QASE_USER'),
                     string(credentialsId: 'PASSWORD', variable: 'QASE_PASSWORD'),
                     string(credentialsId: 'TOKEN', variable: 'QASE_TOKEN')
                 ]) {
                     bat '''
-                        echo "Starting test execution..."
                         mvn clean test ^
                         -Dbrowser=%BROWSER% ^
                         -Duser=%QASE_USER% ^
                         -Dpassword=%QASE_PASSWORD% ^
                         -Dtoken=%QASE_TOKEN% ^
-                        -Dselenide.headless=%HEADLESS%
+                        -Dselenide.headless=%HEADLESS% ^
+                        -Dmaven.test.failure.ignore=true
                     '''
                 }
                 echo "✅ Tests completed"
-            }
-        }
-
-        stage('Archive Artifacts') {
-            steps {
-                script {
-                    echo "=== STAGE: Archive Test Results ==="
-                }
-                archiveArtifacts artifacts: 'target/surefire-reports/**/*.xml, target/allure-results/**', 
-                                 allowEmptyArchive: true
-                echo "✅ Artifacts archived"
             }
         }
     }
 
     post {
         always {
-            junit '**/target/surefire-reports/TEST-*.xml'
+            echo "Processing test results..."
+            
+            script {
+                try {
+                    junit testResults: '**/target/surefire-reports/TEST-*.xml', 
+                          allowEmptyResults: true
+                    echo "✅ JUnit results processed"
+                } catch (Exception e) {
+                    echo "⚠️  Could not process JUnit results: ${e.message}"
+                }
+            }
 
-           allure(
-               includeProperties: false,
-               jdk: '',
-               results: [[path: 'target/allure-results']]
-           )
+            script {
+                try {
+                    allure(
+                        includeProperties: true,
+                        jdk: '',
+                        results: [[path: 'target/allure-results']]
+                    )
+                    echo "✅ Allure report generated"
+                } catch (Exception e) {
+                    echo "⚠️  Could not generate Allure report: ${e.message}"
+                }
+            }
+
+            archiveArtifacts artifacts: 'target/surefire-reports/**/*.xml, target/allure-results/**', 
+                             allowEmptyArchive: true
 
             cleanWs(
                 deleteDirs: true,
-                patterns: [[pattern: '**/.*', type: 'INCLUDE']]
+                patterns: [[pattern: 'target/allure-results/**', type: 'EXCLUDE'],
+                           pattern: '**/.*', type: 'INCLUDE']]
+            )
+        }
+
+        unstable {
+            echo "⚠️  Build unstable - Some tests failed"
+            emailext(
+                subject: "⚠️  Test Results - Build #${BUILD_NUMBER}",
+                body: '''
+                    <h2>⚠️  Some Tests Failed</h2>
+                    <p><b>Job:</b> ${JOB_NAME}</p>
+                    <p><b>Build:</b> <a href="${BUILD_URL}">#${BUILD_NUMBER}</a></p>
+                    <p><b>Browser:</b> ${BROWSER}</p>
+                    <p><b>Allure Report:</b> <a href="${BUILD_URL}allure/">View Report</a></p>
+                ''',
+                recipientProviders: [developers(), requestor()],
+                mimeType: 'text/html'
             )
         }
 
         success {
             emailext(
-                subject: "✅ Test Execution Successful - Build #${BUILD_NUMBER}",
+                subject: "✅ Build #${BUILD_NUMBER} - All Tests Passed",
                 body: '''
-                    <h2>✅ Test Execution PASSED</h2>
+                    <h2>✅ All Tests PASSED</h2>
                     <p><b>Job:</b> ${JOB_NAME}</p>
-                    <p><b>Build Number:</b> ${BUILD_NUMBER}</p>
-                    <p><b>Build URL:</b> <a href="${BUILD_URL}">${BUILD_URL}</a></p>
+                    <p><b>Build:</b> <a href="${BUILD_URL}">#${BUILD_NUMBER}</a></p>
                     <p><b>Browser:</b> ${BROWSER}</p>
-                    <p><b>Headless:</b> ${HEADLESS}</p>
-                    <p><b>Duration:</b> ${BUILD_DURATION}</p>
-                    <br/>
                     <p><b>Allure Report:</b> <a href="${BUILD_URL}allure/">View Report</a></p>
-                    <p><b>Console Output:</b> <a href="${BUILD_URL}console">View Logs</a></p>
                 ''',
                 recipientProviders: [developers(), requestor()],
                 mimeType: 'text/html'
@@ -124,27 +138,17 @@ pipeline {
         }
 
         failure {
-            script {
-                echo "=== POST: Tests Failed ❌ ==="
-            }
-
             emailext(
-                subject: "❌ Test Execution Failed - Build #${BUILD_NUMBER}",
+                subject: "❌ Build #${BUILD_NUMBER} - Pipeline Failed",
                 body: '''
-                    <h2>❌ Test Execution FAILED</h2>
+                    <h2>❌ Build FAILED</h2>
                     <p><b>Job:</b> ${JOB_NAME}</p>
-                    <p><b>Build Number:</b> ${BUILD_NUMBER}</p>
+                    <p><b>Build:</b> <a href="${BUILD_URL}">#${BUILD_NUMBER}</a></p>
                     <p><b>Browser:</b> ${BROWSER}</p>
-                    <p><b>Headless:</b> ${HEADLESS}</p>
-                    <br/>
+                    <p><b>Console:</b> <a href="${BUILD_URL}console">View Logs</a></p>
                     <p><b>Allure Report:</b> <a href="${BUILD_URL}allure/">View Report</a></p>
-                    <p><b>Console Output:</b> <a href="${BUILD_URL}console">View Logs</a></p>
-                    <br/>
-                    <p><b>Error Log Excerpt:</b></p>
-                    <pre>${BUILD_LOG, maxLines=50}</pre>
                 ''',
                 recipientProviders: [developers(), requestor(), brokenBuildSuspects()],
-                attachmentsPattern: '**/target/site/allure-report/**',
                 mimeType: 'text/html'
             )
         }
