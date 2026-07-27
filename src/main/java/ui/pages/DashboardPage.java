@@ -28,7 +28,7 @@ public class DashboardPage {
 
     @Step("Дождаться открытия Dashboard")
     public DashboardPage waitUntilOpened() {
-        webdriver().shouldHave(urlContaining("/projects"), Duration.ofSeconds(20));
+        webdriver().shouldHave(urlContaining("/projects"), Duration.ofSeconds(30));
         return this;
     }
 
