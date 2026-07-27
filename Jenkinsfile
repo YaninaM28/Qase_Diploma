@@ -101,8 +101,10 @@ pipeline {
 
             cleanWs(
                 deleteDirs: true,
-                patterns: [[pattern: 'target/allure-results/**', type: 'EXCLUDE'],
-                           pattern: '**/.*', type: 'INCLUDE']]
+                patterns: [
+                    [pattern: 'target/allure-results/**', type: 'EXCLUDE'],
+                    [pattern: '**/.*', type: 'INCLUDE']
+                ]
             )
         }
 
