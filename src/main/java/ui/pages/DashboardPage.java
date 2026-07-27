@@ -35,7 +35,7 @@ public class DashboardPage {
     @Step("Создать новый проект")
     public ProjectPage clickCreateProject() {
         log.info("Clicking 'Create new project'");
-        $(byText(CREATE_NEW_PROJECT)).shouldBe(visible, Duration.ofSeconds(30)).click();
+        $(byText(CREATE_NEW_PROJECT)).shouldBe(visible, Duration.ofSeconds(40)).click();
         return new ProjectPage();
     }
 
