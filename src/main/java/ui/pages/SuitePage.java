@@ -92,7 +92,7 @@ public class SuitePage {
     @Step("Suite не отображается в проекте")
     public SuitePage shouldNotHaveSuite(String suiteName) {
         log.info("Verifying suite '{}' is not displayed", suiteName);
-        $(byText(suiteName)).shouldNot(exist).shouldBe(visible, Duration.ofSeconds(10));
+        $(byText(suiteName)).shouldNot(exist, Duration.ofSeconds(10));
         return this;
     }
 
