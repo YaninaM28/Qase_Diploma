@@ -4,42 +4,25 @@ import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 
-import java.time.Duration;
-
-import static com.codeborne.selenide.CollectionCondition.size;
-import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Condition.exist;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 @Log4j2
 public class SuitePage {
 
-    private static final String EMPTY_SUITE_MESSAGE = "Looks like you don’t have any suites and cases yet.";
     private final String CREATE_NEW_SUITE = "Create new suite";
     private final String SUITE_NAME = "#title";
     private final String DESCRIPTION = "#description";
     private final String SUBMIT_CREATE = "Create";
-    private final String DELETE_SUITE_OPTION = "Delete";
-    private final String DELETE_SUITE_CONFIRMATION = "//span[contains(text(),'Are you sure you want to delete the suite')]";
-    private final String DELETE_SUITE = "//button[.//span[text()='Delete']]";
+    private final String CONFIRM_DELETE_SUITE = "//div[text()='Delete the suite and all its test cases']";
+    private final String DELETE_SUITE = "//span[text()='Delete']";
     private final String SAVE_SUITE_BUTTON = "Save";
-    private final String MENU_BUTTON = "svg[data-icon='ellipsis-vertical']";
-    private final String DUPLICATE_OPTION = "Duplicate";
-    private final String CLONE_BUTTON = "Clone";
-    private final String SELECT_CREATE_SUITE_OPTION = "Create suite";
-    private final String EDIT_SUITE = "Edit";
-
-    @Step("Проверить, что у проекта нет созданных suites и cases")
-    public SuitePage shouldHaveEmptySuite() {
-        $(byText(EMPTY_SUITE_MESSAGE))
-                .shouldBe(visible, Duration.ofSeconds(10));
-        return this;
-    }
 
     @Step("Открыть форму создания suite")
     public SuitePage openCreateSuiteForm() {
         log.info("Opening suite creation form");
-        $(byText(CREATE_NEW_SUITE)).shouldBe(visible);
         $(byText(CREATE_NEW_SUITE)).click();
         return this;
     }
@@ -92,34 +75,22 @@ public class SuitePage {
     @Step("Suite не отображается в проекте")
     public SuitePage shouldNotHaveSuite(String suiteName) {
         log.info("Verifying suite '{}' is not displayed", suiteName);
-        $(byText(suiteName)).shouldNot(exist).shouldBe(visible, Duration.ofSeconds(10));
+        $(byText(suiteName)).shouldNot(exist);
         return this;
     }
 
     @Step("Выбрать созданный suite")
     public SuitePage selectSuite() {
-        $(MENU_BUTTON).shouldBe(visible, Duration.ofSeconds(10)).click();
-        $(byText(SELECT_CREATE_SUITE_OPTION)).shouldBe(visible, Duration.ofSeconds(5)).click();
-        
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-        }
+        $("svg[data-icon='ellipsis-vertical']").click();
+        $(byText("Create suite")).click();
         return this;
     }
 
     @Step("Нажать Edit suite")
     public SuitePage editSuite() {
         log.info("Opening suite edit form");
-        $(MENU_BUTTON).shouldBe(visible, Duration.ofSeconds(10)).click();
-        $(byText(EDIT_SUITE)).shouldBe(visible, Duration.ofSeconds(5)).click();
-        
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-        }
+        $("svg[data-icon='ellipsis-vertical']").click();
+        $(byText("Edit")).click();
         return this;
     }
 
@@ -130,43 +101,13 @@ public class SuitePage {
         return this;
     }
 
-    @Step("Дублировать suite")
-    public SuitePage duplicateSuite(String suiteName) {
-        log.info("Duplicating Suite {}", suiteName);
-        $(MENU_BUTTON).click();
-        $(byText(DUPLICATE_OPTION)).click();
-        $$("button")
-                .findBy(exactText(CLONE_BUTTON))
-                .shouldBe(visible, Duration.ofSeconds(10))
-                .click();
-        return this;
-    }
-
-    @Step("Проверить, что создано 2 suites с именем {suiteName}")
-    public SuitePage shouldHaveTwoSuites(String suiteName) {
-        log.info("2 Suites are displayed");
-        $$x(String.format("//*[text()='%s']", suiteName))
-                .shouldHave(size(2), Duration.ofSeconds(10));
-        return this;
-    }
-
     @Step("Удалить suite")
     public SuitePage deleteSuite(String suiteName) {
         log.info("Deleting suite '{}'", suiteName);
-        
-        try {
-            SelenideElement dialog = $("dialog[open]");
-            if (dialog.isDisplayed()) {
-                dialog.shouldNot(visible, Duration.ofSeconds(5));
-            }
-        } catch (Exception e) {
-            log.debug("No dialog to wait for");
-        }
-        
-        $(MENU_BUTTON).shouldBe(visible, Duration.ofSeconds(10)).click();
-        $(byText(DELETE_SUITE_OPTION)).click();
-        $x(DELETE_SUITE_CONFIRMATION).shouldBe(visible);
-        $x(DELETE_SUITE).shouldBe(visible).click();
+        $("svg[data-icon='ellipsis-vertical']").click();
+        $(byText("Delete")).click();
+        $x(CONFIRM_DELETE_SUITE).click();
+        $x(DELETE_SUITE).click();
         return this;
     }
 }
