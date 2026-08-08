@@ -4,6 +4,7 @@ import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
+import utils.AllureUtils;
 
 import java.time.Duration;
 
@@ -28,28 +29,32 @@ public class LoginPage {
 
     @Step("Открыть страницу логина")
     public LoginPage openPage() {
-        open("/login");
-        log.info("URL: {}", WebDriverRunner.url());
-        acceptCookiesIfPresent();
-        return this;
+        return AllureUtils.step("Открыть страницу логина", () -> {
+            open("/login");
+            log.info("URL: {}", WebDriverRunner.url());
+            acceptCookiesIfPresent();
+            return this;
+        });
     }
 
     @Step("Авторизоваться своим юзером")
     public LoginPage login(String user, String password) {
-        log.info("Logging in as {}", user == null ? "null" : "****");
-        
-        SelenideElement loginInput = $(LOGIN).shouldBe(visible, Duration.ofSeconds(10));
-        loginInput.click();
-        loginInput.clear();
-        loginInput.sendKeys(user);
-        
-        SelenideElement passwordInput = $(PASSWORD).shouldBe(visible, Duration.ofSeconds(10));
-        passwordInput.click();
-        passwordInput.clear();
-        passwordInput.sendKeys(password);
-        
-        $(SIGN_IN_BUTTON).shouldBe(enabled, Duration.ofSeconds(10)).click();
-        return this;
+        return AllureUtils.step("Авторизоваться своим юзером", () -> {
+            log.info("Logging in as {}", user == null ? "null" : "****");
+
+            SelenideElement loginInput = $(LOGIN).shouldBe(visible, Duration.ofSeconds(10));
+            loginInput.click();
+            loginInput.clear();
+            loginInput.sendKeys(user);
+
+            SelenideElement passwordInput = $(PASSWORD).shouldBe(visible, Duration.ofSeconds(10));
+            passwordInput.click();
+            passwordInput.clear();
+            passwordInput.sendKeys(password);
+
+            $(SIGN_IN_BUTTON).shouldBe(enabled, Duration.ofSeconds(10)).click();
+            return this;
+        });
     }
 
     private void acceptCookiesIfPresent() {
@@ -64,15 +69,19 @@ public class LoginPage {
 
     @Step("Проверить сообщение об обязательном поле")
     public LoginPage shouldHaveRequiredFieldError() {
-        $(byText(REQUIRED_FIELD)).shouldBe(visible);
-        return this;
+        return AllureUtils.step("Проверить сообщение об обязательном поле", () -> {
+            $(byText(REQUIRED_FIELD)).shouldBe(visible);
+            return this;
+        });
     }
 
     @Step("Выход из системы")
     public LoginPage logout() {
-        log.info("Logging out");
-        $(USER_AVATAR).click();
-        $(byText(LOGOUT)).click();
-        return this;
+        return AllureUtils.step("Выход из системы", () -> {
+            log.info("Logging out");
+            $(USER_AVATAR).click();
+            $(byText(LOGOUT)).click();
+            return this;
+        });
     }
 }
