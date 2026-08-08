@@ -3,7 +3,6 @@ package ui.pages;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
-import utils.AllureUtils;
 
 import java.time.Duration;
 
@@ -32,172 +31,142 @@ public class SuitePage {
 
     @Step("Проверить, что у проекта нет созданных suites и cases")
     public SuitePage shouldHaveEmptySuite() {
-        return AllureUtils.step("Проверить, что у проекта нет созданных suites и cases", () -> {
-            $(byText(EMPTY_SUITE_MESSAGE))
-                    .shouldBe(visible, Duration.ofSeconds(10));
-            return this;
-        });
+        $(byText(EMPTY_SUITE_MESSAGE))
+                .shouldBe(visible, Duration.ofSeconds(10));
+        return this;
     }
 
     @Step("Открыть форму создания suite")
     public SuitePage openCreateSuiteForm() {
-        return AllureUtils.step("Открыть форму создания suite", () -> {
-            log.info("Opening suite creation form");
-            $(byText(CREATE_NEW_SUITE)).shouldBe(visible);
-            $(byText(CREATE_NEW_SUITE)).click();
-            return this;
-        });
+        log.info("Opening suite creation form");
+        $(byText(CREATE_NEW_SUITE)).shouldBe(visible);
+        $(byText(CREATE_NEW_SUITE)).click();
+        return this;
     }
 
     @Step("Очистить и ввести значение в input")
     public SuitePage clearAndType(SelenideElement element, String value) {
-        return AllureUtils.step("Очистить и ввести значение в input", () -> {
-            executeJavaScript("arguments[0].value = '';", element);
-            executeJavaScript("arguments[0].dispatchEvent(new Event('input', { bubbles: true }));", element);
-            element.setValue(value);
-            return this;
-        });
+        executeJavaScript("arguments[0].value = '';", element);
+        executeJavaScript("arguments[0].dispatchEvent(new Event('input', { bubbles: true }));", element);
+        element.setValue(value);
+        return this;
     }
 
     @Step("Ввести название suite: {suiteName}")
     public SuitePage setSuiteName(String suiteName) {
-        return AllureUtils.step("Ввести название suite: " + suiteName, () -> {
-            log.info("Setting suite name '{}'", suiteName);
-            clearAndType($(SUITE_NAME), suiteName);
-            return this;
-        });
+        log.info("Setting suite name '{}'", suiteName);
+        clearAndType($(SUITE_NAME), suiteName);
+        return this;
     }
 
     @Step("Ввести описание для suite: {description}")
     public SuitePage setSuiteDescription(String description) {
-        return AllureUtils.step("Ввести описание для suite: " + description, () -> {
-            log.info("Setting suite description");
-            $(DESCRIPTION).setValue(description);
-            return this;
-        });
+        log.info("Setting suite description");
+        $(DESCRIPTION).setValue(description);
+        return this;
     }
 
     @Step("Подтвердить создание suite")
     public SuitePage submitSuite() {
-        return AllureUtils.step("Подтвердить создание suite", () -> {
-            log.info("Creating suite");
-            $(byText(SUBMIT_CREATE)).click();
-            return this;
-        });
+        log.info("Creating suite");
+        $(byText(SUBMIT_CREATE)).click();
+        return this;
     }
 
     @Step("Полный сценарий создания suite")
     public SuitePage createSuite(String suiteName, String description) {
-        return AllureUtils.step("Полный сценарий создания suite", () -> {
-            openCreateSuiteForm();
-            setSuiteName(suiteName);
-            setSuiteDescription(description);
-            submitSuite();
-            return this;
-        });
+        openCreateSuiteForm();
+        setSuiteName(suiteName);
+        setSuiteDescription(description);
+        submitSuite();
+        return this;
     }
 
     @Step("Suite отображается в проекте")
     public SuitePage shouldHaveSuite(String suiteName) {
-        return AllureUtils.step("Suite отображается в проекте", () -> {
-            log.info("Verifying suite '{}' is displayed", suiteName);
-            $(byText(suiteName)).shouldBe(visible);
-            return this;
-        });
+        log.info("Verifying suite '{}' is displayed", suiteName);
+        $(byText(suiteName)).shouldBe(visible);
+        return this;
     }
 
     @Step("Suite не отображается в проекте")
     public SuitePage shouldNotHaveSuite(String suiteName) {
-        return AllureUtils.step("Suite не отображается в проекте", () -> {
-            log.info("Verifying suite '{}' is not displayed", suiteName);
-            $(byText(suiteName)).shouldNot(exist, Duration.ofSeconds(10));
-            return this;
-        });
+        log.info("Verifying suite '{}' is not displayed", suiteName);
+        $(byText(suiteName)).shouldNot(exist).shouldBe(visible, Duration.ofSeconds(10));
+        return this;
     }
 
     @Step("Выбрать созданный suite")
     public SuitePage selectSuite() {
-        return AllureUtils.step("Выбрать созданный suite", () -> {
-            $(MENU_BUTTON).shouldBe(visible, Duration.ofSeconds(10)).click();
-            $(byText(SELECT_CREATE_SUITE_OPTION)).shouldBe(visible, Duration.ofSeconds(5)).click();
-
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-            }
-            return this;
-        });
+        $(MENU_BUTTON).shouldBe(visible, Duration.ofSeconds(10)).click();
+        $(byText(SELECT_CREATE_SUITE_OPTION)).shouldBe(visible, Duration.ofSeconds(5)).click();
+        
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+        return this;
     }
 
     @Step("Нажать Edit suite")
     public SuitePage editSuite() {
-        return AllureUtils.step("Нажать Edit suite", () -> {
-            log.info("Opening suite edit form");
-            $(MENU_BUTTON).shouldBe(visible, Duration.ofSeconds(10)).click();
-            $(byText(EDIT_SUITE)).shouldBe(visible, Duration.ofSeconds(5)).click();
-
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-            }
-            return this;
-        });
+        log.info("Opening suite edit form");
+        $(MENU_BUTTON).shouldBe(visible, Duration.ofSeconds(10)).click();
+        $(byText(EDIT_SUITE)).shouldBe(visible, Duration.ofSeconds(5)).click();
+        
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+        return this;
     }
 
     @Step("Применить изменения для suite")
     public SuitePage saveEditedSuite() {
-        return AllureUtils.step("Применить изменения для suite", () -> {
-            log.info("Saving suite changes");
-            $(byText(SAVE_SUITE_BUTTON)).click();
-            return this;
-        });
+        log.info("Saving suite changes");
+        $(byText(SAVE_SUITE_BUTTON)).click();
+        return this;
     }
 
     @Step("Дублировать suite")
     public SuitePage duplicateSuite(String suiteName) {
-        return AllureUtils.step("Дублировать suite", () -> {
-            log.info("Duplicating Suite {}", suiteName);
-            $(MENU_BUTTON).click();
-            $(byText(DUPLICATE_OPTION)).click();
-            $$("button")
-                    .findBy(exactText(CLONE_BUTTON))
-                    .shouldBe(visible, Duration.ofSeconds(10))
-                    .click();
-            return this;
-        });
+        log.info("Duplicating Suite {}", suiteName);
+        $(MENU_BUTTON).click();
+        $(byText(DUPLICATE_OPTION)).click();
+        $$("button")
+                .findBy(exactText(CLONE_BUTTON))
+                .shouldBe(visible, Duration.ofSeconds(10))
+                .click();
+        return this;
     }
 
     @Step("Проверить, что создано 2 suites с именем {suiteName}")
     public SuitePage shouldHaveTwoSuites(String suiteName) {
-        return AllureUtils.step("Проверить, что создано 2 suites с именем " + suiteName, () -> {
-            log.info("2 Suites are displayed");
-            $$x(String.format("//*[text()='%s']", suiteName))
-                    .shouldHave(size(2), Duration.ofSeconds(10));
-            return this;
-        });
+        log.info("2 Suites are displayed");
+        $$x(String.format("//*[text()='%s']", suiteName))
+                .shouldHave(size(2), Duration.ofSeconds(10));
+        return this;
     }
 
     @Step("Удалить suite")
     public SuitePage deleteSuite(String suiteName) {
-        return AllureUtils.step("Удалить suite", () -> {
-            log.info("Deleting suite '{}'", suiteName);
-
-            try {
-                SelenideElement dialog = $("dialog[open]");
-                if (dialog.isDisplayed()) {
-                    dialog.shouldNot(visible, Duration.ofSeconds(5));
-                }
-            } catch (Exception e) {
-                log.debug("No dialog to wait for");
+        log.info("Deleting suite '{}'", suiteName);
+        
+        try {
+            SelenideElement dialog = $("dialog[open]");
+            if (dialog.isDisplayed()) {
+                dialog.shouldNot(visible, Duration.ofSeconds(5));
             }
-
-            $(MENU_BUTTON).shouldBe(visible, Duration.ofSeconds(10)).click();
-            $(byText(DELETE_SUITE_OPTION)).click();
-            $x(DELETE_SUITE_CONFIRMATION).shouldBe(visible);
-            $x(DELETE_SUITE).shouldBe(visible).click();
-            return this;
-        });
+        } catch (Exception e) {
+            log.debug("No dialog to wait for");
+        }
+        
+        $(MENU_BUTTON).shouldBe(visible, Duration.ofSeconds(10)).click();
+        $(byText(DELETE_SUITE_OPTION)).click();
+        $x(DELETE_SUITE_CONFIRMATION).shouldBe(visible);
+        $x(DELETE_SUITE).shouldBe(visible).click();
+        return this;
     }
 }
