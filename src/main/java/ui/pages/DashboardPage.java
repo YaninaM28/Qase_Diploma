@@ -18,6 +18,7 @@ public class DashboardPage {
     private static final String CONFIRM_DELETE_BUTTON = "//span[text()='Delete project']";
     private static final String EDIT_BUTTON = "[data-testid='settings']";
 
+
     @Step("Открыть Dashboard с проектами")
     public DashboardPage openPage() {
         log.info("Opening Dashboard page");

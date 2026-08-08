@@ -61,3 +61,4 @@ public class LoginTest extends BaseTest {
         webdriver().shouldHave(urlContaining("/reset"));
     }
 }
+

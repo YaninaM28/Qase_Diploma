@@ -20,8 +20,7 @@ public class E2ETest extends BaseTest {
     @Description("Проверка полного теста с входом, созданием проекта, созданием suite, test case с шагами, и затем удаление test case, suite и самого проекта")
     public void checkEnd2End() {
         loginPage.openPage();
-        loginPage.login(
-                        user,
+        loginPage.login(user,
                         password);
                 dashboardPage.clickCreateProject()
                 .setProjectName(projectName)
