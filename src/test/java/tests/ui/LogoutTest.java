@@ -30,3 +30,4 @@ public class LogoutTest extends BaseTest {
         $(byText(SIGN_IN)).shouldBe(visible);
     }
 }
+

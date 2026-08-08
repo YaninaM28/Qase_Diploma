@@ -16,6 +16,7 @@ import static com.codeborne.selenide.Selenide.open;
 @Log4j2
 public class LoginPage {
 
+
     public static final String SIGN_IN = "Sign in";
     public static final String CREATE_NEW_PROJECT = "Create new project";
     protected static final String CREATE_PROJECT = "Create project";

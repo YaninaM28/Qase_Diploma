@@ -12,6 +12,7 @@ public class SuiteTest extends BaseTest {
     public static final String suiteName = "Suite_1";
     public static final String suiteDescription = "Test_Suite";
 
+
     @Test(groups = "smoke", priority = 1)
     @Owner("Yanina Savich")
     @TmsLink("TC-004")

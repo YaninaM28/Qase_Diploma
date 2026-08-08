@@ -100,7 +100,6 @@ public class SuitePage {
     public SuitePage selectSuite() {
         $(MENU_BUTTON).shouldBe(visible, Duration.ofSeconds(10)).click();
         $(byText(SELECT_CREATE_SUITE_OPTION)).shouldBe(visible, Duration.ofSeconds(5)).click();
-        
         try {
             Thread.sleep(500);
         } catch (InterruptedException e) {

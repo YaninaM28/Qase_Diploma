@@ -96,22 +96,22 @@ Logout
 ---
 # 📈 Project Progress
 
-| Task                  | Status |
-|-----------------------|--|
-| Maven Project         | ✅ |
-| Dependencies          | ✅ |
-| Project Structure     | ✅ |
-| Base Test             | ✅ |
-| Login Page            | ✅ |
-| Dashboard Page        | ✅ |
-| Project Page          | ✅ |
-| Smoke Tests           | ✅ |
-| Regression Tests      | ✅ |
-| Retry Analyzer        | ✅ |
-| Test Listener         | ✅ |
-| Logging               | ✅ |
-| Allure Report         | ✅ |
-| Parallel Execution    | ✅ |
-| GitAction Integration | ✅ |
+| Task                | Status |
+|---------------------|--|
+| Maven Project       | ✅ |
+| Dependencies        | ✅ |
+| Project Structure   | ✅ |
+| Base Test           | ✅ |
+| Login Page          | ✅ |
+| Dashboard Page      | ✅ |
+| Project Page        | ✅ |
+| Smoke Tests         | ✅ |
+| Regression Tests    | ✅ |
+| Retry Analyzer      | ✅ |
+| Test Listener       | ✅ |
+| Logging             | ✅ |
+| Allure Report       | ✅ |
+| Parallel Execution  | ✅ |
+| Jenkins Integration | ✅ |
 
 ---
