@@ -32,10 +32,13 @@ public class BaseTest {
     @Parameters({"browser"})
     @BeforeMethod(alwaysRun = true)
     public void setUp(@Optional("chrome") String browser) {
-        SelenideLogger.addListener("AllureSelenide", new AllureSelenide()
-                .screenshots(true)
-                .savePageSource(false)
-                .includeSelenideSteps(false));
+        SelenideLogger.addListener(
+                "AllureSelenide",
+                new AllureSelenide()
+                        .screenshots(true)
+                        .savePageSource(true)
+                        .includeSelenideSteps(true)
+        );
 
         user = System.getProperty("user");
         password = System.getProperty("password");
@@ -46,7 +49,7 @@ public class BaseTest {
         if (password == null) {
             password = PropertyReader.getProperty("password");
         }
-        log.info("TEST USER = {}", user == null ? "null" : "****");
+        log.info("TEST USER = {}", user);
         log.info("PASSWORD EXISTS = {}", password != null);
 
         String browserProperty = System.getProperty("browser");
