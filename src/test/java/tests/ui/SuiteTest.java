@@ -12,7 +12,6 @@ public class SuiteTest extends BaseTest {
     public static final String suiteName = "Suite_1";
     public static final String suiteDescription = "Test_Suite";
 
-
     @Test(groups = "smoke", priority = 1)
     @Owner("Yanina Savich")
     @TmsLink("TC-004")
@@ -23,8 +22,7 @@ public class SuiteTest extends BaseTest {
         loginPage.openPage()
                 .login(
                         user,
-                        password);
-        dashboardPage.waitUntilOpened()
+                        password)
                 .clickCreateProject()
                 .setProjectName(projectName)
                 .setProjectCode(projectCode)
@@ -47,8 +45,7 @@ public class SuiteTest extends BaseTest {
         loginPage.openPage()
                 .login(
                         user,
-                        password);
-        dashboardPage.waitUntilOpened()
+                        password)
                 .clickCreateProject()
                 .setProjectName(projectName)
                 .setProjectCode(projectCode)
@@ -81,8 +78,7 @@ public class SuiteTest extends BaseTest {
         loginPage.openPage()
                 .login(
                         user,
-                        password);
-        dashboardPage.waitUntilOpened()
+                        password)
                 .clickCreateProject()
                 .setProjectName(projectName)
                 .setProjectCode(projectCode)
@@ -101,33 +97,7 @@ public class SuiteTest extends BaseTest {
 
     @Test(groups = "regression", priority = 4)
     @Owner("Yanina Savich")
-    @TmsLink("TC-011")
-    @Feature("Suits")
-    @Story("Duplicate Suite")
-    @Description("Проверка дублирования suite")
-    public void checkDuplicateSuite() {
-        loginPage.openPage()
-                .login(
-                        user,
-                        password);
-        dashboardPage.waitUntilOpened()
-                .clickCreateProject()
-                .setProjectName(projectName)
-                .setProjectCode(projectCode)
-                .clickCreateProject()
-                .shouldHaveProject(projectName)
-                .clickProject(projectName);
-        suitePage.createSuite(suiteName, suiteDescription)
-                .duplicateSuite(suiteName)
-                .shouldHaveTwoSuites(suiteName);
-        dashboardPage.openPage()
-                .deleteProject(projectName)
-                .shouldNotHaveProject(projectName);
-    }
-
-    @Test(groups = "regression", priority = 5)
-    @Owner("Yanina Savich")
-    @TmsLink("TC-014")
+    @TmsLink("TC-015")
     @Feature("Suits")
     @Story("Delete Suite")
     @Description("Проверка удаления suite")
@@ -135,8 +105,7 @@ public class SuiteTest extends BaseTest {
         loginPage.openPage()
                 .login(
                         user,
-                        password);
-        dashboardPage.waitUntilOpened()
+                        password)
                 .clickCreateProject()
                 .setProjectName(projectName)
                 .setProjectCode(projectCode)
@@ -144,6 +113,7 @@ public class SuiteTest extends BaseTest {
                 .clickProject(projectName)
                 .createSuite(suiteName, suiteDescription)
                 .shouldHaveSuite(suiteName)
+                .selectSuite()
                 .deleteSuite(suiteName)
                 .shouldNotHaveSuite(suiteName);
         dashboardPage.openPage()

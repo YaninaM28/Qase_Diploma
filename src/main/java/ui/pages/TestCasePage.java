@@ -136,4 +136,3 @@ public class TestCasePage {
         return new SuitePage();
     }
 }
-
