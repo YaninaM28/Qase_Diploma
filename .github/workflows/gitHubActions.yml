@@ -6,7 +6,7 @@ name: Qase CI
 
 #on:
 #  push:
-#    branches:
+#    branches: ["**"]
 #  pull_request:
 #    branches: [ "master", "feature/*" ]
 #  workflow_dispatch:

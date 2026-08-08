@@ -9,7 +9,6 @@ import static com.codeborne.selenide.Condition.exist;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.WebDriverConditions.urlContaining;
 import static ui.pages.LoginPage.CREATE_NEW_PROJECT;
 
 @Log4j2
@@ -27,16 +26,10 @@ public class DashboardPage {
         return this;
     }
 
-    @Step("Дождаться открытия Dashboard")
-    public DashboardPage waitUntilOpened() {
-        webdriver().shouldHave(urlContaining("/projects"), Duration.ofSeconds(30));
-        return this;
-    }
-
     @Step("Создать новый проект")
     public ProjectPage clickCreateProject() {
         log.info("Clicking 'Create new project'");
-        $(byText(CREATE_NEW_PROJECT)).shouldBe(visible, Duration.ofSeconds(40)).click();
+        $(byText(CREATE_NEW_PROJECT)).shouldBe(visible, Duration.ofSeconds(30)).click();
         return new ProjectPage();
     }
 
@@ -50,7 +43,7 @@ public class DashboardPage {
     @Step("Проект отображается на главной странице")
     public DashboardPage shouldHaveProject(String projectName) {
         log.info("Verifying project '{}' is not displayed", projectName);
-        $(byText(projectName)).shouldBe(visible, Duration.ofSeconds(15));
+        $(byText(projectName)).shouldBe(visible);
         return this;
     }
 
@@ -67,9 +60,8 @@ public class DashboardPage {
         $(byText(projectName))
                 .ancestor("tr")
                 .find(ACTION_MENU)
-                .shouldBe(visible, Duration.ofSeconds(10))
                 .click();
-        $(EDIT_BUTTON).shouldBe(visible, Duration.ofSeconds(10)).click();
+        $(EDIT_BUTTON).click();
         return new ProjectPage();
     }
 
@@ -79,11 +71,9 @@ public class DashboardPage {
         $(byText(projectName))
                 .ancestor("tr")
                 .find(ACTION_MENU)
-                .shouldBe(visible, Duration.ofSeconds(10))
                 .click();
-        $(REMOVE_BUTTON).shouldBe(visible, Duration.ofSeconds(10)).click();
-        $x(CONFIRM_DELETE_BUTTON).shouldBe(visible, Duration.ofSeconds(10)).click();
-        $x(CONFIRM_DELETE_BUTTON).shouldNotBe(visible, Duration.ofSeconds(10));
+        $(REMOVE_BUTTON).click();
+        $x(CONFIRM_DELETE_BUTTON).click();
         return this;
     }
 }
