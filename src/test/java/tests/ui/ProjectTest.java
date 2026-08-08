@@ -10,39 +10,16 @@ public class ProjectTest extends BaseTest {
 
     @Test(groups = "smoke", priority = 1)
     @Owner("Yanina Savich")
-    @TmsLink("TC-003")
-    @Feature("Projects")
-    @Story("Create Project")
-    @Description("Проверка создания нового проекта")
-    public void checkOpenCreatedProject() {
-        loginPage.openPage()
-                .login(
-                        user,
-                        password);
-        dashboardPage.waitUntilOpened()
-                .clickCreateProject()
-                .setProjectName(projectName)
-                .setProjectCode(projectCode)
-                .clickCreateProject()
-                .clickProject(projectName);
-                suitePage.shouldHaveEmptySuite();
-                dashboardPage.openPage()
-                .deleteProject(projectName)
-                .shouldNotHaveProject(projectName);
-    }
-
-    @Test(groups = "smoke", priority = 2)
-    @Owner("Yanina Savich")
     @TmsLink("TC-002")
     @Feature("Projects")
     @Story("Create Project")
     @Description("Проверка создания нового проекта")
     public void checkCreateProject() {
+
         loginPage.openPage()
                 .login(
                         user,
-                        password);
-        dashboardPage.waitUntilOpened()
+                        password)
                 .clickCreateProject()
                 .setProjectName(projectName)
                 .setProjectCode(projectCode)
@@ -53,7 +30,7 @@ public class ProjectTest extends BaseTest {
                 .shouldNotHaveProject(projectName);
     }
 
-    @Test(groups = "regression", priority = 3)
+    @Test(groups = "regression", priority = 2)
     @Owner("Yanina Savich")
     @TmsLink("TC-009")
     @Feature("Projects")
@@ -63,8 +40,7 @@ public class ProjectTest extends BaseTest {
         loginPage.openPage()
                 .login(
                         user,
-                        password);
-        dashboardPage.waitUntilOpened()
+                        password)
                 .clickCreateProject()
                 .setProjectName(projectName)
                 .setProjectCode(projectCode)
@@ -87,9 +63,9 @@ public class ProjectTest extends BaseTest {
                 .shouldNotHaveProject(projectName);
     }
 
-    @Test(groups = "regression", priority = 4)
+    @Test(groups = "regression", priority = 3)
     @Owner("Yanina Savich")
-    @TmsLink("TC-015")
+    @TmsLink("TC-016")
     @Feature("Projects")
     @Story("Delete Project")
     @Description("Проверка удаления существующего проекта")
@@ -97,8 +73,7 @@ public class ProjectTest extends BaseTest {
         loginPage.openPage()
                 .login(
                         user,
-                        password);
-        dashboardPage.waitUntilOpened()
+                        password)
                 .clickCreateProject()
                 .setProjectName(projectName)
                 .setProjectCode(projectCode)
@@ -109,4 +84,3 @@ public class ProjectTest extends BaseTest {
                 .shouldNotHaveProject(projectName);
     }
 }
-

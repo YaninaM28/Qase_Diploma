@@ -5,13 +5,10 @@ import api.models.cases.CaseRq;
 import api.models.cases.CaseRs;
 import api.models.cases.Step;
 import io.qameta.allure.*;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.List;
-
-import static org.testng.Assert.assertNotNull;
-import static org.testng.Assert.assertTrue;
-import static org.testng.AssertJUnit.assertEquals;
 
 public class CaseAPITest extends BaseAPITest {
 
@@ -50,8 +47,8 @@ public class CaseAPITest extends BaseAPITest {
 
         CaseRs createdCase = CaseAdapter.createCase(projectCode, rq);
 
-        assertTrue(createdCase.isStatus(), "Case was not created!");
-        assertNotNull(createdCase.getResult(), "Result in NULL");
+        Assert.assertTrue(createdCase.isStatus(), "Case was not created!");
+        Assert.assertNotNull(createdCase.getResult(), "Result in NULL");
 
         int caseId = createdCase.getResult().getId();
 
@@ -70,9 +67,7 @@ public class CaseAPITest extends BaseAPITest {
         CaseAdapter.updateCase(projectCode, caseId, updateRq);
 
         CaseRs updatedCase = CaseAdapter.getCase(projectCode, caseId);
-        assertEquals( "ID созданного и полученного кейса должны совпадать",
-                caseId,
-                updatedCase.getResult().getId());
+        Assert.assertEquals(updatedCase.getResult().getId(), caseId);
 
         CaseAdapter.deleteCase(projectCode, caseId);
     }
