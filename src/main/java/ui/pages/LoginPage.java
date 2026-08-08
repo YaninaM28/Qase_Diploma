@@ -36,7 +36,7 @@ public class LoginPage {
 
     @Step("Авторизоваться своим юзером")
     public LoginPage login(String user, String password) {
-        log.info("Logging in as {}", user);
+        log.info("Logging in as {}", user == null ? "null" : "****");
         
         SelenideElement loginInput = $(LOGIN).shouldBe(visible, Duration.ofSeconds(10));
         loginInput.click();
