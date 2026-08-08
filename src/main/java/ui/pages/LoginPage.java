@@ -1,18 +1,15 @@
 package ui.pages;
 
-import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
-import utils.AllureUtils;
 
 import java.time.Duration;
 
-import static com.codeborne.selenide.Condition.enabled;
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selectors.*;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selectors.byText;
+import static com.codeborne.selenide.Selectors.shadowCss;
+import static com.codeborne.selenide.Selenide.*;
 
 @Log4j2
 public class LoginPage {
@@ -24,64 +21,53 @@ public class LoginPage {
     private final String PASSWORD = "[name=password]";
     private final String USER_AVATAR = "img[aria-label='User avatar']";
     private final String LOGOUT = "Sign out";
-    private final String SIGN_IN_BUTTON = "button[type='submit']";
-    private static final String REQUIRED_FIELD = "This field is required";
 
     @Step("Открыть страницу логина")
     public LoginPage openPage() {
-        return AllureUtils.step("Открыть страницу логина", () -> {
-            open("/login");
-            log.info("URL: {}", WebDriverRunner.url());
-            acceptCookiesIfPresent();
-            return this;
-        });
+        open("/login");
+        log.info("URL: {}", WebDriverRunner.url());
+        log.info("Title: {}", title());
+        log.info("Body:\n{}", $("body").getText());
+        return this;
     }
 
     @Step("Авторизоваться своим юзером")
-    public LoginPage login(String user, String password) {
-        return AllureUtils.step("Авторизоваться своим юзером", () -> {
-            log.info("Logging in as {}", user == null ? "null" : "****");
-
-            SelenideElement loginInput = $(LOGIN).shouldBe(visible, Duration.ofSeconds(10));
-            loginInput.click();
-            loginInput.clear();
-            loginInput.sendKeys(user);
-
-            SelenideElement passwordInput = $(PASSWORD).shouldBe(visible, Duration.ofSeconds(10));
-            passwordInput.click();
-            passwordInput.clear();
-            passwordInput.sendKeys(password);
-
-            $(SIGN_IN_BUTTON).shouldBe(enabled, Duration.ofSeconds(10)).click();
-            return this;
-        });
+    public DashboardPage login(String user, String password) {
+        log.info("Opening Login page");
+        acceptCookiesIfPresent();
+//        $(shadowCss("#accept", "#usercentrics-cmp-ui")).click();
+        $(LOGIN).setValue(user);
+        $(PASSWORD).setValue(password);
+        log.info("User = {}", user);
+        log.info("Password empty = {}", password == null || password.isEmpty());
+        $(byText(SIGN_IN)).click();
+        $(byText(CREATE_NEW_PROJECT))
+                .shouldBe(visible, Duration.ofSeconds(30));
+        log.info("User logged in");
+        return new DashboardPage();
     }
 
     private void acceptCookiesIfPresent() {
         try {
-            SelenideElement acceptButton = $(shadowCss("#accept", "#usercentrics-cmp-ui"));
-            acceptButton.shouldBe(visible, Duration.ofSeconds(10)).click();
-            log.info("Cookie banner closed");
-        } catch (Throwable e) {
-            log.info("Cookie banner not displayed");
-        }
-    }
+            var acceptButton = $(shadowCss("#accept", "#usercentrics-cmp-ui"));
 
-    @Step("Проверить сообщение об обязательном поле")
-    public LoginPage shouldHaveRequiredFieldError() {
-        return AllureUtils.step("Проверить сообщение об обязательном поле", () -> {
-            $(byText(REQUIRED_FIELD)).shouldBe(visible);
-            return this;
-        });
+            if (acceptButton.exists()) {
+                log.info("Usercentrics cookie banner found. Accepting cookies...");
+                acceptButton.shouldBe(visible).click();
+            } else {
+                log.info("Usercentrics cookie banner not found. Continue without accepting cookies.");
+            }
+
+        } catch (Exception e) {
+            log.warn("Unable to accept cookies. Continue without it.", e);
+        }
     }
 
     @Step("Выход из системы")
     public LoginPage logout() {
-        return AllureUtils.step("Выход из системы", () -> {
-            log.info("Logging out");
-            $(USER_AVATAR).click();
-            $(byText(LOGOUT)).click();
-            return this;
-        });
+        log.info("Logging out");
+        $(USER_AVATAR).click();
+        $(byText(LOGOUT)).click();
+        return this;
     }
 }
